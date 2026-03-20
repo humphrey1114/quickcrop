@@ -1,0 +1,394 @@
+.page-layout {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 20px 48px 60px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.page-container {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border-light);
+  padding: 40px 48px;
+  box-shadow: var(--shadow-2);
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.page-content h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 28px 0 12px;
+}
+
+.page-content h2:first-child {
+  margin-top: 0;
+}
+
+.page-content p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.page-content ul, .page-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.page-content li {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 4px;
+}
+
+.page-content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Step cards for tutorial */
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg);
+  border-radius: var(--r-lg);
+  margin-bottom: 12px;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.step-body p {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 0;
+}
+
+/* FAQ */
+.faq-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-q {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.faq-q::before {
+  content: 'Q';
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.faq-a {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.8;
+  padding-left: 30px;
+}
+
+/* Changelog */
+.changelog-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.changelog-item:last-child {
+  border-bottom: none;
+}
+
+.changelog-version {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.changelog-tag {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--accent-light);
+  padding: 3px 12px;
+  border-radius: var(--r-pill);
+}
+
+.changelog-date {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.changelog-item ul {
+  padding-left: 18px;
+  margin-bottom: 0;
+}
+
+.changelog-item li {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* Feedback */
+.feedback-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg);
+  border-radius: var(--r-lg);
+  margin-bottom: 12px;
+}
+
+.feedback-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.feedback-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.feedback-card p {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 0;
+}
+
+.feedback-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.feedback-card a:hover {
+  text-decoration: underline;
+}
+
+/* About */
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.about-value {
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--r-lg);
+  text-align: center;
+}
+
+.about-value-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.about-value h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.about-value p {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Feedback form */
+.feedback-form {
+  margin: 20px 0 28px;
+}
+
+.fb-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fb-field {
+  margin-bottom: 16px;
+}
+
+.fb-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.fb-input,
+.fb-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.fb-input:focus,
+.fb-textarea:focus {
+  border-color: var(--accent);
+}
+
+.fb-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.fb-type-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.fb-type-btn {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fb-type-btn:hover {
+  border-color: var(--text-3);
+  color: var(--text);
+}
+
+.fb-type-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.fb-submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary);
+  border: none;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.fb-submit:hover {
+  opacity: 0.9;
+}
+
+.fb-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fb-msg {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  text-align: center;
+}
+
+.fb-success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.fb-error {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 16px 16px 40px;
+  }
+
+  .page-container {
+    padding: 28px 20px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}

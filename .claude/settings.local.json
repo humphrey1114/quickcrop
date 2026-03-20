@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm install:*)",
+      "Bash(find C:UsersASUSDesktopjicai/src -type f \\\\\\(-name *.jsx -o -name *.js -o -name *.css \\\\\\))",
+      "Bash(grep -r \"^import\\\\|^export\" C:UsersASUSDesktopjicai/src --include=*.jsx --include=*.js)",
+      "Bash(git init:*)"
+    ]
+  }
+}

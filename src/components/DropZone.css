@@ -1,0 +1,92 @@
+.dropzone {
+  border: 2px dashed rgba(0, 0, 0, 0.12);
+  border-radius: var(--r-xl);
+  padding: 56px 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzone:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: var(--glass-strong);
+  box-shadow: var(--shadow-2);
+}
+
+.dropzone.dragging {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  border-style: solid;
+  box-shadow: 0 0 0 4px var(--accent-light), var(--shadow-2);
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropzone-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--r-lg);
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.dropzone-icon {
+  color: var(--text-3);
+  opacity: 0.6;
+}
+
+.dropzone-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.dropzone-hint {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* Compact */
+.dropzone-compact {
+  border: 1px dashed var(--border);
+  border-radius: var(--r-lg);
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--surface);
+  backdrop-filter: blur(6px);
+}
+
+.dropzone-compact:hover {
+  border-color: rgba(0,0,0,0.15);
+  color: var(--text-2);
+  background: var(--glass-strong);
+}
+
+.dropzone-compact-icon {
+  font-size: 16px;
+  font-weight: 300;
+}

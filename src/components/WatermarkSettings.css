@@ -1,0 +1,89 @@
+.watermark-options {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wm-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wm-row label {
+  font-size: 13px;
+  color: var(--text-3);
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+.wm-text-input {
+  flex: 1;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  background: var(--surface);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-inner);
+}
+
+.wm-text-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.wm-num-input {
+  width: 60px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  text-align: center;
+  background: var(--surface);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-inner);
+}
+
+.wm-num-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.wm-row input[type="color"] {
+  width: 32px;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  padding: 2px;
+  background: var(--surface);
+}
+
+.wm-row input[type="range"] {
+  flex: 1;
+}
+
+.wm-select {
+  flex: 1;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.wm-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
