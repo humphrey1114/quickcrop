@@ -66,10 +66,16 @@ export default {
   // Size categories
   'cat.ratio': 'Common',
   'cat.resolution': 'Resolution',
-  'cat.xiaohongshu': 'Xiaohongshu',
-  'cat.douyin': 'TikTok',
-  'cat.weibo': 'Weibo',
-  'cat.wechat': 'WeChat',
+  'cat.twitter': 'X / Twitter',
+  'cat.instagram': 'Instagram',
+  'cat.youtube': 'YouTube',
+  'cat.facebook': 'Facebook',
+  'cat.linkedin': 'LinkedIn',
+  'cat.pinterest': 'Pinterest',
+  'cat.twitch': 'Twitch',
+  'cat.soundcloud': 'SoundCloud',
+  'cat.tumblr': 'Tumblr',
+  'cat.etsy': 'Etsy',
   'cat.idphoto': 'ID Photo',
   'cat.paper': 'Paper',
 
@@ -259,4 +265,73 @@ export default {
   'about.v.fast.desc': 'No software to install — just open and use',
   'about.contactTitle': 'Contact Us',
   'about.contactDesc': 'For questions or suggestions, send an email to',
+
+  // X / Twitter
+  'size.x.header': 'Header Photo',
+  'size.x.avatar': 'Profile Photo',
+  'size.x.post': 'Post Image',
+  'size.x.card': 'Cards Image',
+  'size.x.summary': 'Summary Card',
+
+  // Instagram
+  'size.ig.avatar': 'Profile Photo',
+  'size.ig.square': 'Square Image',
+  'size.ig.portrait': 'Portrait Image',
+  'size.ig.story': 'Story',
+
+  // YouTube
+  'size.yt.thumbnail': 'Thumbnail',
+  'size.yt.banner': 'Banner',
+  'size.yt.video4k': 'Video (4K)',
+  'size.yt.avatar': 'Profile Picture',
+  'size.yt.bannerDesktop': 'Banner (Desktop)',
+  'size.yt.bannerTablet': 'Banner (Tablet)',
+  'size.yt.bannerMobile': 'Banner (Mobile)',
+  'size.yt.bannerTV': 'Banner (TV)',
+
+  // Facebook
+  'size.fb.avatar': 'Profile Picture',
+  'size.fb.cover': 'Cover Photo',
+  'size.fb.post': 'Image Post',
+  'size.fb.link': 'Shared Link Image',
+  'size.fb.event': 'Event Image',
+  'size.fb.adCarousel': 'Ad (Carousel)',
+  'size.fb.adSingle': 'Ad (Single Image)',
+
+  // LinkedIn
+  'size.li.avatar': 'Profile Photo',
+  'size.li.cover': 'Cover Photo',
+  'size.li.shared': 'Shared Image',
+
+  // Pinterest
+  'size.pin.avatar': 'Profile Photo',
+  'size.pin.board': 'Board Cover',
+  'size.pin.pin': 'Pin (Portrait)',
+
+  // Twitch
+  'size.tw.avatar': 'Profile Photo',
+  'size.tw.banner': 'Profile Banner',
+  'size.tw.videoBanner': 'Video Player Banner',
+  'size.tw.thumbnail': 'Video Thumbnail',
+  'size.tw.cover': 'Cover Image',
+  'size.tw.infoPanel': 'Info Panel',
+
+  // SoundCloud
+  'size.sc.avatar': 'Profile Photo',
+  'size.sc.album': 'Album Cover',
+  'size.sc.header': 'Header',
+
+  // Tumblr
+  'size.tb.avatar': 'Profile Photo',
+  'size.tb.banner': 'Banner',
+  'size.tb.shared': 'Shared Image',
+
+  // Etsy
+  'size.et.cover': 'Cover',
+  'size.et.avatar': 'Profile Photo',
+  'size.et.shopIcon': 'Shop Icon',
+  'size.et.shopBanner': 'Shop Banner',
+  'size.et.thumbnail': 'Thumbnail',
+  'size.et.teamLogo': 'Team Logo',
+  'size.et.listing': 'Item Listing',
 }

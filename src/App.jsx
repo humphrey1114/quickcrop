@@ -257,10 +257,8 @@ export default function App() {
           <div className="sidebar-brand">
             <div className="brand-icon">
               <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
-                <path d="M18 35 L18 18 L42 18" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M82 65 L82 82 L58 82" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="50" cy="50" r="12" stroke="#fff" strokeWidth="5" fill="none"/>
-                <circle cx="50" cy="50" r="4.5" fill="#fff"/>
+                <path d="M18 40 C18 18, 82 18, 82 40" stroke="#fff" strokeWidth="13" strokeLinecap="round" fill="none"/>
+                <path d="M50 32 C50 55, 50 60, 48 68 C44 80, 30 85, 20 78 C12 72, 14 58, 22 54" stroke="#fff" strokeWidth="13" strokeLinecap="round" fill="none"/>
               </svg>
             </div>
             <div className="brand-text">

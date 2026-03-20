@@ -9,7 +9,7 @@ const mm2px = (mm) => Math.round(mm * 300 / 25.4)
 function gcd(a, b) { return b === 0 ? a : gcd(b, a % b) }
 
 export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('ratio')
 
   const SIZE_CATEGORIES = useMemo(() => [
@@ -38,6 +38,8 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         { label: t('size.square'), w: 1080, h: 1080 },
       ]
     },
+    // Chinese social media - only show in Chinese
+    ...(lang === 'zh' ? [
     {
       key: 'xiaohongshu', label: t('cat.xiaohongshu'),
       type: 'size',
@@ -88,6 +90,119 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         { label: t('size.wx.videoV'), w: 1080, h: 1260 },
       ]
     },
+    ] : []),
+    // International social media - only show in English
+    ...(lang === 'en' ? [
+    {
+      key: 'twitter', label: t('cat.twitter'),
+      type: 'size',
+      items: [
+        { label: t('size.x.header'), w: 1500, h: 500 },
+        { label: t('size.x.avatar'), w: 400, h: 400 },
+        { label: t('size.x.post'), w: 1024, h: 512 },
+        { label: t('size.x.card'), w: 800, h: 320 },
+        { label: t('size.x.summary'), w: 280, h: 150 },
+      ]
+    },
+    {
+      key: 'instagram', label: t('cat.instagram'),
+      type: 'size',
+      items: [
+        { label: t('size.ig.avatar'), w: 110, h: 110 },
+        { label: t('size.ig.square'), w: 1080, h: 1080 },
+        { label: t('size.ig.portrait'), w: 1080, h: 1350 },
+        { label: t('size.ig.story'), w: 1080, h: 1920 },
+      ]
+    },
+    {
+      key: 'youtube', label: t('cat.youtube'),
+      type: 'size',
+      items: [
+        { label: t('size.yt.thumbnail'), w: 1280, h: 720 },
+        { label: t('size.yt.banner'), w: 2560, h: 1440 },
+        { label: t('size.yt.video4k'), w: 3840, h: 2160 },
+        { label: t('size.yt.avatar'), w: 800, h: 800 },
+        { label: t('size.yt.bannerDesktop'), w: 2560, h: 423 },
+        { label: t('size.yt.bannerTablet'), w: 1855, h: 423 },
+        { label: t('size.yt.bannerMobile'), w: 1546, h: 423 },
+        { label: t('size.yt.bannerTV'), w: 2560, h: 1440 },
+      ]
+    },
+    {
+      key: 'facebook', label: t('cat.facebook'),
+      type: 'size',
+      items: [
+        { label: t('size.fb.avatar'), w: 400, h: 400 },
+        { label: t('size.fb.cover'), w: 1125, h: 633 },
+        { label: t('size.fb.post'), w: 1200, h: 630 },
+        { label: t('size.fb.link'), w: 1200, h: 630 },
+        { label: t('size.fb.event'), w: 1920, h: 1005 },
+        { label: t('size.fb.adCarousel'), w: 1080, h: 1080 },
+        { label: t('size.fb.adSingle'), w: 1200, h: 628 },
+      ]
+    },
+    {
+      key: 'linkedin', label: t('cat.linkedin'),
+      type: 'size',
+      items: [
+        { label: t('size.li.avatar'), w: 400, h: 400 },
+        { label: t('size.li.cover'), w: 1584, h: 396 },
+        { label: t('size.li.shared'), w: 180, h: 110 },
+      ]
+    },
+    {
+      key: 'pinterest', label: t('cat.pinterest'),
+      type: 'size',
+      items: [
+        { label: t('size.pin.avatar'), w: 165, h: 165 },
+        { label: t('size.pin.board'), w: 222, h: 150 },
+        { label: t('size.pin.pin'), w: 735, h: 1102 },
+      ]
+    },
+    {
+      key: 'twitch', label: t('cat.twitch'),
+      type: 'size',
+      items: [
+        { label: t('size.tw.avatar'), w: 800, h: 800 },
+        { label: t('size.tw.banner'), w: 1920, h: 480 },
+        { label: t('size.tw.videoBanner'), w: 1920, h: 1080 },
+        { label: t('size.tw.thumbnail'), w: 1280, h: 720 },
+        { label: t('size.tw.cover'), w: 380, h: 1200 },
+        { label: t('size.tw.infoPanel'), w: 320, h: 200 },
+      ]
+    },
+    {
+      key: 'soundcloud', label: t('cat.soundcloud'),
+      type: 'size',
+      items: [
+        { label: t('size.sc.avatar'), w: 1000, h: 1000 },
+        { label: t('size.sc.album'), w: 800, h: 800 },
+        { label: t('size.sc.header'), w: 2480, h: 520 },
+      ]
+    },
+    {
+      key: 'tumblr', label: t('cat.tumblr'),
+      type: 'size',
+      items: [
+        { label: t('size.tb.avatar'), w: 128, h: 128 },
+        { label: t('size.tb.banner'), w: 3000, h: 1055 },
+        { label: t('size.tb.shared'), w: 500, h: 750 },
+      ]
+    },
+    {
+      key: 'etsy', label: t('cat.etsy'),
+      type: 'size',
+      items: [
+        { label: t('size.et.cover'), w: 3360, h: 840 },
+        { label: t('size.et.avatar'), w: 400, h: 400 },
+        { label: t('size.et.shopIcon'), w: 500, h: 500 },
+        { label: t('size.et.shopBanner'), w: 760, h: 100 },
+        { label: t('size.et.thumbnail'), w: 570, h: 456 },
+        { label: t('size.et.teamLogo'), w: 170, h: 100 },
+        { label: t('size.et.listing'), w: 800, h: 1000 },
+      ]
+    },
+    ] : []),
     {
       key: 'idphoto', label: t('cat.idphoto'),
       type: 'size',
@@ -115,7 +230,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         { label: 'B5', w: mm2px(176), h: mm2px(250) },
       ]
     },
-  ], [t])
+  ], [t, lang])
 
   const handleSizePreset = useCallback((w, h) => {
     const g = gcd(w, h)

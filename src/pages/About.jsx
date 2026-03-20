@@ -11,38 +11,14 @@ export default function About() {
       <p>{t('about.intro2')}</p>
 
       <h2>{t('about.valuesTitle')}</h2>
-      <div className="about-values">
-        <div className="about-value">
-          <div className="about-value-icon">&#9889;</div>
-          <h3>{t('about.v.efficient')}</h3>
-          <p>{t('about.v.efficient.desc')}</p>
-        </div>
-        <div className="about-value">
-          <div className="about-value-icon">&#128274;</div>
-          <h3>{t('about.v.privacy')}</h3>
-          <p>{t('about.v.privacy.desc')}</p>
-        </div>
-        <div className="about-value">
-          <div className="about-value-icon">&#127873;</div>
-          <h3>{t('about.v.free')}</h3>
-          <p>{t('about.v.free.desc')}</p>
-        </div>
-        <div className="about-value">
-          <div className="about-value-icon">&#10024;</div>
-          <h3>{t('about.v.simple')}</h3>
-          <p>{t('about.v.simple.desc')}</p>
-        </div>
-        <div className="about-value">
-          <div className="about-value-icon">&#128247;</div>
-          <h3>{t('about.v.smart')}</h3>
-          <p>{t('about.v.smart.desc')}</p>
-        </div>
-        <div className="about-value">
-          <div className="about-value-icon">&#128640;</div>
-          <h3>{t('about.v.fast')}</h3>
-          <p>{t('about.v.fast.desc')}</p>
-        </div>
-      </div>
+      <ul className="about-values-list">
+        <li><strong>{t('about.v.efficient')}</strong> — {t('about.v.efficient.desc')}</li>
+        <li><strong>{t('about.v.privacy')}</strong> — {t('about.v.privacy.desc')}</li>
+        <li><strong>{t('about.v.free')}</strong> — {t('about.v.free.desc')}</li>
+        <li><strong>{t('about.v.simple')}</strong> — {t('about.v.simple.desc')}</li>
+        <li><strong>{t('about.v.smart')}</strong> — {t('about.v.smart.desc')}</li>
+        <li><strong>{t('about.v.fast')}</strong> — {t('about.v.fast.desc')}</li>
+      </ul>
 
       <h2>{t('about.contactTitle')}</h2>
       <p>
