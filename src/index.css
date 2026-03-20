@@ -87,17 +87,9 @@
   background: rgba(255,255,255,0.2);
 }
 
-/* Dark mode - logo icon */
+/* Dark mode - logo icon: black logo on light gray circle */
 [data-theme="dark"] .brand-icon {
-  background: var(--accent);
-}
-
-[data-theme="dark"] .brand-icon svg path[fill="#1a1a1a"] {
-  fill: #1a1a1e;
-}
-
-[data-theme="dark"] .brand-icon svg path[fill="#FDFDFD"] {
-  fill: var(--accent);
+  background: #9a9a9a;
 }
 
 /* Dark mode - sidebar brand bg */
@@ -107,25 +99,25 @@
 
 /* Dark mode - action buttons */
 [data-theme="dark"] .btn-process {
-  background: var(--accent);
+  background: #e0ddd8;
   color: #1a1a1e;
 }
 
 [data-theme="dark"] .btn-process:hover:not(:disabled) {
-  background: #e0c89a;
+  background: #fff;
 }
 
 /* Dark mode - nav lang button */
 [data-theme="dark"] .top-nav-lang {
-  background: var(--accent);
+  background: #e0ddd8;
   color: #1a1a1e;
 }
 
 /* Dark mode - category tabs */
 [data-theme="dark"] .sp-cat-tab.active {
-  background: var(--accent);
+  background: #e0ddd8;
   color: #1a1a1e;
-  border-color: var(--accent);
+  border-color: #e0ddd8;
 }
 
 /* Dark mode - watermark toggle */
@@ -143,13 +135,14 @@
 
 /* Dark mode - template save button */
 [data-theme="dark"] .sp-template-btn {
+  background: #e0ddd8;
   color: #1a1a1e;
 }
 
 /* Dark mode - toggle buttons (watermark/border) */
 [data-theme="dark"] .sp-toggle-btn.active {
-  border-color: var(--accent);
-  background: rgba(212, 184, 138, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Dark mode - dropzone */
