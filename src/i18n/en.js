@@ -1,7 +1,7 @@
 export default {
   // Brand
-  'brand.name': 'QuickCrop',
-  'brand.tag': 'QuickCrop',
+  'brand.name': 'TapCrop',
+  'brand.tag': 'TapCrop',
 
   // TopNav
   'nav.tutorial': 'Tutorial',
@@ -164,7 +164,7 @@ export default {
 
   // Tutorial page
   'tutorial.title': 'Tutorial',
-  'tutorial.intro': 'QuickCrop is a browser-based batch image cropping tool. Just follow a few simple steps.',
+  'tutorial.intro': 'TapCrop is a browser-based batch image cropping tool. Just follow a few simple steps.',
   'tutorial.step1.title': 'Upload Images',
   'tutorial.step1.desc': 'Click the upload area or drag and drop images onto the page. Supports JPG, PNG, WebP, and BMP. You can upload multiple files at once.',
   'tutorial.step2.title': 'Set Crop Parameters',
@@ -183,7 +183,7 @@ export default {
 
   // FAQ page
   'faq.title': 'FAQ',
-  'faq.q1': 'Is QuickCrop free?',
+  'faq.q1': 'Is TapCrop free?',
   'faq.a1': 'Yes, all features are completely free with no usage limits and no watermarks added to your images.',
   'faq.q2': 'Are my images uploaded to a server?',
   'faq.a2': 'No. All image processing happens locally in your browser. Your images never leave your device, ensuring complete privacy.',
@@ -202,7 +202,7 @@ export default {
 
   // Changelog page
   'changelog.title': 'Changelog',
-  'changelog.intro': 'Tracking every improvement to QuickCrop for a better experience.',
+  'changelog.intro': 'Tracking every improvement to TapCrop for a better experience.',
   'changelog.v1.0.0.0': 'Initial release',
   'changelog.v1.0.0.1': 'Batch image cropping with custom width, height, and ratios',
   'changelog.v1.0.0.2': 'Built-in presets for Xiaohongshu, TikTok, Weibo, WeChat, ID photos, paper sizes',
@@ -218,7 +218,7 @@ export default {
 
   // Feedback page
   'feedback.title': 'Feedback',
-  'feedback.intro': 'QuickCrop is continuously improving. Your feedback is very important to us.',
+  'feedback.intro': 'TapCrop is continuously improving. Your feedback is very important to us.',
   'feedback.form.name': 'Your Name',
   'feedback.form.namePlaceholder': 'Enter your name',
   'feedback.form.email': 'Email Address',
@@ -237,13 +237,13 @@ export default {
   'feedback.form.error': 'Failed to send. Please try again or email feedback294@163.com directly.',
   'feedback.noteTitle': 'Feedback Policy',
   'feedback.note1': 'We carefully read every piece of feedback and work to improve in future releases. Due to limited resources, we may not reply individually, but your suggestions will always be seen.',
-  'feedback.note2': 'If you enjoy QuickCrop, please share it with friends who might find it useful — that\'s the best support you can give us.',
+  'feedback.note2': 'If you enjoy TapCrop, please share it with friends who might find it useful — that\'s the best support you can give us.',
 
   // About page
   'about.title': 'About',
-  'about.heading': 'About QuickCrop',
-  'about.intro1': 'QuickCrop is a free online batch image cropping tool. We believe image processing shouldn\'t be complicated, shouldn\'t cost money, and should never compromise your privacy.',
-  'about.intro2': 'Whether you\'re a content creator, designer, marketing professional, or just someone who occasionally needs to resize images, QuickCrop helps you batch crop in seconds.',
+  'about.heading': 'About TapCrop',
+  'about.intro1': 'TapCrop is a free online batch image cropping tool. We believe image processing shouldn\'t be complicated, shouldn\'t cost money, and should never compromise your privacy.',
+  'about.intro2': 'Whether you\'re a content creator, designer, marketing professional, or just someone who occasionally needs to resize images, TapCrop helps you batch crop in seconds.',
   'about.valuesTitle': 'Our Values',
   'about.v.efficient': 'Efficient',
   'about.v.efficient.desc': 'Batch process and export with one click — no wasted time',

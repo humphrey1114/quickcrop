@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180">
+  <!-- TapCrop / 秒裁 Logo -->
+  <!-- Crop frame corners -->
+  <path d="M40 60 L40 40 L70 40" stroke="#1a1a1a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M160 120 L160 140 L130 140" stroke="#1a1a1a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Tap circle -->
+  <circle cx="100" cy="90" r="24" fill="none" stroke="#1a1a1a" stroke-width="8"/>
+  <circle cx="100" cy="90" r="8" fill="#1a1a1a"/>
+  <!-- Tap ripple -->
+  <circle cx="100" cy="90" r="38" fill="none" stroke="#1a1a1a" stroke-width="4" opacity="0.35"/>
+</svg>

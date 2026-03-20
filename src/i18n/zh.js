@@ -1,7 +1,7 @@
 export default {
   // Brand
   'brand.name': '秒裁',
-  'brand.tag': 'QuickCrop',
+  'brand.tag': 'TapCrop',
 
   // TopNav
   'nav.tutorial': '使用教程',
@@ -242,7 +242,7 @@ export default {
   // About page
   'about.title': '关于我们',
   'about.heading': '关于秒裁',
-  'about.intro1': '秒裁（QuickCrop）是一款免费的在线批量图片裁剪工具。我们相信，图片处理不应该复杂、不应该收费、更不应该牺牲你的隐私。',
+  'about.intro1': '秒裁（TapCrop）是一款免费的在线批量图片裁剪工具。我们相信，图片处理不应该复杂、不应该收费、更不应该牺牲你的隐私。',
   'about.intro2': '无论你是内容创作者、设计师、运营人员，还是只是偶尔需要调整图片尺寸的普通用户，秒裁都能帮你在几秒钟内完成批量裁剪。',
   'about.valuesTitle': '我们的理念',
   'about.v.efficient': '高效',

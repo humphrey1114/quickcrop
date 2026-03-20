@@ -53,7 +53,7 @@ module.exports = async function handler(req, res) {
     subject: `[秒裁反馈] ${typeLabels[type] || '反馈'} - ${name}`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px;">秒裁 QuickCrop - 用户反馈</h2>
+        <h2 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px;">秒裁 TapCrop - 用户反馈</h2>
         <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
           <tr>
             <td style="padding: 8px 12px; background: #f9f9f9; font-weight: bold; width: 80px;">姓名</td>
@@ -71,7 +71,7 @@ module.exports = async function handler(req, res) {
         <div style="padding: 16px; background: #f9f9f9; border-radius: 8px; white-space: pre-wrap; line-height: 1.6;">
           ${escapeHtml(message)}
         </div>
-        <p style="color: #999; font-size: 12px; margin-top: 20px;">此邮件由秒裁 QuickCrop 反馈系统自动发送</p>
+        <p style="color: #999; font-size: 12px; margin-top: 20px;">此邮件由秒裁 TapCrop 反馈系统自动发送</p>
       </div>
     `,
   }

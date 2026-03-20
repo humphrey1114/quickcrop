@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90">
-  <rect width="100" height="90" rx="16" fill="#1a1a1a"/>
-  <path d="M15 72 C15 72, 15 15, 37 15 C55 15, 50 45, 50 45 C50 45, 45 15, 63 15 C85 15, 85 72, 85 72" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="18" fill="#1a1a1a"/>
+  <!-- Crop frame (L-shaped corners) -->
+  <path d="M22 32 L22 22 L42 22" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M78 68 L78 78 L58 78" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Tap circle (finger tap effect) -->
+  <circle cx="50" cy="50" r="14" fill="none" stroke="#fff" stroke-width="4"/>
+  <circle cx="50" cy="50" r="5" fill="#fff"/>
+  <!-- Tap ripple -->
+  <circle cx="50" cy="50" r="22" fill="none" stroke="#fff" stroke-width="2" opacity="0.4"/>
 </svg>
