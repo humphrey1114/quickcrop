@@ -570,9 +570,13 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                   value={settings.quality}
                   onChange={e => {
                     const raw = e.target.value.replace(/[^0-9]/g, '')
-                    if (raw === '') { onUpdate('quality', 0); return }
-                    const v = Math.min(100, parseInt(raw, 10))
-                    onUpdate('quality', v)
+                    if (raw === '') { onUpdate('quality', ''); return }
+                    const num = parseInt(raw, 10)
+                    onUpdate('quality', Math.min(100, num))
+                  }}
+                  onBlur={() => {
+                    const v = typeof settings.quality === 'number' ? settings.quality : 10
+                    onUpdate('quality', Math.max(10, Math.min(100, v || 10)))
                   }}
                 />
                 <span className="sp-quality-pct">%</span>
@@ -580,7 +584,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             </div>
             <input
               type="range"
-              min="0"
+              min="10"
               max="100"
               value={settings.quality}
               onChange={e => onUpdate('quality', parseInt(e.target.value))}

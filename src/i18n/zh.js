@@ -54,7 +54,7 @@ export default {
   'settings.autoFocal': '智能焦点检测',
   'settings.formatOnly': '仅转换格式',
   'settings.outputFormat': '输出格式',
-  'settings.quality': '质量',
+  'settings.quality': '图片品质',
   'settings.batchRename': '批量重命名',
   'settings.filename': '文件名',
   'settings.filenamePlaceholder': '如：产品图',
