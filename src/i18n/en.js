@@ -42,7 +42,7 @@ export default {
 
   // DropZone
   'dropzone.title': 'Drop images here, or click to upload',
-  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP. Multiple files allowed.',
+  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC. Multiple files allowed.',
   'dropzone.addMore': 'Add more images',
 
   // Settings
@@ -60,6 +60,12 @@ export default {
   'settings.filenamePlaceholder': 'e.g. product',
   'settings.startNumber': 'Start No.',
   'settings.afterExport': 'Output:',
+  'template.title': 'My Templates',
+  'template.save': 'Save Current Config',
+  'template.namePlaceholder': 'Template name',
+  'template.empty': 'No saved templates',
+  'template.delete': 'Delete',
+  'template.load': 'Load',
   'settings.custom': 'Custom',
   'settings.customHint': 'Ratio changes will auto-sync output dimensions',
   'settings.widthRatio': 'W ratio',

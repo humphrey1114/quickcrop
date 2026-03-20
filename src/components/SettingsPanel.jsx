@@ -8,8 +8,33 @@ const mm2px = (mm) => Math.round(mm * 300 / 25.4)
 
 function gcd(a, b) { return b === 0 ? a : gcd(b, a % b) }
 
+function useTemplates() {
+  const [templates, setTemplates] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('tapcrop-templates') || '[]')
+    } catch { return [] }
+  })
+
+  const save = (name, settings) => {
+    const { renamePrefix, renameStart, ...config } = settings
+    const next = [...templates, { id: Date.now(), name, config }]
+    setTemplates(next)
+    localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+  }
+
+  const remove = (id) => {
+    const next = templates.filter(t => t.id !== id)
+    setTemplates(next)
+    localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+  }
+
+  return { templates, save, remove }
+}
+
 export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
   const { t, lang } = useLanguage()
+  const { templates, save: saveTemplate, remove: removeTemplate } = useTemplates()
+  const [templateName, setTemplateName] = useState('')
   const [activeCategory, setActiveCategory] = useState('ratio')
 
   const SIZE_CATEGORIES = useMemo(() => [
@@ -562,6 +587,57 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                 )
               })()}
             </div>
+          </div>
+        )}
+      </div>
+
+      {/* Templates */}
+      <div className="sp-section">
+        <div className="sp-section-title">{t('template.title')}</div>
+        <div className="sp-template-save">
+          <input
+            type="text"
+            className="sp-rename-input"
+            placeholder={t('template.namePlaceholder')}
+            value={templateName}
+            onChange={e => setTemplateName(e.target.value)}
+          />
+          <button
+            className="sp-template-btn"
+            disabled={!templateName.trim()}
+            onClick={() => {
+              saveTemplate(templateName.trim(), settings)
+              setTemplateName('')
+            }}
+          >
+            {t('template.save')}
+          </button>
+        </div>
+        {templates.length === 0 ? (
+          <div className="sp-template-empty">{t('template.empty')}</div>
+        ) : (
+          <div className="sp-template-list">
+            {templates.map(tpl => (
+              <div key={tpl.id} className="sp-template-item">
+                <span
+                  className="sp-template-name"
+                  onClick={() => onBatchUpdate(tpl.config)}
+                  title={t('template.load')}
+                >
+                  {tpl.name}
+                </span>
+                <span className="sp-template-meta">
+                  {tpl.config.width}×{tpl.config.height}
+                </span>
+                <button
+                  className="sp-template-delete"
+                  onClick={() => removeTemplate(tpl.id)}
+                  title={t('template.delete')}
+                >
+                  ×
+                </button>
+              </div>
+            ))}
           </div>
         )}
       </div>

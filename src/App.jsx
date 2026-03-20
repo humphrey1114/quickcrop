@@ -408,7 +408,7 @@ export default function App() {
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept="image/*"
+                  accept="image/*,.heic,.heif"
                   multiple
                   style={{ display: 'none' }}
                   onChange={e => {

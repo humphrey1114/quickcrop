@@ -612,3 +612,99 @@
 .sp-rename-preview-more {
   color: var(--text-3);
 }
+
+/* Templates */
+.sp-template-save {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.sp-template-save .sp-rename-input {
+  flex: 1;
+}
+
+.sp-template-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.sp-template-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.sp-template-btn:not(:disabled):hover {
+  opacity: 0.85;
+}
+
+.sp-template-empty {
+  font-size: 12px;
+  color: var(--text-3);
+  text-align: center;
+  padding: 12px 0;
+}
+
+.sp-template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sp-template-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  transition: background 0.15s;
+}
+
+.sp-template-item:hover {
+  background: var(--bg-warm);
+}
+
+.sp-template-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sp-template-name:hover {
+  color: var(--accent);
+}
+
+.sp-template-meta {
+  font-size: 11px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.sp-template-delete {
+  border: none;
+  background: none;
+  color: var(--text-3);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.sp-template-delete:hover {
+  color: #c0392b;
+}

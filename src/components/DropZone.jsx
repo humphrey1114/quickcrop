@@ -2,16 +2,32 @@ import { useState, useRef, useCallback } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import './DropZone.css'
 
+async function convertHeic(file) {
+  const heic2any = (await import('heic2any')).default
+  const blob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 })
+  const converted = Array.isArray(blob) ? blob[0] : blob
+  const name = file.name.replace(/\.heic$/i, '.jpg').replace(/\.heif$/i, '.jpg')
+  return new File([converted], name, { type: 'image/jpeg' })
+}
+
+function isHeic(file) {
+  return /\.(heic|heif)$/i.test(file.name) || file.type === 'image/heic' || file.type === 'image/heif'
+}
+
 export default function DropZone({ onFilesAdded, compact = false }) {
   const { t } = useLanguage()
   const [dragging, setDragging] = useState(false)
   const inputRef = useRef(null)
 
-  const handleFiles = useCallback((files) => {
-    const imageFiles = Array.from(files).filter(f => f.type.startsWith('image/'))
-    if (imageFiles.length > 0) {
-      onFilesAdded(imageFiles)
-    }
+  const handleFiles = useCallback(async (files) => {
+    const raw = Array.from(files).filter(f => f.type.startsWith('image/') || isHeic(f))
+    if (raw.length === 0) return
+
+    const converted = await Promise.all(
+      raw.map(f => isHeic(f) ? convertHeic(f).catch(() => null) : f)
+    )
+    const valid = converted.filter(Boolean)
+    if (valid.length > 0) onFilesAdded(valid)
   }, [onFilesAdded])
 
   const handleDrop = useCallback((e) => {
@@ -30,6 +46,8 @@ export default function DropZone({ onFilesAdded, compact = false }) {
     setDragging(false)
   }, [])
 
+  const accept = "image/*,.heic,.heif"
+
   if (compact) {
     return (
       <div
@@ -44,7 +62,7 @@ export default function DropZone({ onFilesAdded, compact = false }) {
         <input
           ref={inputRef}
           type="file"
-          accept="image/*"
+          accept={accept}
           multiple
           style={{ display: 'none' }}
           onChange={e => {
@@ -79,7 +97,7 @@ export default function DropZone({ onFilesAdded, compact = false }) {
       <input
         ref={inputRef}
         type="file"
-        accept="image/*"
+        accept={accept}
         multiple
         style={{ display: 'none' }}
         onChange={e => {

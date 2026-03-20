@@ -1,0 +1,17 @@
+{
+  "name": "TapCrop - 秒裁",
+  "short_name": "TapCrop",
+  "description": "Free online batch image cropping tool. 免费在线批量图片裁剪工具。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0ece4",
+  "theme_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

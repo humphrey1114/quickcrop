@@ -42,7 +42,7 @@ export default {
 
   // DropZone
   'dropzone.title': '拖拽图片到这里，或点击上传',
-  'dropzone.hint': '支持 JPG、PNG、WebP、BMP，可同时上传多张',
+  'dropzone.hint': '支持 JPG、PNG、WebP、BMP、HEIC，可同时上传多张',
   'dropzone.addMore': '继续添加图片',
 
   // Settings
@@ -60,6 +60,12 @@ export default {
   'settings.filenamePlaceholder': '如：产品图',
   'settings.startNumber': '起始编号',
   'settings.afterExport': '导出后：',
+  'template.title': '我的模板',
+  'template.save': '保存当前配置',
+  'template.namePlaceholder': '模板名称',
+  'template.empty': '暂无保存的模板',
+  'template.delete': '删除',
+  'template.load': '加载',
   'settings.custom': '自定义',
   'settings.customHint': '输入比例后，输出尺寸会自动同步',
   'settings.widthRatio': '宽比',
