@@ -564,15 +564,14 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
               <span>{t('settings.quality')}</span>
               <div className="sp-quality-input-wrap">
                 <input
-                  type="number"
+                  type="text"
+                  inputMode="numeric"
                   className="sp-quality-input"
-                  min="0"
-                  max="100"
                   value={settings.quality}
                   onChange={e => {
-                    const raw = e.target.value
+                    const raw = e.target.value.replace(/[^0-9]/g, '')
                     if (raw === '') { onUpdate('quality', 0); return }
-                    const v = Math.max(0, Math.min(100, parseInt(raw) || 0))
+                    const v = Math.min(100, parseInt(raw, 10))
                     onUpdate('quality', v)
                   }}
                 />
