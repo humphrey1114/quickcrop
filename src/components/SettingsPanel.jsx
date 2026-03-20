@@ -550,7 +550,9 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
           className={`sp-toggle-btn ${settings.compressEnabled ? 'active' : ''}`}
           onClick={() => onUpdate('compressEnabled', !settings.compressEnabled)}
         >
-          <span style={{ fontSize: '15px' }}>⚡</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M4 1v4M10 9v4M4 5L10 9M1 4h6M7 10h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
           {t('compress')}
         </button>
         {settings.compressEnabled && (
