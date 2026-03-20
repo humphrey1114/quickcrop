@@ -566,11 +566,13 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                 <input
                   type="number"
                   className="sp-quality-input"
-                  min="10"
+                  min="0"
                   max="100"
                   value={settings.quality}
                   onChange={e => {
-                    const v = Math.max(10, Math.min(100, parseInt(e.target.value) || 10))
+                    const raw = e.target.value
+                    if (raw === '') { onUpdate('quality', 0); return }
+                    const v = Math.max(0, Math.min(100, parseInt(raw) || 0))
                     onUpdate('quality', v)
                   }}
                 />
@@ -579,7 +581,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             </div>
             <input
               type="range"
-              min="10"
+              min="0"
               max="100"
               value={settings.quality}
               onChange={e => onUpdate('quality', parseInt(e.target.value))}
