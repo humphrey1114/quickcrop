@@ -347,11 +347,67 @@
   }
 
   .sidebar-inner {
-    max-height: 50vh;
+    max-height: 45vh;
+    padding: 10px 14px;
+  }
+
+  .sidebar-brand {
+    margin: -10px -14px 12px;
+    padding: 10px 14px;
+  }
+
+  .brand-name {
+    font-size: 18px;
   }
 
   .main-area {
     margin-left: 0;
-    padding: 20px 16px;
+    padding: 16px 12px;
+  }
+
+  .welcome-section {
+    padding: 24px 16px;
+  }
+
+  .welcome-section h2 {
+    font-size: 22px;
+  }
+
+  .welcome-features {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .sidebar-footer {
+    padding: 10px 14px 16px;
+  }
+
+  .sidebar-footer .btn {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-features {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-section h2 {
+    font-size: 20px;
   }
 }

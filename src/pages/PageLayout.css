@@ -370,14 +370,51 @@
 
 @media (max-width: 768px) {
   .page-layout {
-    padding: 16px 16px 40px;
+    padding: 12px 12px 40px;
   }
 
   .page-container {
-    padding: 28px 20px;
+    padding: 24px 16px;
   }
 
   .page-title {
     font-size: 22px;
+  }
+
+  .top-nav-links {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .feedback-row {
+    flex-direction: column;
+  }
+
+  .feedback-row > * {
+    width: 100%;
+  }
+
+  .feedback-types {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 16px;
+  }
+
+  .top-nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .page-title {
+    font-size: 20px;
   }
 }
