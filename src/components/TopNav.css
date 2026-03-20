@@ -97,3 +97,68 @@
 .top-nav-lang svg {
   flex-shrink: 0;
 }
+
+.top-nav-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-left: 6px;
+}
+
+.top-nav-login:hover {
+  background: var(--glass-strong);
+  color: var(--text);
+}
+
+.top-nav-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+}
+
+.top-nav-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .top-nav-avatar {
+  background: #555;
+  color: #eee;
+}
+
+.top-nav-logout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.top-nav-logout:hover {
+  background: var(--surface);
+  color: var(--text);
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useAuth } from '../contexts/AuthContext'
+import AuthModal from './AuthModal'
 import './TopNav.css'
 
 function useTheme() {
@@ -20,6 +22,8 @@ export default function TopNav() {
   const isHome = location.pathname === '/'
   const { t, lang, toggleLang } = useLanguage()
   const { theme, toggleTheme } = useTheme()
+  const { user, logout } = useAuth()
+  const [showAuth, setShowAuth] = useState(false)
 
   const NAV_ITEMS = [
     { path: '/tutorial', label: t('nav.tutorial') },
@@ -69,7 +73,25 @@ export default function TopNav() {
           </svg>
           <span>{lang === 'zh' ? 'English' : '中文'}</span>
         </button>
+        {user ? (
+          <div className="top-nav-user">
+            <span className="top-nav-avatar">{user.email[0].toUpperCase()}</span>
+            <button className="top-nav-logout" onClick={logout} title={t('auth.logout')}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <button className="top-nav-login" onClick={() => setShowAuth(true)}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>{t('auth.login')}</span>
+          </button>
+        )}
       </div>
+      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
     </nav>
   )
 }

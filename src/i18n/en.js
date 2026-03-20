@@ -342,4 +342,21 @@ export default {
   'size.et.thumbnail': 'Thumbnail',
   'size.et.teamLogo': 'Team Logo',
   'size.et.listing': 'Item Listing',
+
+  // Auth
+  'auth.login': 'Log In',
+  'auth.register': 'Sign Up',
+  'auth.loginDesc': 'Log in to sync your templates across devices',
+  'auth.registerDesc': 'Create an account to save your crop templates',
+  'auth.email': 'Email',
+  'auth.password': 'Password',
+  'auth.loading': 'Processing...',
+  'auth.noAccount': "Don't have an account?",
+  'auth.hasAccount': 'Already have an account?',
+  'auth.logout': 'Log Out',
+  'auth.error.emailInUse': 'This email is already registered',
+  'auth.error.invalidEmail': 'Invalid email format',
+  'auth.error.weakPassword': 'Password must be at least 6 characters',
+  'auth.error.wrongPassword': 'Incorrect email or password',
+  'auth.error.generic': 'Operation failed, please try again',
 }

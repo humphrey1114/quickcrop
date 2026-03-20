@@ -39,23 +39,23 @@
 }
 
 [data-theme="dark"] {
-  --primary: #2a2a2e;
-  --primary-soft: #3a3a3e;
-  --accent: #d4b88a;
-  --accent-light: rgba(212, 184, 138, 0.15);
+  --primary: #2a2a2a;
+  --primary-soft: #3a3a3a;
+  --accent: #999;
+  --accent-light: rgba(160, 160, 160, 0.15);
 
-  --bg: #1a1a1e;
-  --bg-warm: #222226;
-  --surface: rgba(255, 255, 255, 0.06);
-  --surface-solid: #2a2a2e;
-  --glass: rgba(255, 255, 255, 0.04);
-  --glass-strong: rgba(255, 255, 255, 0.1);
+  --bg: #1a1a1a;
+  --bg-warm: #222;
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-solid: #2a2a2a;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.12);
 
-  --text: #e8e4dc;
-  --text-2: #b0aca8;
-  --text-3: #8a8884;
-  --border: rgba(255, 255, 255, 0.12);
-  --border-light: rgba(255, 255, 255, 0.08);
+  --text: #eee;
+  --text-2: #bbb;
+  --text-3: #999;
+  --border: rgba(255, 255, 255, 0.15);
+  --border-light: rgba(255, 255, 255, 0.1);
   --divider: rgba(255, 255, 255, 0.06);
 
   --shadow-1: 0 1px 3px rgba(0,0,0,0.3);
@@ -67,7 +67,7 @@
 }
 
 [data-theme="dark"] ::selection {
-  background: rgba(212, 184, 138, 0.3);
+  background: rgba(180, 180, 180, 0.3);
 }
 
 [data-theme="dark"] input[type="range"] {
@@ -75,7 +75,7 @@
 }
 
 [data-theme="dark"] input[type="range"]::-webkit-slider-thumb {
-  background: var(--accent);
+  background: #ccc;
   border-color: var(--surface-solid);
 }
 
@@ -89,7 +89,7 @@
 
 /* Dark mode - logo icon: black logo on light gray circle */
 [data-theme="dark"] .brand-icon {
-  background: #9a9a9a;
+  background: #bbb;
 }
 
 /* Dark mode - sidebar brand bg */
@@ -163,8 +163,8 @@
 }
 
 [data-theme="dark"] .status-processing {
-  background: rgba(212, 184, 138, 0.2);
-  color: var(--accent);
+  background: rgba(180, 180, 180, 0.15);
+  color: #bbb;
 }
 
 [data-theme="dark"] .status-error {

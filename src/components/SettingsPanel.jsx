@@ -1,6 +1,9 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import WatermarkSettings from './WatermarkSettings'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useAuth } from '../contexts/AuthContext'
+import { db } from '../firebase'
+import { collection, doc, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore'
 import './SettingsPanel.css'
 
 // mm to px at 300dpi
@@ -9,23 +12,47 @@ const mm2px = (mm) => Math.round(mm * 300 / 25.4)
 function gcd(a, b) { return b === 0 ? a : gcd(b, a % b) }
 
 function useTemplates() {
+  const { user } = useAuth()
   const [templates, setTemplates] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem('tapcrop-templates') || '[]')
     } catch { return [] }
   })
 
-  const save = (name, settings) => {
+  // Sync with Firestore when logged in
+  useEffect(() => {
+    if (!user) return
+    const col = collection(db, 'users', user.uid, 'templates')
+    const unsub = onSnapshot(col, (snap) => {
+      const data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      setTemplates(data)
+      localStorage.setItem('tapcrop-templates', JSON.stringify(data))
+    })
+    return unsub
+  }, [user])
+
+  const save = async (name, settings) => {
     const { renamePrefix, renameStart, ...config } = settings
-    const next = [...templates, { id: Date.now(), name, config }]
-    setTemplates(next)
-    localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+    const id = String(Date.now())
+    const tpl = { id, name, config }
+
+    if (user) {
+      await setDoc(doc(db, 'users', user.uid, 'templates', id), { name, config })
+    } else {
+      const next = [...templates, tpl]
+      setTemplates(next)
+      localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+    }
   }
 
-  const remove = (id) => {
-    const next = templates.filter(t => t.id !== id)
-    setTemplates(next)
-    localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+  const remove = async (id) => {
+    if (user) {
+      await deleteDoc(doc(db, 'users', user.uid, 'templates', String(id)))
+    } else {
+      const next = templates.filter(t => t.id !== id)
+      setTemplates(next)
+      localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+    }
   }
 
   return { templates, save, remove }

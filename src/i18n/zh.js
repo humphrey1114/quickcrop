@@ -267,4 +267,21 @@ export default {
   'about.v.fast.desc': '无需安装软件，打开网页即用',
   'about.contactTitle': '联系我们',
   'about.contactDesc': '如有任何问题或建议，欢迎发送邮件至',
+
+  // Auth
+  'auth.login': '登录',
+  'auth.register': '注册',
+  'auth.loginDesc': '登录后可跨设备同步您的模板',
+  'auth.registerDesc': '创建账号，保存您的裁剪模板',
+  'auth.email': '邮箱地址',
+  'auth.password': '密码',
+  'auth.loading': '处理中...',
+  'auth.noAccount': '还没有账号？',
+  'auth.hasAccount': '已有账号？',
+  'auth.logout': '退出登录',
+  'auth.error.emailInUse': '该邮箱已注册',
+  'auth.error.invalidEmail': '邮箱格式不正确',
+  'auth.error.weakPassword': '密码至少需要6位',
+  'auth.error.wrongPassword': '邮箱或密码错误',
+  'auth.error.generic': '操作失败，请重试',
 }

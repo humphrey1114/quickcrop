@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
+import { AuthProvider } from './contexts/AuthContext'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
@@ -14,6 +15,7 @@ import About from './pages/About.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AuthProvider>
     <LanguageProvider>
       <BrowserRouter>
         <Routes>
@@ -28,5 +30,6 @@ createRoot(document.getElementById('root')).render(
       <Analytics />
       <SpeedInsights />
     </LanguageProvider>
+    </AuthProvider>
   </StrictMode>,
 )
