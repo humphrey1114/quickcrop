@@ -593,7 +593,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
 
       {/* Templates */}
       <div className="sp-section">
-        <div className="sp-section-title">{t('template.title')}</div>
+        <div className="sp-label">{t('template.title')}</div>
         <div className="sp-template-save">
           <input
             type="text"

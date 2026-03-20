@@ -617,6 +617,7 @@
 .sp-template-save {
   display: flex;
   gap: 8px;
+  margin-top: 4px;
   margin-bottom: 10px;
 }
 
