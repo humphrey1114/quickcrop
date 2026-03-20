@@ -61,7 +61,7 @@ function gcd(a, b) { return b === 0 ? a : gcd(b, a % b) }
 let imageIdCounter = 0
 
 export default function App() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const [settings, setSettings] = useState(loadSettings)
   const [images, setImages] = useState([])
   const [processing, setProcessing] = useState(false)
@@ -256,13 +256,16 @@ export default function App() {
         <div className="sidebar-inner">
           <div className="sidebar-brand">
             <div className="brand-icon">
-              <svg width="24" height="24" viewBox="0 0 100 80" fill="none">
-                <path d="M10 75 C10 75, 10 10, 35 10 C55 10, 50 45, 50 45 C50 45, 45 10, 65 10 C90 10, 90 75, 90 75" stroke="#fff" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+                <path d="M18 35 L18 18 L42 18" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M82 65 L82 82 L58 82" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="50" cy="50" r="12" stroke="#fff" strokeWidth="5" fill="none"/>
+                <circle cx="50" cy="50" r="4.5" fill="#fff"/>
               </svg>
             </div>
             <div className="brand-text">
               <h1 className="brand-name">{t('brand.name')}</h1>
-              <span className="brand-tag">{t('brand.tag')}</span>
+              {lang === 'zh' && <span className="brand-tag">{t('brand.tag')}</span>}
             </div>
           </div>
 
