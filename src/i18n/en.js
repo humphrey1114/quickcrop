@@ -29,6 +29,8 @@ export default {
   'toolbar.done': 'Done {count}',
   'toolbar.add': 'Add',
   'toolbar.clear': 'Clear',
+  'toolbar.undo': 'Undo',
+  'toolbar.redo': 'Redo',
 
   // Actions
   'action.process': 'Start Cropping',

@@ -6,6 +6,7 @@ import TopNav from './components/TopNav'
 import { useLanguage } from './i18n/LanguageContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
+import useHistory from './hooks/useHistory'
 import './App.css'
 
 const DEFAULT_SETTINGS = {
@@ -63,13 +64,24 @@ let imageIdCounter = 0
 export default function App() {
   const { t, lang } = useLanguage()
   const [settings, setSettings] = useState(loadSettings)
-  const [images, setImages] = useState([])
+  const [images, setImages, { undo, redo, canUndo, canRedo }] = useHistory([])
   const [processing, setProcessing] = useState(false)
   const fileInputRef = useRef(null)
 
   useEffect(() => {
     localStorage.setItem('miaocai-settings', JSON.stringify(settings))
   }, [settings])
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+        e.preventDefault()
+        if (e.shiftKey) { redo() } else { undo() }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [undo, redo])
 
   const updateSetting = useCallback((key, value) => {
     setSettings(prev => {
@@ -149,6 +161,18 @@ export default function App() {
     ))
   }, [])
 
+  const handleReorderImages = useCallback((fromId, toId) => {
+    setImages(prev => {
+      const arr = [...prev]
+      const fromIdx = arr.findIndex(i => i.id === fromId)
+      const toIdx = arr.findIndex(i => i.id === toId)
+      if (fromIdx < 0 || toIdx < 0) return prev
+      const [moved] = arr.splice(fromIdx, 1)
+      arr.splice(toIdx, 0, moved)
+      return arr
+    })
+  }, [])
+
   const handleRemoveImage = useCallback((imageId) => {
     setImages(prev => {
       const img = prev.find(i => i.id === imageId)
@@ -170,7 +194,7 @@ export default function App() {
       try {
         setImages(prev => prev.map(x =>
           x.id === img.id ? { ...x, status: 'processing' } : x
-        ))
+        ), { track: false })
         const result = await processImage(img.file, {
           ...settings,
           focalPoint: img.focalPoint,
@@ -178,13 +202,13 @@ export default function App() {
         updatedImages[i] = { ...img, processedBlob: result.blob, status: 'done' }
         setImages(prev => prev.map(x =>
           x.id === img.id ? { ...x, processedBlob: result.blob, status: 'done' } : x
-        ))
+        ), { track: false })
       } catch (err) {
         console.error('Processing failed:', err)
         updatedImages[i] = { ...img, status: 'error' }
         setImages(prev => prev.map(x =>
           x.id === img.id ? { ...x, status: 'error' } : x
-        ))
+        ), { track: false })
       }
     }
     setProcessing(false)
@@ -363,6 +387,18 @@ export default function App() {
                 {doneCount > 0 && <span className="tag tag-done">{t('toolbar.done', { count: doneCount })}</span>}
               </div>
               <div className="toolbar-actions">
+                <button className="btn-ghost" onClick={undo} disabled={!canUndo} title={t('toolbar.undo')}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 14L4 9l5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <button className="btn-ghost" onClick={redo} disabled={!canRedo} title={t('toolbar.redo')}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 14l5-5-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
                 <button className="btn-ghost" onClick={() => fileInputRef.current?.click()}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -391,6 +427,7 @@ export default function App() {
               settings={settings}
               onUpdateFocalPoint={handleUpdateFocalPoint}
               onRemoveImage={handleRemoveImage}
+              onReorder={handleReorderImages}
             />
 
             <DropZone onFilesAdded={handleFilesAdded} compact />

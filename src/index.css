@@ -38,6 +38,55 @@
   --sidebar-w: 310px;
 }
 
+[data-theme="dark"] {
+  --primary: #e8e4dc;
+  --primary-soft: #c8c4bc;
+  --accent: #d4b88a;
+  --accent-light: rgba(212, 184, 138, 0.15);
+
+  --bg: #1a1a1e;
+  --bg-warm: #242428;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-solid: #2a2a2e;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-strong: rgba(255, 255, 255, 0.08);
+
+  --text: #e8e4dc;
+  --text-2: #a8a4a0;
+  --text-3: #6a6864;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.06);
+  --divider: rgba(255, 255, 255, 0.04);
+
+  --shadow-1: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-2: 0 4px 16px rgba(0,0,0,0.3);
+  --shadow-3: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-inner: inset 0 1px 2px rgba(0,0,0,0.2);
+
+  color-scheme: dark;
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(212, 184, 138, 0.3);
+}
+
+[data-theme="dark"] input[type="range"] {
+  background: var(--border);
+}
+
+[data-theme="dark"] input[type="range"]::-webkit-slider-thumb {
+  background: var(--accent);
+  border-color: var(--surface-solid);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.18);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
     'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;

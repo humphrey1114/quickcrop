@@ -29,6 +29,8 @@ export default {
   'toolbar.done': '已完成 {count}',
   'toolbar.add': '添加',
   'toolbar.clear': '清空',
+  'toolbar.undo': '撤销',
+  'toolbar.redo': '重做',
 
   // Actions
   'action.process': '开始裁剪',

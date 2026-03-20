@@ -52,6 +52,26 @@
   font-weight: 500;
 }
 
+.top-nav-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 6px;
+}
+
+.top-nav-theme:hover {
+  background: var(--bg-warm);
+  color: var(--text);
+}
+
 .top-nav-lang {
   display: inline-flex;
   align-items: center;

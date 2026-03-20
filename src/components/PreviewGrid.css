@@ -4,6 +4,22 @@
   gap: 16px;
 }
 
+.drag-wrapper {
+  transition: transform 0.2s ease;
+  border-radius: var(--r-lg);
+}
+
+.drag-wrapper.dragging {
+  opacity: 0.4;
+  transform: scale(0.95);
+}
+
+.drag-wrapper.drag-over {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px var(--primary, #c8a87c);
+  border-radius: var(--r-lg);
+}
+
 @media (max-width: 640px) {
   .preview-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
