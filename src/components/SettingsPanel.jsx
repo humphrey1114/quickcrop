@@ -55,13 +55,26 @@ function useTemplates() {
     }
   }
 
-  return { templates, save, remove }
+  const update = async (id, name, settings) => {
+    const { renamePrefix, renameStart, ...config } = settings
+    if (user) {
+      await setDoc(doc(db, 'users', user.uid, 'templates', String(id)), { name, config })
+    } else {
+      const next = templates.map(t => t.id === id ? { ...t, name, config } : t)
+      setTemplates(next)
+      localStorage.setItem('tapcrop-templates', JSON.stringify(next))
+    }
+  }
+
+  return { templates, save, remove, update }
 }
 
 export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
   const { t, lang } = useLanguage()
-  const { templates, save: saveTemplate, remove: removeTemplate } = useTemplates()
+  const { user } = useAuth()
+  const { templates, save: saveTemplate, remove: removeTemplate, update: updateTemplate } = useTemplates()
   const [templateName, setTemplateName] = useState('')
+  const [editingId, setEditingId] = useState(null)
   const [activeCategory, setActiveCategory] = useState('ratio')
 
   const SIZE_CATEGORIES = useMemo(() => [
@@ -549,7 +562,20 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
           <div className="sp-quality">
             <div className="sp-quality-head">
               <span>{t('settings.quality')}</span>
-              <span className="sp-quality-val">{settings.quality}%</span>
+              <div className="sp-quality-input-wrap">
+                <input
+                  type="number"
+                  className="sp-quality-input"
+                  min="10"
+                  max="100"
+                  value={settings.quality}
+                  onChange={e => {
+                    const v = Math.max(10, Math.min(100, parseInt(e.target.value) || 10))
+                    onUpdate('quality', v)
+                  }}
+                />
+                <span className="sp-quality-pct">%</span>
+              </div>
             </div>
             <input
               type="range"
@@ -621,6 +647,8 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
       {/* Templates */}
       <div className="sp-section">
         <div className="sp-label">{t('template.title')}</div>
+        <div className="sp-template-hint">{t('template.configHint')}</div>
+        {!user && <div className="sp-template-login-hint">{t('template.loginHint')}</div>}
         <div className="sp-template-save">
           <input
             type="text"
@@ -633,38 +661,67 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             className="sp-template-btn"
             disabled={!templateName.trim()}
             onClick={() => {
-              saveTemplate(templateName.trim(), settings)
+              if (editingId) {
+                updateTemplate(editingId, templateName.trim(), settings)
+                setEditingId(null)
+              } else {
+                saveTemplate(templateName.trim(), settings)
+              }
               setTemplateName('')
             }}
           >
-            {t('template.save')}
+            {editingId ? t('template.update') : t('template.save')}
           </button>
         </div>
+        {editingId && (
+          <button className="sp-template-cancel" onClick={() => { setEditingId(null); setTemplateName('') }}>
+            ✕ {lang === 'zh' ? '取消编辑' : 'Cancel'}
+          </button>
+        )}
         {templates.length === 0 ? (
           <div className="sp-template-empty">{t('template.empty')}</div>
         ) : (
           <div className="sp-template-list">
-            {templates.map(tpl => (
-              <div key={tpl.id} className="sp-template-item">
-                <span
-                  className="sp-template-name"
-                  onClick={() => onBatchUpdate(tpl.config)}
-                  title={t('template.load')}
-                >
-                  {tpl.name}
-                </span>
-                <span className="sp-template-meta">
-                  {tpl.config.width}×{tpl.config.height}
-                </span>
-                <button
-                  className="sp-template-delete"
-                  onClick={() => removeTemplate(tpl.id)}
-                  title={t('template.delete')}
-                >
-                  ×
-                </button>
-              </div>
-            ))}
+            {templates.map(tpl => {
+              const c = tpl.config
+              const orient = c.width > c.height ? t('template.landscape') : c.width < c.height ? t('template.portrait') : ''
+              const fmtLabel = (c.format || 'jpeg').toUpperCase()
+              const qLabel = c.format !== 'png' ? ` ${c.quality || 92}%` : ''
+              return (
+                <div key={tpl.id} className="sp-template-item">
+                  <div className="sp-template-item-top">
+                    <span
+                      className="sp-template-name"
+                      onClick={() => onBatchUpdate(tpl.config)}
+                      title={t('template.load')}
+                    >
+                      {tpl.name}
+                    </span>
+                    <span className="sp-template-actions">
+                      <button
+                        className="sp-template-edit"
+                        onClick={() => { setEditingId(tpl.id); setTemplateName(tpl.name); onBatchUpdate(tpl.config) }}
+                        title={t('template.edit')}
+                      >
+                        ✎
+                      </button>
+                      <button
+                        className="sp-template-delete"
+                        onClick={() => removeTemplate(tpl.id)}
+                        title={t('template.delete')}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  </div>
+                  <div className="sp-template-meta">
+                    {c.width}×{c.height}{orient ? ` ${orient}` : ''} · {fmtLabel}{qLabel}
+                    {c.watermarkEnabled && ` · ${lang === 'zh' ? '水印' : 'WM'}`}
+                    {c.borderEnabled && ` · ${lang === 'zh' ? '边框' : 'Border'}`}
+                  </div>
+                </div>
+              )
+            })}
           </div>
         )}
       </div>

@@ -89,7 +89,11 @@
 
 /* Dark mode - logo icon: black logo on light gray circle */
 [data-theme="dark"] .brand-icon {
-  background: #bbb;
+  background: #ccc;
+}
+
+[data-theme="dark"] .brand-icon svg {
+  color: #1a1a1a;
 }
 
 /* Dark mode - sidebar brand bg */
@@ -97,63 +101,160 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* Dark mode - action buttons */
+/* Dark mode - brand name */
+[data-theme="dark"] .brand-name {
+  color: #f0f0f0;
+}
+
+/* Dark mode - action buttons: white bg, dark text */
 [data-theme="dark"] .btn-process {
-  background: #e0ddd8;
-  color: #1a1a1e;
+  background: #f0f0f0;
+  color: #1a1a1a;
 }
 
 [data-theme="dark"] .btn-process:hover:not(:disabled) {
   background: #fff;
 }
 
-/* Dark mode - nav lang button */
+/* Dark mode - download button */
+[data-theme="dark"] .btn-download {
+  background: #ddd;
+  color: #1a1a1a;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode - nav links: brighter */
+[data-theme="dark"] .top-nav-link {
+  color: #bbb;
+}
+
+[data-theme="dark"] .top-nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Dark mode - nav lang button: high contrast */
 [data-theme="dark"] .top-nav-lang {
-  background: #e0ddd8;
-  color: #1a1a1e;
+  background: #f0f0f0;
+  color: #1a1a1a;
 }
 
-/* Dark mode - category tabs */
+/* Dark mode - theme toggle button */
+[data-theme="dark"] .top-nav-theme {
+  color: #ddd;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode - login button */
+[data-theme="dark"] .top-nav-login {
+  color: #ddd;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode - category tabs: inactive brighter */
+[data-theme="dark"] .sp-cat-tab {
+  color: #bbb;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .sp-cat-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Dark mode - active category tab: white bg, dark text */
 [data-theme="dark"] .sp-cat-tab.active {
-  background: #e0ddd8;
-  color: #1a1a1e;
-  border-color: #e0ddd8;
+  background: #f0f0f0;
+  color: #1a1a1a;
+  border-color: #f0f0f0;
 }
 
-/* Dark mode - watermark toggle */
-[data-theme="dark"] .sp-wm-toggle {
+/* Dark mode - watermark/border toggle buttons */
+[data-theme="dark"] .sp-toggle-btn {
+  color: #ccc;
+  border-color: rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
+}
+
+[data-theme="dark"] .sp-toggle-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .sp-toggle-btn.active {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 /* Dark mode - inputs */
-[data-theme="dark"] .sp-size-input,
+[data-theme="dark"] .sp-input,
+[data-theme="dark"] .sp-input-wrap,
 [data-theme="dark"] .sp-rename-input {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #eee;
+}
+
+/* Dark mode - quality input */
+[data-theme="dark"] .sp-quality-input {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #eee;
 }
 
 /* Dark mode - template save button */
 [data-theme="dark"] .sp-template-btn {
-  background: #e0ddd8;
-  color: #1a1a1e;
+  background: #f0f0f0;
+  color: #1a1a1a;
 }
 
-/* Dark mode - toggle buttons (watermark/border) */
-[data-theme="dark"] .sp-toggle-btn.active {
-  border-color: rgba(255, 255, 255, 0.2);
+/* Dark mode - template login hint */
+[data-theme="dark"] .sp-template-login-hint {
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.06);
+  border-left-color: #999;
+}
+
+/* Dark mode - size list items */
+[data-theme="dark"] .sp-size-item {
+  color: #ccc;
+}
+
+[data-theme="dark"] .sp-size-item:hover {
   background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* Dark mode - format buttons */
+[data-theme="dark"] .sp-format-btn {
+  color: #bbb;
+}
+
+[data-theme="dark"] .sp-format-btn.active {
+  background: #f0f0f0;
+  color: #1a1a1a;
 }
 
 /* Dark mode - dropzone */
 [data-theme="dark"] .dropzone {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .dropzone-text {
+  color: #ccc;
 }
 
 /* Dark mode - image card remove button */
 [data-theme="dark"] .image-card-remove {
   background: rgba(0, 0, 0, 0.6);
   color: #ddd;
+}
+
+/* Dark mode - image card info text */
+[data-theme="dark"] .image-card-name,
+[data-theme="dark"] .image-card-dims {
+  color: #ccc;
 }
 
 /* Dark mode - status labels */
@@ -170,6 +271,26 @@
 [data-theme="dark"] .status-error {
   background: rgba(192, 57, 43, 0.2);
   color: #e57373;
+}
+
+/* Dark mode - section labels */
+[data-theme="dark"] .sp-label {
+  color: #ddd;
+}
+
+/* Dark mode - checkboxes text */
+[data-theme="dark"] .sp-checkbox label {
+  color: #ccc;
+}
+
+/* Dark mode - rename preview */
+[data-theme="dark"] .sp-rename-preview-name {
+  color: #ddd;
+}
+
+/* Dark mode - drag over highlight */
+[data-theme="dark"] .drag-wrapper.drag-over {
+  box-shadow: 0 0 0 2px #999;
 }
 
 body {
