@@ -31,6 +31,8 @@ const DEFAULT_SETTINGS = {
   borderEnabled: false,
   borderSize: 0,
   borderColor: '#ffffff',
+  compressEnabled: false,
+  compressPercent: 50,
   renameEnabled: false,
   renamePrefix: '',
   renameStart: '001',

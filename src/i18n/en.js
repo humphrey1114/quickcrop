@@ -175,6 +175,9 @@ export default {
   'border': 'Border',
   'border.size': 'Size',
   'border.color': 'Color',
+  'compress': 'Compress',
+  'compress.level': 'Compression',
+  'compress.hint': 'Compress to a percentage of the original file size. Not available for PNG.',
 
   // ImageCard
   'status.processing': 'Processing...',

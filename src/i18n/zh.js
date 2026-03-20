@@ -169,6 +169,9 @@ export default {
   'border': '边框',
   'border.size': '大小',
   'border.color': '颜色',
+  'compress': '图片压缩',
+  'compress.level': '压缩程度',
+  'compress.hint': '将文件压缩到原大小的指定百分比，PNG 格式不支持',
 
   // ImageCard
   'status.processing': '处理中...',

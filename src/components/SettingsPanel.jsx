@@ -544,6 +544,52 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         )}
       </div>
 
+      {/* Compress */}
+      <div className="sp-section">
+        <button
+          className={`sp-toggle-btn ${settings.compressEnabled ? 'active' : ''}`}
+          onClick={() => onUpdate('compressEnabled', !settings.compressEnabled)}
+        >
+          <span style={{ fontSize: '15px' }}>⚡</span>
+          {t('compress')}
+        </button>
+        {settings.compressEnabled && (
+          <div className="sp-compress-opts">
+            <div className="sp-compress-hint">{t('compress.hint')}</div>
+            <div className="sp-quality">
+              <div className="sp-quality-head">
+                <span>{t('compress.level')}</span>
+                <div className="sp-quality-input-wrap">
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    className="sp-quality-input"
+                    value={settings.compressPercent}
+                    onChange={e => {
+                      const raw = e.target.value.replace(/[^0-9]/g, '')
+                      if (raw === '') { onUpdate('compressPercent', ''); return }
+                      onUpdate('compressPercent', Math.min(90, parseInt(raw, 10)))
+                    }}
+                    onBlur={() => {
+                      const v = typeof settings.compressPercent === 'number' ? settings.compressPercent : 50
+                      onUpdate('compressPercent', Math.max(10, Math.min(90, v || 50)))
+                    }}
+                  />
+                  <span className="sp-quality-pct">%</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min="10"
+                max="90"
+                value={typeof settings.compressPercent === 'number' ? settings.compressPercent : 50}
+                onChange={e => onUpdate('compressPercent', parseInt(e.target.value))}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Format */}
       <div className="sp-section">
         <div className="sp-label">{t('settings.outputFormat')}</div>
@@ -723,6 +769,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                     {c.width}×{c.height}{orient ? ` ${orient}` : ''} · {fmtLabel}{qLabel}
                     {c.watermarkEnabled && ` · ${lang === 'zh' ? '水印' : 'WM'}`}
                     {c.borderEnabled && ` · ${lang === 'zh' ? '边框' : 'Border'}`}
+                    {c.compressEnabled && ` · ${lang === 'zh' ? '压缩' : 'Compress'} ${c.compressPercent}%`}
                   </div>
                 </div>
               )

@@ -212,9 +212,34 @@ export async function processImage(file, settings) {
     : 'image/jpeg'
   const quality = settings.format === 'png' ? undefined : settings.quality / 100
 
-  const blob = await new Promise(resolve => {
+  let blob = await new Promise(resolve => {
     canvas.toBlob(resolve, mimeType, quality)
   })
+
+  // Compress to percentage of original size (binary search on quality)
+  if (settings.compressEnabled && settings.compressPercent > 0 && settings.format !== 'png') {
+    const targetBytes = Math.round(blob.size * settings.compressPercent / 100)
+    if (blob.size > targetBytes) {
+      let lo = 0.05, hi = (quality || 0.92), bestBlob = blob
+      for (let i = 0; i < 10; i++) {
+        const mid = (lo + hi) / 2
+        const tryBlob = await new Promise(resolve => {
+          canvas.toBlob(resolve, mimeType, mid)
+        })
+        if (tryBlob.size > targetBytes) {
+          hi = mid
+        } else {
+          lo = mid
+          bestBlob = tryBlob
+        }
+        if (Math.abs(tryBlob.size - targetBytes) / targetBytes < 0.05) {
+          bestBlob = tryBlob
+          break
+        }
+      }
+      blob = bestBlob
+    }
+  }
 
   return { blob }
 }
