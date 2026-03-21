@@ -33,7 +33,6 @@ export default function Changelog() {
         <div key={i} className="changelog-item">
           <div className="changelog-version">
             <span className="changelog-tag">{log.version}</span>
-            <span className="changelog-date">{log.date}</span>
           </div>
           <ul>
             {log.changes.map((c, j) => (
