@@ -9,9 +9,13 @@ const LanguageContext = createContext()
 export function LanguageProvider({ children }) {
   const [lang, setLang] = useState(() => {
     try {
-      return localStorage.getItem('miaocai-lang') || 'zh'
+      const saved = localStorage.getItem('miaocai-lang')
+      if (saved) return saved
+      // 根据浏览器语言自动判断，中文用户显示中文，其他默认英文
+      const browserLang = navigator.language || navigator.userLanguage || ''
+      return browserLang.startsWith('zh') ? 'zh' : 'en'
     } catch {
-      return 'zh'
+      return 'en'
     }
   })
 
