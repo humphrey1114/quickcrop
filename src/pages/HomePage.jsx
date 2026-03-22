@@ -92,7 +92,6 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="home-hero">
-        <img src="/2048.png" alt="TapCrop" className="home-hero-logo" />
         <h1 className="home-hero-title">
           {lang === 'zh'
             ? '批量处理图片，快人一步'
