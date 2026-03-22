@@ -42,12 +42,8 @@ export default function HomePage() {
           <span className="home-nav-name">TapCrop</span>
         </div>
         <div className="home-nav-actions">
-          <button className="home-nav-icon-btn" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'light' ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            ) : (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
-            )}
+          <button className="home-nav-text-btn" onClick={toggleTheme}>
+            {theme === 'light' ? 'Dark' : 'Light'}
           </button>
           <button className="home-nav-text-btn" onClick={toggleLang}>
             {lang === 'zh' ? 'EN' : '中文'}

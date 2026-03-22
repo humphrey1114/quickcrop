@@ -39,24 +39,6 @@
   gap: 6px;
 }
 
-.home-nav-icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: none;
-  border: 1px solid transparent;
-  color: var(--text-3);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.home-nav-icon-btn:hover {
-  color: var(--text);
-}
-
 .home-nav-text-btn {
   font-size: 13px;
   font-weight: 500;
