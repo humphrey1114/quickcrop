@@ -676,7 +676,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             </div>
             <div className="sp-rename-preview">
               {(() => {
-                const prefix = settings.renamePrefix.trim() || '产品图'
+                const prefix = settings.renamePrefix.trim() || t('settings.filenamePlaceholder')
                 const startStr = settings.renameStart || '001'
                 const startNum = parseInt(startStr, 10) || 0
                 const padLen = startStr.length
@@ -728,7 +728,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         </div>
         {editingId && (
           <button className="sp-template-cancel" onClick={() => { setEditingId(null); setTemplateName('') }}>
-            ✕ {lang === 'zh' ? '取消编辑' : 'Cancel'}
+            ✕ {t('template.cancelEdit')}
           </button>
         )}
         {templates.length === 0 ? (
@@ -769,9 +769,9 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                   </div>
                   <div className="sp-template-meta">
                     {c.width}×{c.height}{orient ? ` ${orient}` : ''} · {fmtLabel}{qLabel}
-                    {c.watermarkEnabled && ` · ${lang === 'zh' ? '水印' : 'WM'}`}
-                    {c.borderEnabled && ` · ${lang === 'zh' ? '边框' : 'Border'}`}
-                    {c.compressEnabled && ` · ${lang === 'zh' ? '压缩' : 'Compress'} ${c.compressPercent}%`}
+                    {c.watermarkEnabled && ` · ${t('watermark')}`}
+                    {c.borderEnabled && ` · ${t('border')}`}
+                    {c.compressEnabled && ` · ${t('compress')} ${c.compressPercent}%`}
                   </div>
                 </div>
               )

@@ -1,17 +1,26 @@
 {
-  "name": "TapCrop - 秒裁",
+  "name": "TapCrop - Free Batch Image Cropping Tool",
   "short_name": "TapCrop",
-  "description": "Free online batch image cropping tool. 免费在线批量图片裁剪工具。",
+  "description": "Free online batch image cropping tool. Crop multiple images at once with smart focal detection. 100% local processing.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f0ece4",
   "theme_color": "#1a1a1a",
+  "categories": ["productivity", "utilities", "photo"],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Cropping",
+      "url": "/",
+      "description": "Open TapCrop and start batch cropping"
     }
   ]
 }

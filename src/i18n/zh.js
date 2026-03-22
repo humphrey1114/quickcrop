@@ -44,6 +44,10 @@ export default {
   'dropzone.title': '拖拽图片到这里，或点击上传',
   'dropzone.hint': '支持 JPG、PNG、WebP、BMP、HEIC，可同时上传多张',
   'dropzone.addMore': '继续添加图片',
+  'dropzone.tooMany': '最多支持同时处理 {max} 张图片',
+  'dropzone.invalidType': '{count} 个文件被跳过 — 不支持的格式',
+  'dropzone.tooLarge': '{count} 个文件被跳过 — 超过 {max} 大小限制',
+  'dropzone.heicFailed': '{count} 个 HEIC 文件转换失败',
 
   // Settings
   'settings.outputSize': '输出尺寸',
@@ -70,6 +74,7 @@ export default {
   'template.update': '更新模板',
   'template.configHint': '保存内容：输出尺寸、比例、格式、质量、水印、边框等设置',
   'template.loginHint': '登录后可云同步模板，跨设备使用',
+  'template.cancelEdit': '取消编辑',
   'template.landscape': '横',
   'template.portrait': '竖',
   'settings.custom': '自定义',
@@ -178,6 +183,7 @@ export default {
   'status.done': '已完成',
   'status.error': '失败',
   'imageCard.remove': '移除',
+  'imageCard.focalHint': '点击或拖拽调整焦点位置',
 
   // Tutorial page
   'tutorial.title': '使用教程',
@@ -216,6 +222,14 @@ export default {
   'faq.a7': '该功能依赖浏览器的 File System Access API，目前仅 Chrome、Edge 等 Chromium 内核浏览器支持。如果你使用 Firefox 或 Safari，请使用「打包下载」代替。',
   'faq.q8': '水印加上去看不到？',
   'faq.a8': '请检查水印文字是否已填写，以及水印颜色是否与图片背景相近。水印字号会根据输出图片尺寸自动缩放，建议在预览卡片上确认水印位置后再导出。',
+  'faq.q9': '支持哪些浏览器？',
+  'faq.a9': '秒裁支持所有现代浏览器：Chrome、Edge、Firefox、Safari、Opera。推荐使用 Chrome 或 Edge，可使用「保存到文件夹」功能。',
+  'faq.q10': '手机能用吗？',
+  'faq.a10': '可以。秒裁支持响应式布局，在手机浏览器中可以直接上传相册照片进行裁剪。',
+  'faq.q11': '图片处理失败怎么办？',
+  'faq.a11': '请尝试刷新页面后重新上传。如果问题持续，可能是图片损坏或过大。单张图片不超过 30MB。也可以尝试将图片转换为 JPG 或 PNG 后再上传。',
+  'faq.q12': '秒裁可以离线使用吗？',
+  'faq.a12': '可以。页面加载后，所有处理都在本地完成，无需网络。只有首次加载、账号同步和打赏需要联网。',
 
   // Changelog page
   'changelog.title': '更新日志',

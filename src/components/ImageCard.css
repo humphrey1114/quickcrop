@@ -81,6 +81,28 @@
   z-index: 3;
 }
 
+/* Focal point hint */
+.focal-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  pointer-events: none;
+  z-index: 3;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-card:hover .focal-hint {
+  opacity: 1;
+}
+
 /* Status labels */
 .status-label {
   position: absolute;

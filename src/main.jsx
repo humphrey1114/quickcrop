@@ -18,9 +18,11 @@ import YouTubeGuide from './pages/guides/YouTubeGuide.jsx'
 import BatchCropGuide from './pages/guides/BatchCropGuide.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ErrorBoundary>
     <AuthProvider>
     <LanguageProvider>
       <BrowserRouter>
@@ -43,5 +45,6 @@ createRoot(document.getElementById('root')).render(
       <SpeedInsights />
     </LanguageProvider>
     </AuthProvider>
+    </ErrorBoundary>
   </StrictMode>,
 )

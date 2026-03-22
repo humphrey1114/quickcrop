@@ -179,10 +179,15 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
 
         {/* Focal point indicator */}
         {!settings.doNotResize && (
-          <div
-            className="focal-point"
-            style={{ left: `${focalX * 100}%`, top: `${focalY * 100}%` }}
-          />
+          <>
+            <div
+              className="focal-point"
+              style={{ left: `${focalX * 100}%`, top: `${focalY * 100}%` }}
+            />
+            {!focalPoint && (
+              <div className="focal-hint">{t('imageCard.focalHint')}</div>
+            )}
+          </>
         )}
 
         {/* Status label */}

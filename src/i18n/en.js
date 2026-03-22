@@ -44,6 +44,10 @@ export default {
   'dropzone.title': 'Drop your images here, or click to upload',
   'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC — upload as many as you need',
   'dropzone.addMore': 'Add more images',
+  'dropzone.tooMany': 'Maximum {max} images allowed at a time',
+  'dropzone.invalidType': '{count} file(s) skipped — unsupported format',
+  'dropzone.tooLarge': '{count} file(s) skipped — exceeds {max} size limit',
+  'dropzone.heicFailed': '{count} HEIC file(s) failed to convert',
 
   // Settings
   'settings.outputSize': 'Output Size',
@@ -70,6 +74,7 @@ export default {
   'template.update': 'Update Template',
   'template.configHint': 'Saves: dimensions, ratio, format, quality, watermark, border settings',
   'template.loginHint': 'Sign in to sync templates across devices',
+  'template.cancelEdit': 'Cancel editing',
   'template.landscape': 'L',
   'template.portrait': 'P',
   'settings.custom': 'Custom',
@@ -184,6 +189,7 @@ export default {
   'status.done': 'Done',
   'status.error': 'Failed',
   'imageCard.remove': 'Remove',
+  'imageCard.focalHint': 'Click or drag to adjust focal point',
 
   // Tutorial page
   'tutorial.title': 'Tutorial',
@@ -222,6 +228,14 @@ export default {
   'faq.a7': 'This feature requires the File System Access API, currently supported only in Chromium-based browsers (Chrome, Edge). For Firefox or Safari, use "Download ZIP" instead.',
   'faq.q8': 'My watermark is not visible?',
   'faq.a8': 'Check that you\'ve entered watermark text and that the watermark color isn\'t too similar to the image background. Font size scales with output dimensions — preview the watermark on the image card before exporting.',
+  'faq.q9': 'Which browsers are supported?',
+  'faq.a9': 'TapCrop works in all modern browsers: Chrome, Edge, Firefox, Safari, and Opera. For the best experience, we recommend Chrome or Edge which support the "Save to Folder" feature.',
+  'faq.q10': 'Can I use TapCrop on my phone?',
+  'faq.a10': 'Yes, TapCrop is responsive and works on mobile devices. You can upload photos from your camera roll and crop them directly in your mobile browser.',
+  'faq.q11': 'What should I do if image processing fails?',
+  'faq.a11': 'Try reloading the page and uploading again. If the issue persists, the image might be corrupted or too large. Each image should be under 30MB. You can also try converting the image to JPG or PNG before uploading.',
+  'faq.q12': 'Does TapCrop work offline?',
+  'faq.a12': 'Yes, once the page is loaded, TapCrop works without an internet connection since all processing happens in your browser. An internet connection is only needed for initial loading, account sync, and donations.',
 
   // Changelog page
   'changelog.title': 'Changelog',

@@ -349,7 +349,7 @@ export default function App() {
                 {t('welcome.desc')}
               </p>
             </div>
-            <DropZone onFilesAdded={handleFilesAdded} />
+            <DropZone onFilesAdded={handleFilesAdded} currentCount={images.length} />
             <div className="features">
               <div className="feature">
                 <div className="feature-dot" style={{ background: '#007AFF' }} />
@@ -433,7 +433,7 @@ export default function App() {
               onReorder={handleReorderImages}
             />
 
-            <DropZone onFilesAdded={handleFilesAdded} compact />
+            <DropZone onFilesAdded={handleFilesAdded} compact currentCount={images.length} />
           </>
         )}
         <footer className="app-footer">
