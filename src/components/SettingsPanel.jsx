@@ -526,30 +526,36 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
           </button>
         </div>
         {settings.watermarkEnabled && (
-          <WatermarkSettings settings={settings} onUpdate={onUpdate} />
+          <div className="sp-tool-panel">
+            <div className="sp-tool-panel-title">{t('watermark')}</div>
+            <WatermarkSettings settings={settings} onUpdate={onUpdate} />
+          </div>
         )}
         {settings.borderEnabled && (
-          <div className="sp-border-opts">
-            <div className="sp-opt-row">
-              <label>{t('border.size')}</label>
-              <div className="sp-input-wrap compact">
-                <input
-                  type="number"
-                  className="sp-input"
-                  value={settings.borderSize}
-                  onChange={e => onUpdate('borderSize', parseInt(e.target.value) || 0)}
-                />
-                <span className="sp-unit">px</span>
+          <div className="sp-tool-panel">
+            <div className="sp-tool-panel-title">{t('border')}</div>
+            <div className="sp-border-opts">
+              <div className="sp-opt-row">
+                <label>{t('border.size')}</label>
+                <div className="sp-input-wrap compact">
+                  <input
+                    type="number"
+                    className="sp-input"
+                    value={settings.borderSize}
+                    onChange={e => onUpdate('borderSize', parseInt(e.target.value) || 0)}
+                  />
+                  <span className="sp-unit">px</span>
+                </div>
               </div>
-            </div>
-            <div className="sp-opt-row">
-              <label>{t('border.color')}</label>
-              <input
-                type="color"
-                className="sp-color"
-                value={settings.borderColor}
-                onChange={e => onUpdate('borderColor', e.target.value)}
-              />
+              <div className="sp-opt-row">
+                <label>{t('border.color')}</label>
+                <input
+                  type="color"
+                  className="sp-color"
+                  value={settings.borderColor}
+                  onChange={e => onUpdate('borderColor', e.target.value)}
+                />
+              </div>
             </div>
           </div>
         )}
@@ -575,80 +581,86 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
           </button>
         </div>
         {settings.adjustEnabled && (
-          <div className="sp-adjust-opts">
-            <div className="sp-opt-row">
-              <label>{t('adjust.brightness')}</label>
-              <div className="sp-slider-row">
-                <input
-                  type="range"
-                  min="-100"
-                  max="100"
-                  value={settings.adjustBrightness}
-                  onChange={e => onUpdate('adjustBrightness', parseInt(e.target.value))}
-                />
-                <span className="sp-slider-val">{settings.adjustBrightness}</span>
+          <div className="sp-tool-panel">
+            <div className="sp-tool-panel-title">{t('adjust')}</div>
+            <div className="sp-adjust-opts">
+              <div className="sp-opt-row">
+                <label>{t('adjust.brightness')}</label>
+                <div className="sp-slider-row">
+                  <input
+                    type="range"
+                    min="-100"
+                    max="100"
+                    value={settings.adjustBrightness}
+                    onChange={e => onUpdate('adjustBrightness', parseInt(e.target.value))}
+                  />
+                  <span className="sp-slider-val">{settings.adjustBrightness}</span>
+                </div>
               </div>
-            </div>
-            <div className="sp-opt-row">
-              <label>{t('adjust.contrast')}</label>
-              <div className="sp-slider-row">
-                <input
-                  type="range"
-                  min="-100"
-                  max="100"
-                  value={settings.adjustContrast}
-                  onChange={e => onUpdate('adjustContrast', parseInt(e.target.value))}
-                />
-                <span className="sp-slider-val">{settings.adjustContrast}</span>
+              <div className="sp-opt-row">
+                <label>{t('adjust.contrast')}</label>
+                <div className="sp-slider-row">
+                  <input
+                    type="range"
+                    min="-100"
+                    max="100"
+                    value={settings.adjustContrast}
+                    onChange={e => onUpdate('adjustContrast', parseInt(e.target.value))}
+                  />
+                  <span className="sp-slider-val">{settings.adjustContrast}</span>
+                </div>
               </div>
-            </div>
-            <div className="sp-opt-row">
-              <label>{t('adjust.saturation')}</label>
-              <div className="sp-slider-row">
-                <input
-                  type="range"
-                  min="-100"
-                  max="100"
-                  value={settings.adjustSaturation}
-                  onChange={e => onUpdate('adjustSaturation', parseInt(e.target.value))}
-                />
-                <span className="sp-slider-val">{settings.adjustSaturation}</span>
+              <div className="sp-opt-row">
+                <label>{t('adjust.saturation')}</label>
+                <div className="sp-slider-row">
+                  <input
+                    type="range"
+                    min="-100"
+                    max="100"
+                    value={settings.adjustSaturation}
+                    onChange={e => onUpdate('adjustSaturation', parseInt(e.target.value))}
+                  />
+                  <span className="sp-slider-val">{settings.adjustSaturation}</span>
+                </div>
               </div>
             </div>
           </div>
         )}
         {settings.compressEnabled && (
-          <div className="sp-compress-opts">
-            <div className="sp-compress-hint">{t('compress.hint')}</div>
-            <div className="sp-quality">
-              <div className="sp-quality-head">
-                <span>{t('compress.level')}</span>
-                <div className="sp-quality-input-wrap">
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    className="sp-quality-input"
-                    value={settings.compressPercent}
-                    onChange={e => {
-                      const raw = e.target.value.replace(/[^0-9]/g, '')
-                      if (raw === '') { onUpdate('compressPercent', ''); return }
-                      onUpdate('compressPercent', Math.min(90, parseInt(raw, 10)))
-                    }}
-                    onBlur={() => {
-                      const v = typeof settings.compressPercent === 'number' ? settings.compressPercent : 50
-                      onUpdate('compressPercent', Math.max(10, Math.min(90, v || 50)))
-                    }}
-                  />
-                  <span className="sp-quality-pct">%</span>
+          <div className="sp-tool-panel">
+            <div className="sp-tool-panel-title">{t('compress')}</div>
+            <div className="sp-compress-opts">
+              <div className="sp-compress-hint">{t('compress.hint')}</div>
+              <div className="sp-quality">
+                <div className="sp-quality-head">
+                  <span>{t('compress.level')}</span>
+                  <div className="sp-quality-input-wrap">
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      className="sp-quality-input"
+                      value={settings.compressPercent}
+                      onChange={e => {
+                        const raw = e.target.value.replace(/[^0-9]/g, '')
+                        if (raw === '') { onUpdate('compressPercent', ''); return }
+                        onUpdate('compressPercent', Math.min(90, parseInt(raw, 10)))
+                      }}
+                      onBlur={() => {
+                        const v = typeof settings.compressPercent === 'number' ? settings.compressPercent : 50
+                        onUpdate('compressPercent', Math.max(10, Math.min(90, v || 50)))
+                      }}
+                    />
+                    <span className="sp-quality-pct">%</span>
+                  </div>
                 </div>
+                <input
+                  type="range"
+                  min="10"
+                  max="90"
+                  value={typeof settings.compressPercent === 'number' ? settings.compressPercent : 50}
+                  onChange={e => onUpdate('compressPercent', parseInt(e.target.value))}
+                />
               </div>
-              <input
-                type="range"
-                min="10"
-                max="90"
-                value={typeof settings.compressPercent === 'number' ? settings.compressPercent : 50}
-                onChange={e => onUpdate('compressPercent', parseInt(e.target.value))}
-              />
             </div>
           </div>
         )}
