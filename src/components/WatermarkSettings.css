@@ -87,3 +87,20 @@
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-light);
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .wm-row {
+    flex-wrap: wrap;
+  }
+
+  .wm-row label {
+    min-width: 40px;
+    font-size: 12px;
+  }
+
+  .wm-num-input {
+    width: 52px;
+    padding: 6px 8px;
+  }
+}

@@ -194,3 +194,31 @@
   color: var(--accent);
   font-weight: 600;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .image-card:hover {
+    transform: none;
+  }
+
+  /* Always show remove button on touch devices */
+  .image-card-remove {
+    display: flex;
+  }
+
+  .image-card-info {
+    padding: 8px 10px;
+  }
+
+  .image-card-name {
+    font-size: 11px;
+  }
+
+  .image-card-meta {
+    font-size: 10px;
+  }
+
+  .focal-hint {
+    display: none;
+  }
+}

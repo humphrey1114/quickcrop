@@ -248,3 +248,29 @@
 [data-theme="dark"] .support-custom-input {
   background: rgba(255, 255, 255, 0.08);
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .support-modal {
+    padding: 24px 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .support-title {
+    font-size: 18px;
+  }
+
+  .support-amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .support-header {
+    margin-bottom: 16px;
+  }
+
+  .support-submit {
+    padding: 12px;
+    font-size: 15px;
+  }
+}

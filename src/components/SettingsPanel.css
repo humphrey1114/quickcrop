@@ -810,3 +810,63 @@
 .sp-template-delete:hover {
   color: #c0392b;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sp-section {
+    padding: 10px 0;
+  }
+
+  .sp-label {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .sp-input-wrap {
+    height: 34px;
+  }
+
+  .sp-input {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .sp-cat-items {
+    max-height: 140px;
+  }
+
+  .sp-cat-tab {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  .sp-ratio-chip {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .sp-rename-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sp-rename-field-num {
+    flex: 1;
+    width: 100%;
+  }
+
+  .sp-format-btn {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .sp-toggle-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .sp-opt-row label {
+    width: 30px;
+    font-size: 12px;
+  }
+}

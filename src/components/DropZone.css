@@ -114,3 +114,33 @@
   from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .dropzone {
+    padding: 32px 20px;
+    min-height: 180px;
+    border-radius: var(--r-lg);
+  }
+
+  .dropzone-icon-wrap {
+    width: 48px;
+    height: 48px;
+  }
+
+  .dropzone-title {
+    font-size: 15px;
+  }
+
+  .dropzone-hint {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .dropzone-toast {
+    max-width: calc(100vw - 32px);
+    font-size: 12px;
+    padding: 8px 16px;
+    top: 12px;
+  }
+}

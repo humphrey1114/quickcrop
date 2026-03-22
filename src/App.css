@@ -347,7 +347,7 @@
   }
 
   .sidebar-inner {
-    max-height: 45vh;
+    max-height: 35vh;
     padding: 10px 14px;
   }
 
@@ -363,6 +363,23 @@
   .main-area {
     margin-left: 0;
     padding: 16px 12px;
+  }
+
+  .welcome {
+    padding-top: 20px;
+  }
+
+  .welcome-title {
+    font-size: 24px;
+  }
+
+  .welcome-desc {
+    font-size: 13px;
+  }
+
+  .feature {
+    padding: 14px 16px;
+    gap: 12px;
   }
 
   .welcome-section {
@@ -383,6 +400,15 @@
     gap: 8px;
   }
 
+  .toolbar-count {
+    font-size: 13px;
+  }
+
+  .btn-ghost {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
   .preview-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
@@ -395,6 +421,17 @@
   .sidebar-footer .btn {
     font-size: 13px;
     padding: 10px;
+  }
+
+  .btn-action {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .app-footer {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 0 10px;
   }
 }
 
