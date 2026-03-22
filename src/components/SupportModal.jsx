@@ -9,8 +9,7 @@ const AMOUNTS = [
   { value: 50, emoji: '\uD83D\uDE80', label: 'Rocket' },
 ]
 
-// TODO: Replace with your Creem payment link
-const CREEM_LINK = 'https://www.creem.io/payment/REPLACE_WITH_YOUR_LINK'
+const CREEM_LINK = 'https://www.creem.io/payment/prod_443SQW7gVPLY8Gjx6vhk7x'
 
 export default function SupportModal({ onClose }) {
   const { lang } = useLanguage()
