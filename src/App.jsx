@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import DropZone from './components/DropZone'
 import SettingsPanel from './components/SettingsPanel'
 import PreviewGrid from './components/PreviewGrid'
@@ -435,6 +436,12 @@ export default function App() {
             <DropZone onFilesAdded={handleFilesAdded} compact />
           </>
         )}
+        <footer className="app-footer">
+          <span>&copy; {new Date().getFullYear()} TapCrop</span>
+          <Link to="/terms">Terms of Service</Link>
+          <Link to="/privacy">Privacy Policy</Link>
+          <a href="mailto:feedback294@163.com">Contact</a>
+        </footer>
       </main>
     </div>
   )

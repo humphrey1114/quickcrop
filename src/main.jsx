@@ -16,6 +16,8 @@ import InstagramGuide from './pages/guides/InstagramGuide.jsx'
 import TwitterGuide from './pages/guides/TwitterGuide.jsx'
 import YouTubeGuide from './pages/guides/YouTubeGuide.jsx'
 import BatchCropGuide from './pages/guides/BatchCropGuide.jsx'
+import Privacy from './pages/Privacy.jsx'
+import Terms from './pages/Terms.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -33,6 +35,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="/guides/twitter" element={<TwitterGuide />} />
           <Route path="/guides/youtube" element={<YouTubeGuide />} />
           <Route path="/guides/batch-crop" element={<BatchCropGuide />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
         </Routes>
       </BrowserRouter>
       <Analytics />

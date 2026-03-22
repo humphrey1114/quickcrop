@@ -398,6 +398,28 @@
   }
 }
 
+/* App footer */
+.app-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0 12px;
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: auto;
+}
+
+.app-footer a {
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+  color: var(--text);
+}
+
 @media (max-width: 480px) {
   .welcome-features {
     grid-template-columns: 1fr;

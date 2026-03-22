@@ -368,6 +368,27 @@
   color: #c62828;
 }
 
+/* Footer */
+.page-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0 12px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.page-footer a {
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.page-footer a:hover {
+  color: var(--text);
+}
+
 @media (max-width: 768px) {
   .page-layout {
     padding: 12px 12px 40px;
