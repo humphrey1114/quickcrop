@@ -3,10 +3,10 @@ import { useLanguage } from '../i18n/LanguageContext'
 import './SupportModal.css'
 
 const AMOUNTS = [
-  { value: 5, emoji: '\u2615', label: 'Coffee' },
-  { value: 10, emoji: '\uD83C\uDF55', label: 'Pizza' },
-  { value: 25, emoji: '\uD83C\uDF89', label: 'Party' },
-  { value: 50, emoji: '\uD83D\uDE80', label: 'Rocket' },
+  { value: 5, emoji: '\u2764\uFE0F', label: 'Supporter' },
+  { value: 10, emoji: '\u2B50', label: 'Backer' },
+  { value: 25, emoji: '\uD83D\uDCA0', label: 'Champion' },
+  { value: 50, emoji: '\uD83D\uDC8E', label: 'Patron' },
 ]
 
 const CREEM_LINK = 'https://www.creem.io/payment/prod_443SQW7gVPLY8Gjx6vhk7x'
