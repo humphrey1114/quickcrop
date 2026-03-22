@@ -45,6 +45,7 @@ export default function Feedback() {
               placeholder={t('feedback.form.namePlaceholder')}
               value={form.name}
               onChange={e => updateField('name', e.target.value)}
+              maxLength={100}
               required
             />
           </div>
@@ -56,6 +57,7 @@ export default function Feedback() {
               placeholder={t('feedback.form.emailPlaceholder')}
               value={form.email}
               onChange={e => updateField('email', e.target.value)}
+              maxLength={200}
               required
             />
           </div>
@@ -85,6 +87,7 @@ export default function Feedback() {
             value={form.message}
             onChange={e => updateField('message', e.target.value)}
             rows={6}
+            maxLength={5000}
             required
           />
         </div>

@@ -388,4 +388,9 @@ export default {
   'auth.error.generic': '操作失败，请重试',
   'auth.google': '使用 Google 账号登录',
   'auth.or': '或',
+
+  // Footer
+  'footer.terms': '服务条款',
+  'footer.privacy': '隐私政策',
+  'footer.contact': '联系我们',
 }

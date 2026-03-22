@@ -4,6 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import './PageLayout.css'
 
 export default function PageLayout({ title, children }) {
+  const { t } = useLanguage()
   return (
     <div className="page-layout">
       <TopNav />
@@ -15,9 +16,9 @@ export default function PageLayout({ title, children }) {
       </div>
       <footer className="page-footer">
         <span>&copy; {new Date().getFullYear()} TapCrop</span>
-        <Link to="/terms">Terms of Service</Link>
-        <Link to="/privacy">Privacy Policy</Link>
-        <a href="mailto:feedback294@163.com">Contact</a>
+        <Link to="/terms">{t('footer.terms')}</Link>
+        <Link to="/privacy">{t('footer.privacy')}</Link>
+        <a href="mailto:feedback294@163.com">{t('footer.contact')}</a>
       </footer>
     </div>
   )

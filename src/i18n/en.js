@@ -384,4 +384,9 @@ export default {
   'auth.error.generic': 'Operation failed, please try again',
   'auth.google': 'Continue with Google',
   'auth.or': 'or',
+
+  // Footer
+  'footer.terms': 'Terms of Service',
+  'footer.privacy': 'Privacy Policy',
+  'footer.contact': 'Contact',
 }
