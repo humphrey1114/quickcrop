@@ -9,6 +9,7 @@ import { useLanguage } from './i18n/LanguageContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
 import useHistory from './hooks/useHistory'
+import ExportBundleModal from './components/ExportBundleModal'
 import './App.css'
 
 const DEFAULT_SETTINGS = {
@@ -35,6 +36,10 @@ const DEFAULT_SETTINGS = {
   borderColor: '#ffffff',
   compressEnabled: false,
   compressPercent: 50,
+  adjustEnabled: false,
+  adjustBrightness: 0,
+  adjustContrast: 0,
+  adjustSaturation: 0,
   renameEnabled: false,
   renamePrefix: '',
   renameStart: '001',
@@ -72,6 +77,7 @@ export default function App() {
   const [processing, setProcessing] = useState(false)
   const [processProgress, setProcessProgress] = useState({ current: 0, total: 0 })
   const fileInputRef = useRef(null)
+  const [showBundle, setShowBundle] = useState(false)
 
   useEffect(() => {
     localStorage.setItem('miaocai-settings', JSON.stringify(settings))
@@ -394,6 +400,15 @@ export default function App() {
                   {t('action.saveToFolder')}
                 </button>
               )}
+              <button className="btn-action btn-bundle" onClick={() => setShowBundle(true)}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                  <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                  <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+                {t('bundle.title')}
+              </button>
             </>
           )}
         </div>
@@ -498,6 +513,14 @@ export default function App() {
           <a href="mailto:feedback294@163.com">{t('footer.contact')}</a>
         </footer>
       </main>
+
+      {showBundle && (
+        <ExportBundleModal
+          onClose={() => setShowBundle(false)}
+          images={images}
+          settings={settings}
+        />
+      )}
     </div>
   )
 }

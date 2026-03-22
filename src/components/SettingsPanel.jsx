@@ -544,6 +544,63 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         )}
       </div>
 
+      {/* Adjust */}
+      <div className="sp-section">
+        <button
+          className={`sp-toggle-btn ${settings.adjustEnabled ? 'active' : ''}`}
+          onClick={() => onUpdate('adjustEnabled', !settings.adjustEnabled)}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M7 3v8M4.5 5l5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          {t('adjust')}
+        </button>
+        {settings.adjustEnabled && (
+          <div className="sp-adjust-opts">
+            <div className="sp-opt-row">
+              <label>{t('adjust.brightness')}</label>
+              <div className="sp-slider-row">
+                <input
+                  type="range"
+                  min="-100"
+                  max="100"
+                  value={settings.adjustBrightness}
+                  onChange={e => onUpdate('adjustBrightness', parseInt(e.target.value))}
+                />
+                <span className="sp-slider-val">{settings.adjustBrightness}</span>
+              </div>
+            </div>
+            <div className="sp-opt-row">
+              <label>{t('adjust.contrast')}</label>
+              <div className="sp-slider-row">
+                <input
+                  type="range"
+                  min="-100"
+                  max="100"
+                  value={settings.adjustContrast}
+                  onChange={e => onUpdate('adjustContrast', parseInt(e.target.value))}
+                />
+                <span className="sp-slider-val">{settings.adjustContrast}</span>
+              </div>
+            </div>
+            <div className="sp-opt-row">
+              <label>{t('adjust.saturation')}</label>
+              <div className="sp-slider-row">
+                <input
+                  type="range"
+                  min="-100"
+                  max="100"
+                  value={settings.adjustSaturation}
+                  onChange={e => onUpdate('adjustSaturation', parseInt(e.target.value))}
+                />
+                <span className="sp-slider-val">{settings.adjustSaturation}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Compress */}
       <div className="sp-section">
         <button
@@ -676,7 +733,7 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             </div>
             <div className="sp-rename-preview">
               {(() => {
-                const prefix = settings.renamePrefix.trim() || t('settings.filenamePlaceholder')
+                const prefix = settings.renamePrefix.trim() || t('settings.filenameDefault')
                 const startStr = settings.renameStart || '001'
                 const startNum = parseInt(startStr, 10) || 0
                 const padLen = startStr.length

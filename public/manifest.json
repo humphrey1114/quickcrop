@@ -1,7 +1,7 @@
 {
   "name": "TapCrop - Free Batch Image Cropping Tool",
   "short_name": "TapCrop",
-  "description": "Free online batch image cropping tool. Crop multiple images at once with smart focal detection. 100% local processing.",
+  "description": "Free online batch image cropping tool. Crop multiple images at once with custom focal point. 100% local processing.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

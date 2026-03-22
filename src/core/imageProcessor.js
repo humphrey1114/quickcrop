@@ -227,6 +227,21 @@ export async function processImage(file, settings) {
 
   ctx.drawImage(drawSource, cropX, cropY, cropW, cropH, 0, 0, outW, outH)
 
+  // Apply brightness/contrast/saturation adjustments
+  if (settings.adjustEnabled &&
+      (settings.adjustBrightness !== 0 || settings.adjustContrast !== 0 || settings.adjustSaturation !== 0)) {
+    const tempCanvas = document.createElement('canvas')
+    tempCanvas.width = outW
+    tempCanvas.height = outH
+    const tempCtx = tempCanvas.getContext('2d')
+    tempCtx.drawImage(canvas, 0, 0)
+
+    ctx.clearRect(0, 0, outW, outH)
+    ctx.filter = `brightness(${1 + settings.adjustBrightness / 100}) contrast(${1 + settings.adjustContrast / 100}) saturate(${1 + settings.adjustSaturation / 100})`
+    ctx.drawImage(tempCanvas, 0, 0)
+    ctx.filter = 'none'
+  }
+
   // Apply watermark
   applyWatermark(ctx, outW, outH, settings)
 

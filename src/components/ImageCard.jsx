@@ -107,6 +107,7 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
               image.flipH ? 'scaleX(-1)' : '',
               image.flipV ? 'scaleY(-1)' : '',
             ].filter(Boolean).join(' ') || undefined,
+            filter: settings.adjustEnabled ? `brightness(${1 + settings.adjustBrightness/100}) contrast(${1 + settings.adjustContrast/100}) saturate(${1 + settings.adjustSaturation/100})` : undefined,
           }}
         />
 
