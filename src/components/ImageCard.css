@@ -111,6 +111,45 @@
   z-index: 3;
 }
 
+/* Transform toolbar */
+.image-card-transforms {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 3;
+}
+
+.image-card:hover .image-card-transforms {
+  opacity: 1;
+}
+
+.transform-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.transform-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* Remove button */
 .image-card-remove {
   position: absolute;
@@ -194,5 +233,9 @@
 
   .focal-hint {
     display: none;
+  }
+
+  .image-card-transforms {
+    opacity: 1;
   }
 }

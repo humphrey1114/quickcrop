@@ -193,6 +193,9 @@ export default {
   'status.done': '已完成',
   'status.error': '失败',
   'imageCard.remove': '移除',
+  'imageCard.rotate': '旋转',
+  'imageCard.flipH': '水平翻转',
+  'imageCard.flipV': '垂直翻转',
   'imageCard.focalHint': '点击或拖拽调整焦点位置',
 
   // Tutorial page

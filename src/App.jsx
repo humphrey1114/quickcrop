@@ -4,7 +4,7 @@ import DropZone from './components/DropZone'
 import SettingsPanel from './components/SettingsPanel'
 import PreviewGrid from './components/PreviewGrid'
 import TopNav from './components/TopNav'
-import BeforeAfter from './components/BeforeAfter'
+import HeroDemo from './components/HeroDemo'
 import { useLanguage } from './i18n/LanguageContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
@@ -77,16 +77,30 @@ export default function App() {
     localStorage.setItem('miaocai-settings', JSON.stringify(settings))
   }, [settings])
 
+  const processRef = useRef(null)
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Skip if user is typing in an input
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
+
       if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
         e.preventDefault()
         if (e.shiftKey) { redo() } else { undo() }
       }
+      // Delete to clear all images
+      if (e.key === 'Delete' && images.length > 0 && !processing) {
+        e.preventDefault()
+        setImages([])
+      }
+      // Ctrl+Enter to start processing
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && images.length > 0 && !processing) {
+        e.preventDefault()
+        processRef.current?.()
+      }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [undo, redo])
+  }, [undo, redo, images.length, processing])
 
   // Scroll reveal animation
   useEffect(() => {
@@ -206,6 +220,24 @@ export default function App() {
     })
   }, [])
 
+  const handleTransform = useCallback((imageId, type) => {
+    setImages(prev => prev.map(img => {
+      if (img.id !== imageId) return img
+      switch (type) {
+        case 'rotateCW':
+          return { ...img, rotation: ((img.rotation || 0) + 90) % 360 }
+        case 'rotateCCW':
+          return { ...img, rotation: ((img.rotation || 0) + 270) % 360 }
+        case 'flipH':
+          return { ...img, flipH: !img.flipH }
+        case 'flipV':
+          return { ...img, flipV: !img.flipV }
+        default:
+          return img
+      }
+    }))
+  }, [])
+
   const handleProcess = useCallback(async () => {
     if (images.length === 0) return
     setProcessing(true)
@@ -222,6 +254,9 @@ export default function App() {
         const result = await processImage(img.file, {
           ...settings,
           focalPoint: img.focalPoint,
+          rotation: img.rotation || 0,
+          flipH: !!img.flipH,
+          flipV: !!img.flipV,
         })
         updatedImages[i] = { ...img, processedBlob: result.blob, status: 'done' }
         setImages(prev => prev.map(x =>
@@ -239,6 +274,7 @@ export default function App() {
     setProcessing(false)
     setProcessProgress({ current: 0, total: 0 })
   }, [images, settings])
+  processRef.current = handleProcess
 
   const buildFileList = useCallback((doneImages) => {
     const ext = settings.format === 'png' ? 'png' : settings.format === 'webp' ? 'webp' : 'jpg'
@@ -378,8 +414,7 @@ export default function App() {
               <DropZone onFilesAdded={handleFilesAdded} currentCount={images.length} />
             </div>
             <div className="welcome-demo reveal reveal-up reveal-d2">
-              <h3 className="demo-title">{lang === 'zh' ? '裁剪效果演示' : 'See the Difference'}</h3>
-              <BeforeAfter />
+              <HeroDemo />
             </div>
             <div className="features">
               {[
@@ -450,6 +485,7 @@ export default function App() {
               onUpdateFocalPoint={handleUpdateFocalPoint}
               onRemoveImage={handleRemoveImage}
               onReorder={handleReorderImages}
+              onTransform={handleTransform}
             />
 
             <DropZone onFilesAdded={handleFilesAdded} compact currentCount={images.length} />

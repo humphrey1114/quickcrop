@@ -3,7 +3,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import ProcessingRing from './ProcessingRing'
 import './ImageCard.css'
 
-export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemoveImage }) {
+export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemoveImage, onTransform }) {
   const { t } = useLanguage()
   const containerRef = useRef(null)
   const [dragging, setDragging] = useState(false)
@@ -101,6 +101,13 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
           alt={image.name}
           className="image-card-img"
           draggable={false}
+          style={{
+            transform: [
+              image.rotation ? `rotate(${image.rotation}deg)` : '',
+              image.flipH ? 'scaleX(-1)' : '',
+              image.flipV ? 'scaleY(-1)' : '',
+            ].filter(Boolean).join(' ') || undefined,
+          }}
         />
 
         {/* Gray overlay on areas that will be cropped away */}
@@ -197,6 +204,38 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
             <ProcessingRing status={image.status} />
           </div>
         )}
+
+        {/* Transform toolbar */}
+        <div className="image-card-transforms">
+          <button
+            className="transform-btn"
+            onClick={(e) => { e.stopPropagation(); onTransform(image.id, 'rotateCW') }}
+            title={t('imageCard.rotate')}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <button
+            className="transform-btn"
+            onClick={(e) => { e.stopPropagation(); onTransform(image.id, 'flipH') }}
+            title={t('imageCard.flipH')}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2v20M16 6l4 6-4 6M8 6L4 12l4 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <button
+            className="transform-btn"
+            onClick={(e) => { e.stopPropagation(); onTransform(image.id, 'flipV') }}
+            title={t('imageCard.flipV')}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12h20M6 8L12 4l6 4M6 16l6 4 6-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
 
         {/* Remove button */}
         <button

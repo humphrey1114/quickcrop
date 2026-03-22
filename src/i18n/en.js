@@ -189,6 +189,9 @@ export default {
   'status.done': 'Done',
   'status.error': 'Failed',
   'imageCard.remove': 'Remove',
+  'imageCard.rotate': 'Rotate',
+  'imageCard.flipH': 'Flip Horizontal',
+  'imageCard.flipV': 'Flip Vertical',
   'imageCard.focalHint': 'Click or drag to adjust focal point',
 
   // Tutorial page

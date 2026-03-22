@@ -2,7 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 import ImageCard from './ImageCard'
 import './PreviewGrid.css'
 
-export default function PreviewGrid({ images, settings, onUpdateFocalPoint, onRemoveImage, onReorder }) {
+export default function PreviewGrid({ images, settings, onUpdateFocalPoint, onRemoveImage, onReorder, onTransform }) {
   const [dragOverId, setDragOverId] = useState(null)
   const dragIdRef = useRef(null)
 
@@ -60,6 +60,7 @@ export default function PreviewGrid({ images, settings, onUpdateFocalPoint, onRe
             settings={settings}
             onUpdateFocalPoint={onUpdateFocalPoint}
             onRemoveImage={onRemoveImage}
+            onTransform={onTransform}
           />
         </div>
       ))}

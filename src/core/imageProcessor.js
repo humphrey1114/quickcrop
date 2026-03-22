@@ -20,6 +20,31 @@ function loadImage(file) {
 }
 
 /**
+ * Apply rotation and flip transforms to an image.
+ * Returns a canvas with the transformed image.
+ */
+function applyTransform(img, rotation = 0, flipH = false, flipV = false) {
+  if (rotation === 0 && !flipH && !flipV) return null // no transform needed
+
+  const swap = rotation === 90 || rotation === 270
+  const w = swap ? img.naturalHeight : img.naturalWidth
+  const h = swap ? img.naturalWidth : img.naturalHeight
+
+  const canvas = document.createElement('canvas')
+  canvas.width = w
+  canvas.height = h
+  const ctx = canvas.getContext('2d')
+
+  ctx.translate(w / 2, h / 2)
+  if (rotation) ctx.rotate((rotation * Math.PI) / 180)
+  if (flipH) ctx.scale(-1, 1)
+  if (flipV) ctx.scale(1, -1)
+  ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2)
+
+  return canvas
+}
+
+/**
  * Calculate the crop region based on target dimensions and focal point.
  */
 function calculateCropRegion(srcW, srcH, targetW, targetH, focalPoint) {
@@ -125,8 +150,12 @@ function applyBorder(sourceCanvas, borderSize, borderColor) {
  */
 export async function processImage(file, settings) {
   const img = await loadImage(file)
-  const srcW = img.naturalWidth
-  const srcH = img.naturalHeight
+
+  // Apply rotation/flip transform
+  const transformed = applyTransform(img, settings.rotation, settings.flipH, settings.flipV)
+  const srcW = transformed ? transformed.width : img.naturalWidth
+  const srcH = transformed ? transformed.height : img.naturalHeight
+  const drawSource = transformed || img
 
   let outW, outH, cropX, cropY, cropW, cropH
 
@@ -196,7 +225,7 @@ export async function processImage(file, settings) {
     ctx.imageSmoothingQuality = 'high'
   }
 
-  ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, outW, outH)
+  ctx.drawImage(drawSource, cropX, cropY, cropW, cropH, 0, 0, outW, outH)
 
   // Apply watermark
   applyWatermark(ctx, outW, outH, settings)
