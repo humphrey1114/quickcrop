@@ -3,14 +3,18 @@ import { useLanguage } from '../i18n/LanguageContext'
 import ProcessingRing from './ProcessingRing'
 import './ImageCard.css'
 
-export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemoveImage, onTransform }) {
+export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemoveImage, onTransform, onUpdateImageSettings }) {
   const { t } = useLanguage()
   const containerRef = useRef(null)
   const [dragging, setDragging] = useState(false)
+  const [showCropped, setShowCropped] = useState(false)
+  const [showSizeEdit, setShowSizeEdit] = useState(false)
+  const [customW, setCustomW] = useState(image.customWidth || '')
+  const [customH, setCustomH] = useState(image.customHeight || '')
 
   const { naturalWidth, naturalHeight, focalPoint } = image
-  const targetW = settings.width
-  const targetH = settings.height
+  const targetW = image.customWidth || settings.width
+  const targetH = image.customHeight || settings.height
 
   const focalX = focalPoint ? focalPoint.x : 0.5
   const focalY = focalPoint ? focalPoint.y : 0.5
@@ -93,8 +97,11 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
       {/* Original image with crop overlay */}
       <div
         ref={containerRef}
-        className="image-card-preview"
+        className={`image-card-preview${showCropped ? ' cropped-view' : ''}`}
         onPointerDown={handlePointerDown}
+        style={showCropped && cropRegion ? {
+          clipPath: `inset(${cropRegion.y}% ${100 - cropRegion.x - cropRegion.w}% ${100 - cropRegion.y - cropRegion.h}% ${cropRegion.x}%)`,
+        } : undefined}
       >
         <img
           src={image.originalUrl}
@@ -208,6 +215,18 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
 
         {/* Transform toolbar */}
         <div className="image-card-transforms">
+          {cropRegion && (
+            <button
+              className={`transform-btn${showCropped ? ' active' : ''}`}
+              onClick={(e) => { e.stopPropagation(); setShowCropped(v => !v) }}
+              title={showCropped ? t('imageCard.previewFull') : t('imageCard.previewCrop')}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </button>
+          )}
           <button
             className="transform-btn"
             onClick={(e) => { e.stopPropagation(); onTransform(image.id, 'rotateCW') }}
@@ -251,13 +270,53 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
 
       {/* File info */}
       <div className="image-card-info">
-        <span className="image-card-name" title={image.name}>{image.name}</span>
+        <div className="image-card-info-row">
+          <span className="image-card-name" title={image.name}>{image.name}</span>
+          <button
+            className="btn-size-edit"
+            onClick={() => setShowSizeEdit(v => !v)}
+            title={t('imageCard.customSize')}
+          >📐</button>
+        </div>
         <span className="image-card-meta">
           {naturalWidth} × {naturalHeight}
-          {image.status === 'done' && (
-            <span className="meta-arrow"> → {targetW} × {targetH}</span>
-          )}
+          <span className="meta-arrow"> → {image.customWidth ? `${targetW}×${targetH} ✎` : `${targetW}×${targetH}`}</span>
         </span>
+        {showSizeEdit && (
+          <div className="image-size-edit">
+            <input
+              type="number"
+              className="size-input"
+              placeholder={String(settings.width)}
+              value={customW}
+              onChange={e => setCustomW(e.target.value)}
+              onKeyDown={e => e.stopPropagation()}
+            />
+            <span className="size-x">×</span>
+            <input
+              type="number"
+              className="size-input"
+              placeholder={String(settings.height)}
+              value={customH}
+              onChange={e => setCustomH(e.target.value)}
+              onKeyDown={e => e.stopPropagation()}
+            />
+            <button className="size-apply" onClick={() => {
+              const w = parseInt(customW, 10) || 0
+              const h = parseInt(customH, 10) || 0
+              onUpdateImageSettings(image.id, { customWidth: w || null, customHeight: h || null })
+              setShowSizeEdit(false)
+            }}>{t('imageCard.sizeApply')}</button>
+            {image.customWidth && (
+              <button className="size-reset" onClick={() => {
+                onUpdateImageSettings(image.id, { customWidth: null, customHeight: null })
+                setCustomW('')
+                setCustomH('')
+                setShowSizeEdit(false)
+              }}>{t('imageCard.resetSize')}</button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

@@ -55,6 +55,7 @@ export default {
   'settings.height': '高',
   'settings.swapWH': '对换宽高',
   'settings.options': '选项',
+  'settings.enhancements': '增强工具',
   'settings.autoFocal': '自动居中裁剪',
   'settings.formatOnly': '仅转换格式',
   'settings.outputFormat': '输出格式',
@@ -204,6 +205,13 @@ export default {
   'imageCard.flipH': '水平翻转',
   'imageCard.flipV': '垂直翻转',
   'imageCard.focalHint': '点击或拖拽调整焦点位置',
+  'imageCard.previewCrop': '预览裁剪效果',
+  'imageCard.previewFull': '显示完整图片',
+  'imageCard.customSize': '自定义尺寸',
+  'imageCard.resetSize': '重置',
+  'imageCard.sizeApply': '确定',
+  'history.undoAll': '全部撤销',
+  'history.redoAll': '全部重做',
 
   // Tutorial page
   'tutorial.title': '使用教程',

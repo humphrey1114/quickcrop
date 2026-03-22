@@ -17,7 +17,7 @@ export default function WatermarkSettings({ settings, onUpdate }) {
   return (
     <div>
       <button
-        className={`sp-toggle-btn ${settings.watermarkEnabled ? 'active' : ''}`}
+        className={`sp-toggle-btn sp-toggle-sm ${settings.watermarkEnabled ? 'active' : ''}`}
         onClick={() => onUpdate('watermarkEnabled', !settings.watermarkEnabled)}
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

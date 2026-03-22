@@ -73,7 +73,7 @@ let imageIdCounter = 0
 export default function App() {
   const { t, lang } = useLanguage()
   const [settings, setSettings] = useState(loadSettings)
-  const [images, setImages, { undo, redo, canUndo, canRedo }] = useHistory([])
+  const [images, setImages, { undo, redo, undoAll, redoAll, canUndo, canRedo, historyInfo }] = useHistory([])
   const [processing, setProcessing] = useState(false)
   const [processProgress, setProcessProgress] = useState({ current: 0, total: 0 })
   const fileInputRef = useRef(null)
@@ -244,6 +244,12 @@ export default function App() {
     }))
   }, [])
 
+  const handleUpdateImageSettings = useCallback((imageId, updates) => {
+    setImages(prev => prev.map(img =>
+      img.id === imageId ? { ...img, ...updates } : img
+    ))
+  }, [])
+
   const handleProcess = useCallback(async () => {
     if (images.length === 0) return
     setProcessing(true)
@@ -257,8 +263,11 @@ export default function App() {
         setImages(prev => prev.map(x =>
           x.id === img.id ? { ...x, status: 'processing' } : x
         ), { track: false })
+        const imgSettings = { ...settings }
+        if (img.customWidth) imgSettings.width = img.customWidth
+        if (img.customHeight) imgSettings.height = img.customHeight
         const result = await processImage(img.file, {
-          ...settings,
+          ...imgSettings,
           focalPoint: img.focalPoint,
           rotation: img.rotation || 0,
           flipH: !!img.flipH,
@@ -459,16 +468,31 @@ export default function App() {
                 {doneCount > 0 && <span className="tag tag-done">{t('toolbar.done', { count: doneCount })}</span>}
               </div>
               <div className="toolbar-actions">
+                <button className="btn-ghost" onClick={undoAll} disabled={!canUndo} title={t('history.undoAll')} aria-label={t('history.undoAll')}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
                 <button className="btn-ghost" onClick={undo} disabled={!canUndo} title={t('toolbar.undo')} aria-label={t('toolbar.undo')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M9 14L4 9l5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
+                {(canUndo || canRedo) && (
+                  <span className="history-badge" title={`${historyInfo.pastLength} undo / ${historyInfo.futureLength} redo`}>
+                    {historyInfo.pastLength + historyInfo.futureLength}
+                  </span>
+                )}
                 <button className="btn-ghost" onClick={redo} disabled={!canRedo} title={t('toolbar.redo')} aria-label={t('toolbar.redo')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M15 14l5-5-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <button className="btn-ghost" onClick={redoAll} disabled={!canRedo} title={t('history.redoAll')} aria-label={t('history.redoAll')}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 17l5-5-5-5M6 17l5-5-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
                 <button className="btn-ghost" onClick={() => fileInputRef.current?.click()}>
@@ -501,6 +525,7 @@ export default function App() {
               onRemoveImage={handleRemoveImage}
               onReorder={handleReorderImages}
               onTransform={handleTransform}
+              onUpdateImageSettings={handleUpdateImageSettings}
             />
 
             <DropZone onFilesAdded={handleFilesAdded} compact currentCount={images.length} />

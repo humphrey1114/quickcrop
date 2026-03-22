@@ -502,21 +502,21 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         </label>
       </div>
 
-      {/* Watermark & Border */}
+      {/* Enhancement tools - compact 2-col grid when all collapsed */}
       <div className="sp-section">
-        <WatermarkSettings settings={settings} onUpdate={onUpdate} />
-      </div>
-
-      <div className="sp-section">
-        <button
-          className={`sp-toggle-btn ${settings.borderEnabled ? 'active' : ''}`}
-          onClick={() => onUpdate('borderEnabled', !settings.borderEnabled)}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          {t('border')}
-        </button>
+        <div className="sp-label">{t('settings.enhancements')}</div>
+        <div className="sp-tools-grid">
+          <WatermarkSettings settings={settings} onUpdate={onUpdate} />
+          <button
+            className={`sp-toggle-btn sp-toggle-sm ${settings.borderEnabled ? 'active' : ''}`}
+            onClick={() => onUpdate('borderEnabled', !settings.borderEnabled)}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+            {t('border')}
+          </button>
+        </div>
         {settings.borderEnabled && (
           <div className="sp-border-opts">
             <div className="sp-opt-row">
@@ -542,20 +542,27 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Adjust */}
-      <div className="sp-section">
-        <button
-          className={`sp-toggle-btn ${settings.adjustEnabled ? 'active' : ''}`}
-          onClick={() => onUpdate('adjustEnabled', !settings.adjustEnabled)}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M7 3v8M4.5 5l5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-          {t('adjust')}
-        </button>
+        <div className="sp-tools-grid" style={{ marginTop: '6px' }}>
+          <button
+            className={`sp-toggle-btn sp-toggle-sm ${settings.adjustEnabled ? 'active' : ''}`}
+            onClick={() => onUpdate('adjustEnabled', !settings.adjustEnabled)}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M7 3v8M4.5 5l5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            {t('adjust')}
+          </button>
+          <button
+            className={`sp-toggle-btn sp-toggle-sm ${settings.compressEnabled ? 'active' : ''}`}
+            onClick={() => onUpdate('compressEnabled', !settings.compressEnabled)}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M4 1v4M10 9v4M4 5L10 9M1 4h6M7 10h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {t('compress')}
+          </button>
+        </div>
         {settings.adjustEnabled && (
           <div className="sp-adjust-opts">
             <div className="sp-opt-row">
@@ -599,19 +606,6 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Compress */}
-      <div className="sp-section">
-        <button
-          className={`sp-toggle-btn ${settings.compressEnabled ? 'active' : ''}`}
-          onClick={() => onUpdate('compressEnabled', !settings.compressEnabled)}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M4 1v4M10 9v4M4 5L10 9M1 4h6M7 10h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          {t('compress')}
-        </button>
         {settings.compressEnabled && (
           <div className="sp-compress-opts">
             <div className="sp-compress-hint">{t('compress.hint')}</div>

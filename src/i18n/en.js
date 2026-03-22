@@ -55,6 +55,7 @@ export default {
   'settings.height': 'H',
   'settings.swapWH': 'Swap Width & Height',
   'settings.options': 'Options',
+  'settings.enhancements': 'Enhancements',
   'settings.autoFocal': 'Auto Center Crop',
   'settings.formatOnly': 'Convert Format Only',
   'settings.outputFormat': 'Output Format',
@@ -200,6 +201,13 @@ export default {
   'imageCard.flipH': 'Flip Horizontal',
   'imageCard.flipV': 'Flip Vertical',
   'imageCard.focalHint': 'Click or drag to adjust focal point',
+  'imageCard.previewCrop': 'Preview crop result',
+  'imageCard.previewFull': 'Show full image',
+  'imageCard.customSize': 'Custom Size',
+  'imageCard.resetSize': 'Reset',
+  'imageCard.sizeApply': 'Apply',
+  'history.undoAll': 'Undo All',
+  'history.redoAll': 'Redo All',
 
   // Tutorial page
   'tutorial.title': 'Tutorial',

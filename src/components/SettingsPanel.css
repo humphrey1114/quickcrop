@@ -5,7 +5,7 @@
 }
 
 .sp-section {
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--divider);
 }
 
@@ -19,11 +19,11 @@
 }
 
 .sp-label {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text);
   letter-spacing: 0.02em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* ---- Size row ---- */
@@ -169,9 +169,9 @@
 .sp-cat-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 12px;
-  margin-bottom: 8px;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 6px;
 }
 
 .sp-cat-tab {
@@ -436,17 +436,24 @@
   border-radius: 4px;
 }
 
+/* ---- Tools grid (2-col for toggle buttons) ---- */
+.sp-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
 /* ---- Toggle button ---- */
 .sp-toggle-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 6px;
   width: 100%;
-  padding: 10px 16px;
+  padding: 7px 14px;
   border: 1px solid var(--border);
   border-radius: var(--r-pill);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -574,7 +581,7 @@
 
 /* ---- Quality ---- */
 .sp-quality {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .sp-quality-head {
