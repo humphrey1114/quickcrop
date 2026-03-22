@@ -18,6 +18,7 @@ import YouTubeGuide from './pages/guides/YouTubeGuide.jsx'
 import BatchCropGuide from './pages/guides/BatchCropGuide.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
+import NotFound from './pages/NotFound.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -39,6 +40,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/guides/batch-crop" element={<BatchCropGuide />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Analytics />

@@ -84,7 +84,7 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
   const statusLabel = {
     processing: { cls: 'status-processing', text: t('status.processing') },
     done: { cls: 'status-done', text: t('status.done') },
-    error: { cls: 'status-error', text: t('status.error') },
+    error: { cls: 'status-error', text: t('status.error'), tooltip: image.errorMsg },
   }[image.status]
 
   return (
@@ -192,7 +192,7 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
 
         {/* Status label */}
         {statusLabel && (
-          <span className={`status-label ${statusLabel.cls}`}>{statusLabel.text}</span>
+          <span className={`status-label ${statusLabel.cls}`} title={statusLabel.tooltip || ''}>{statusLabel.text}</span>
         )}
 
         {/* Remove button */}
@@ -200,6 +200,7 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
           className="image-card-remove"
           onClick={(e) => { e.stopPropagation(); onRemoveImage(image.id) }}
           title={t('imageCard.remove')}
+          aria-label={t('imageCard.remove')}
         >
           ×
         </button>

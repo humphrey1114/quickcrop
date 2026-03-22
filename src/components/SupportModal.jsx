@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import './SupportModal.css'
 
@@ -16,19 +16,34 @@ export default function SupportModal({ onClose }) {
   const [selected, setSelected] = useState(10)
   const [custom, setCustom] = useState('')
   const [isCustom, setIsCustom] = useState(false)
+  const modalRef = useRef(null)
 
+  const isZh = lang === 'zh'
   const amount = isCustom ? (parseInt(custom) || 0) : selected
 
   const handleSupport = () => {
-    // Payment link temporarily disabled - pending Creem account verification
     alert(isZh ? '支付功能即将上线，敬请期待！' : 'Payment coming soon, stay tuned!')
   }
 
-  const isZh = lang === 'zh'
+  // Focus trap + Escape to close
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') { onClose(); return }
+      if (e.key !== 'Tab' || !modalRef.current) return
+      const focusable = modalRef.current.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])')
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
 
   return (
     <div className="support-overlay" onClick={onClose}>
-      <div className="support-modal" onClick={e => e.stopPropagation()}>
+      <div className="support-modal" ref={modalRef} role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
         <button className="support-close" onClick={onClose}>&times;</button>
 
         <div className="support-header">

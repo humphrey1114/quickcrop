@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { useLanguage } from '../i18n/LanguageContext'
 import './AuthModal.css'
@@ -11,6 +11,23 @@ export default function AuthModal({ onClose }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const modalRef = useRef(null)
+
+  // Focus trap + Escape to close
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') { onClose(); return }
+      if (e.key !== 'Tab' || !modalRef.current) return
+      const focusable = modalRef.current.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])')
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -52,7 +69,7 @@ export default function AuthModal({ onClose }) {
 
   return (
     <div className="auth-overlay" onClick={onClose}>
-      <div className="auth-modal" onClick={e => e.stopPropagation()}>
+      <div className="auth-modal" ref={modalRef} role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
         <button className="auth-close" onClick={onClose}>×</button>
         <h2 className="auth-title">
           {isLogin ? t('auth.login') : t('auth.register')}

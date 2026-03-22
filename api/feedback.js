@@ -1,8 +1,28 @@
 import nodemailer from 'nodemailer'
 
+// Simple in-memory rate limiting (per serverless instance)
+const rateMap = new Map()
+const RATE_LIMIT = 5 // max requests
+const RATE_WINDOW = 60 * 60 * 1000 // 1 hour
+
+function isRateLimited(ip) {
+  const now = Date.now()
+  const entry = rateMap.get(ip)
+  if (!entry || now - entry.start > RATE_WINDOW) {
+    rateMap.set(ip, { start: now, count: 1 })
+    return false
+  }
+  entry.count++
+  return entry.count > RATE_LIMIT
+}
+
 export default async function handler(req, res) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*')
+  // CORS - restrict to own domain
+  const allowedOrigins = ['https://www.tapcrop.com', 'https://tapcrop.com']
+  const origin = req.headers.origin
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
@@ -15,11 +35,27 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  // Rate limiting
+  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown'
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' })
+  }
+
   const { name, email, type, message } = req.body
 
   // Validate required fields
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' })
+  }
+
+  // Input length validation
+  if (name.length > 100 || email.length > 200 || message.length > 5000) {
+    return res.status(400).json({ error: 'Input too long' })
+  }
+
+  // Basic email format check
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' })
   }
 
   // Check SMTP config

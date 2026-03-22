@@ -69,6 +69,7 @@ export default function App() {
   const [settings, setSettings] = useState(loadSettings)
   const [images, setImages, { undo, redo, canUndo, canRedo }] = useHistory([])
   const [processing, setProcessing] = useState(false)
+  const [processProgress, setProcessProgress] = useState({ current: 0, total: 0 })
   const fileInputRef = useRef(null)
 
   useEffect(() => {
@@ -190,10 +191,12 @@ export default function App() {
   const handleProcess = useCallback(async () => {
     if (images.length === 0) return
     setProcessing(true)
+    setProcessProgress({ current: 0, total: images.length })
     const updatedImages = [...images]
 
     for (let i = 0; i < updatedImages.length; i++) {
       const img = updatedImages[i]
+      setProcessProgress({ current: i + 1, total: images.length })
       try {
         setImages(prev => prev.map(x =>
           x.id === img.id ? { ...x, status: 'processing' } : x
@@ -208,13 +211,15 @@ export default function App() {
         ), { track: false })
       } catch (err) {
         console.error('Processing failed:', err)
-        updatedImages[i] = { ...img, status: 'error' }
+        const errorMsg = err.message || 'Unknown error'
+        updatedImages[i] = { ...img, status: 'error', errorMsg }
         setImages(prev => prev.map(x =>
-          x.id === img.id ? { ...x, status: 'error' } : x
+          x.id === img.id ? { ...x, status: 'error', errorMsg } : x
         ), { track: false })
       }
     }
     setProcessing(false)
+    setProcessProgress({ current: 0, total: 0 })
   }, [images, settings])
 
   const buildFileList = useCallback((doneImages) => {
@@ -305,7 +310,9 @@ export default function App() {
             {processing ? (
               <span className="btn-processing">
                 <span className="spinner" />
-                {t('action.processing')}
+                {processProgress.total > 1
+                  ? `${processProgress.current} / ${processProgress.total}`
+                  : t('action.processing')}
               </span>
             ) : (
               <>
@@ -390,13 +397,13 @@ export default function App() {
                 {doneCount > 0 && <span className="tag tag-done">{t('toolbar.done', { count: doneCount })}</span>}
               </div>
               <div className="toolbar-actions">
-                <button className="btn-ghost" onClick={undo} disabled={!canUndo} title={t('toolbar.undo')}>
+                <button className="btn-ghost" onClick={undo} disabled={!canUndo} title={t('toolbar.undo')} aria-label={t('toolbar.undo')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M9 14L4 9l5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
-                <button className="btn-ghost" onClick={redo} disabled={!canRedo} title={t('toolbar.redo')}>
+                <button className="btn-ghost" onClick={redo} disabled={!canRedo} title={t('toolbar.redo')} aria-label={t('toolbar.redo')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M15 14l5-5-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

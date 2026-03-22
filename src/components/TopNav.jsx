@@ -75,7 +75,7 @@ export default function TopNav() {
             {item.label}
           </Link>
         ))}
-        <button className="top-nav-theme" onClick={toggleTheme} title={theme === 'light' ? 'Dark Mode' : 'Light Mode'}>
+        <button className="top-nav-theme" onClick={toggleTheme} title={theme === 'light' ? 'Dark Mode' : 'Light Mode'} aria-label={theme === 'light' ? 'Dark Mode' : 'Light Mode'}>
           {theme === 'light' ? (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -87,7 +87,7 @@ export default function TopNav() {
             </svg>
           )}
         </button>
-        <button className="top-nav-lang" onClick={toggleLang} title={lang === 'zh' ? 'Switch to English' : '切换到中文'}>
+        <button className="top-nav-lang" onClick={toggleLang} title={lang === 'zh' ? 'Switch to English' : '切换到中文'} aria-label={lang === 'zh' ? 'Switch to English' : '切换到中文'}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.3" />
             <ellipse cx="8" cy="8" rx="3" ry="6.5" stroke="currentColor" strokeWidth="1.3" />
@@ -99,6 +99,7 @@ export default function TopNav() {
           className="top-nav-support"
           onClick={() => setShowSupport(true)}
           title={lang === 'zh' ? '支持我们' : 'Support Us'}
+          aria-label={lang === 'zh' ? '支持我们' : 'Support Us'}
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -108,14 +109,14 @@ export default function TopNav() {
         {user ? (
           <div className="top-nav-user">
             <span className="top-nav-avatar">{user.email[0].toUpperCase()}</span>
-            <button className="top-nav-logout" onClick={logout} title={t('auth.logout')}>
+            <button className="top-nav-logout" onClick={logout} title={t('auth.logout')} aria-label={t('auth.logout')}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
           </div>
         ) : (
-          <button className="top-nav-login" onClick={() => setShowAuth(true)}>
+          <button className="top-nav-login" onClick={() => setShowAuth(true)} aria-label={t('auth.login')}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

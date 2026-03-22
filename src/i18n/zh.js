@@ -89,6 +89,16 @@ export default {
   'cat.douyin': '抖音',
   'cat.weibo': '微博',
   'cat.wechat': '微信',
+  'cat.twitter': 'X / Twitter',
+  'cat.instagram': 'Instagram',
+  'cat.youtube': 'YouTube',
+  'cat.facebook': 'Facebook',
+  'cat.linkedin': 'LinkedIn',
+  'cat.pinterest': 'Pinterest',
+  'cat.twitch': 'Twitch',
+  'cat.soundcloud': 'SoundCloud',
+  'cat.tumblr': 'Tumblr',
+  'cat.etsy': 'Etsy',
   'cat.idphoto': '证件照',
   'cat.paper': '纸张',
 
@@ -290,6 +300,75 @@ export default {
   'about.v.fast.desc': '无需安装软件，打开网页即用',
   'about.contactTitle': '联系我们',
   'about.contactDesc': '如有任何问题或建议，欢迎发送邮件至',
+
+  // X / Twitter
+  'size.x.header': '头图',
+  'size.x.avatar': '头像',
+  'size.x.post': '帖子图片',
+  'size.x.card': '卡片图片',
+  'size.x.summary': '摘要卡片',
+
+  // Instagram
+  'size.ig.avatar': '头像',
+  'size.ig.square': '方形图片',
+  'size.ig.portrait': '竖版图片',
+  'size.ig.story': '快拍',
+
+  // YouTube
+  'size.yt.thumbnail': '缩略图',
+  'size.yt.banner': '频道横幅',
+  'size.yt.video4k': '视频 (4K)',
+  'size.yt.avatar': '头像',
+  'size.yt.bannerDesktop': '横幅 (桌面)',
+  'size.yt.bannerTablet': '横幅 (平板)',
+  'size.yt.bannerMobile': '横幅 (手机)',
+  'size.yt.bannerTV': '横幅 (TV)',
+
+  // Facebook
+  'size.fb.avatar': '头像',
+  'size.fb.cover': '封面照片',
+  'size.fb.post': '图片帖子',
+  'size.fb.link': '分享链接图片',
+  'size.fb.event': '活动封面',
+  'size.fb.adCarousel': '广告 (轮播)',
+  'size.fb.adSingle': '广告 (单图)',
+
+  // LinkedIn
+  'size.li.avatar': '头像',
+  'size.li.cover': '封面照片',
+  'size.li.shared': '分享图片',
+
+  // Pinterest
+  'size.pin.avatar': '头像',
+  'size.pin.board': '画板封面',
+  'size.pin.pin': 'Pin (竖版)',
+
+  // Twitch
+  'size.tw.avatar': '头像',
+  'size.tw.banner': '主页横幅',
+  'size.tw.videoBanner': '播放器横幅',
+  'size.tw.thumbnail': '视频缩略图',
+  'size.tw.cover': '封面图',
+  'size.tw.infoPanel': '信息面板',
+
+  // SoundCloud
+  'size.sc.avatar': '头像',
+  'size.sc.album': '专辑封面',
+  'size.sc.header': '页头',
+
+  // Tumblr
+  'size.tb.avatar': '头像',
+  'size.tb.banner': '横幅',
+  'size.tb.shared': '分享图片',
+
+  // Etsy
+  'size.et.cover': '封面',
+  'size.et.avatar': '头像',
+  'size.et.shopIcon': '店铺图标',
+  'size.et.shopBanner': '店铺横幅',
+  'size.et.thumbnail': '缩略图',
+  'size.et.teamLogo': '团队 Logo',
+  'size.et.listing': '商品列表图',
 
   // Auth
   'auth.login': '登录',
