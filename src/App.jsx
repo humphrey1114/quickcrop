@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import DropZone from './components/DropZone'
 import SettingsPanel from './components/SettingsPanel'
 import PreviewGrid from './components/PreviewGrid'
@@ -72,12 +72,29 @@ let imageIdCounter = 0
 
 export default function App() {
   const { t, lang } = useLanguage()
+  const [searchParams] = useSearchParams()
   const [settings, setSettings] = useState(loadSettings)
   const [images, setImages] = useHistory([])
   const [processing, setProcessing] = useState(false)
   const [processProgress, setProcessProgress] = useState({ current: 0, total: 0 })
   const fileInputRef = useRef(null)
   const [showBundle, setShowBundle] = useState(false)
+
+  // Auto-enable feature from ?tool= param (from marketing landing pages)
+  useEffect(() => {
+    const tool = searchParams.get('tool')
+    if (!tool) return
+    const toolMap = {
+      compress: { compressEnabled: true },
+      watermark: { watermarkEnabled: true },
+      resize: {},
+      crop: {},
+      convert: {},
+    }
+    if (toolMap[tool]) {
+      setSettings(prev => ({ ...prev, ...toolMap[tool] }))
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     localStorage.setItem('miaocai-settings', JSON.stringify(settings))

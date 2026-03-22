@@ -1,0 +1,277 @@
+/* ---- Tool Landing Page ---- */
+.tool-landing {
+  max-width: 920px;
+}
+
+/* Hero */
+.tl-hero {
+  text-align: center;
+  padding: 60px 24px 48px;
+}
+
+.tl-hero-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.tl-hero-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.tl-hero-desc {
+  font-size: 17px;
+  color: var(--text-2);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 28px;
+}
+
+.tl-hero-cta {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.tl-hero-cta:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+}
+
+.tl-trust-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.tl-trust-item {
+  font-size: 13px;
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+/* Sections */
+.tl-section {
+  padding: 0 24px;
+  margin-bottom: 40px;
+}
+
+.tl-section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+/* Features grid */
+.tl-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tl-feature-card {
+  padding: 24px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  text-align: center;
+}
+
+.tl-feature-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.tl-feature-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.tl-feature-card p {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Steps */
+.tl-steps {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tl-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+}
+
+.tl-step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-step-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.tl-step-body p {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mid CTA */
+.tl-mid-cta {
+  text-align: center;
+  padding: 24px 0 40px;
+}
+
+/* FAQ */
+.tl-faq-list {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.tl-faq-item {
+  border-bottom: 1px solid var(--divider);
+}
+
+.tl-faq-item:last-child {
+  border-bottom: none;
+}
+
+.tl-faq-q {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  padding: 16px 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tl-faq-q::before {
+  content: 'Q';
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tl-faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.tl-faq-a {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.8;
+  padding: 0 0 16px 30px;
+  margin: 0;
+}
+
+/* Bottom CTA */
+.tl-bottom-cta {
+  text-align: center;
+  padding: 40px 24px;
+  margin: 20px 24px 0;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-xl);
+}
+
+.tl-bottom-cta h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.tl-bottom-cta p {
+  font-size: 15px;
+  color: var(--text-2);
+  max-width: 480px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tl-hero {
+    padding: 40px 16px 32px;
+  }
+
+  .tl-hero-title {
+    font-size: 26px;
+  }
+
+  .tl-hero-desc {
+    font-size: 15px;
+  }
+
+  .tl-section {
+    padding: 0 16px;
+  }
+
+  .tl-section-title {
+    font-size: 20px;
+  }
+
+  .tl-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tl-bottom-cta {
+    margin: 20px 16px 0;
+    padding: 32px 16px;
+  }
+}

@@ -18,6 +18,11 @@ import YouTubeGuide from './pages/guides/YouTubeGuide.jsx'
 import BatchCropGuide from './pages/guides/BatchCropGuide.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
+import CropPage from './pages/tools/CropPage.jsx'
+import CompressPage from './pages/tools/CompressPage.jsx'
+import ResizePage from './pages/tools/ResizePage.jsx'
+import WatermarkPage from './pages/tools/WatermarkPage.jsx'
+import ConvertPage from './pages/tools/ConvertPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 
@@ -38,6 +43,11 @@ createRoot(document.getElementById('root')).render(
           <Route path="/guides/twitter" element={<TwitterGuide />} />
           <Route path="/guides/youtube" element={<YouTubeGuide />} />
           <Route path="/guides/batch-crop" element={<BatchCropGuide />} />
+          <Route path="/crop" element={<CropPage />} />
+          <Route path="/compress" element={<CompressPage />} />
+          <Route path="/resize" element={<ResizePage />} />
+          <Route path="/watermark" element={<WatermarkPage />} />
+          <Route path="/convert" element={<ConvertPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
