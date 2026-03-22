@@ -20,9 +20,8 @@ export default function SupportModal({ onClose }) {
   const amount = isCustom ? (parseInt(custom) || 0) : selected
 
   const handleSupport = () => {
-    // Open Creem payment link with amount parameter
-    const url = `${CREEM_LINK}?amount=${amount}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    // Payment link temporarily disabled - pending Creem account verification
+    alert(isZh ? '支付功能即将上线，敬请期待！' : 'Payment coming soon, stay tuned!')
   }
 
   const isZh = lang === 'zh'
