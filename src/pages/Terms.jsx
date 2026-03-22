@@ -37,7 +37,7 @@ export default function Terms() {
       <p>Your privacy is important to us. TapCrop does not collect, store, or transmit your images. All image processing happens entirely in your browser. We use Vercel Analytics to collect anonymous, cookie-free usage statistics. For full details, please see our <Link to="/privacy">Privacy Policy</Link>.</p>
 
       <h2>7. Donations and Payments</h2>
-      <p>TapCrop is free to use. All features are available to all users without payment. Voluntary donations are processed through Creem, a third-party payment processor. By making a donation, you acknowledge that:</p>
+      <p>TapCrop's core features are free to use. Voluntary donations are processed through Creem, a third-party payment processor. We reserve the right to introduce premium features or paid plans in the future. By making a donation, you acknowledge that:</p>
       <ul>
         <li>Donations are voluntary and do not unlock additional features</li>
         <li>Donations are non-refundable unless required by applicable law</li>

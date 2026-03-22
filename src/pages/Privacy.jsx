@@ -34,7 +34,7 @@ export default function Privacy() {
         <li>Your email address</li>
         <li>Your crop template preferences</li>
       </ul>
-      <p>Account data is stored securely using Firebase Authentication and Firestore. Account creation is optional — all features are available without an account.</p>
+      <p>Account data is stored securely using Firebase Authentication and Firestore. Account creation is optional — core features are available without an account.</p>
 
       <h3>3.3 Local Storage</h3>
       <p>We use your browser's local storage to save your settings preferences (crop dimensions, format, quality, etc.) so they persist between sessions. This data stays on your device and is never sent to our servers.</p>

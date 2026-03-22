@@ -20,8 +20,8 @@ export default {
   'feature.batch.desc': '一次上传多张图片，统一尺寸一键导出',
   'feature.privacy': '隐私保护',
   'feature.privacy.desc': '纯本地处理，图片不上传服务器',
-  'feature.free': '完全免费',
-  'feature.free.desc': '所有功能免费使用，无水印、无次数限制',
+  'feature.free': '免费使用，无水印',
+  'feature.free.desc': '核心功能免费，无水印、无隐藏费用',
 
   // Toolbar
   'toolbar.images': '{count} 张图片',
@@ -207,7 +207,7 @@ export default {
   // FAQ page
   'faq.title': '常见问题',
   'faq.q1': '秒裁是免费的吗？',
-  'faq.a1': '是的，秒裁所有功能完全免费，没有使用次数限制，也不会在图片上添加任何水印。',
+  'faq.a1': '是的，秒裁免费使用，不会在图片上添加任何水印。',
   'faq.q2': '我的图片会被上传到服务器吗？',
   'faq.a2': '不会。秒裁的所有图片处理都在你的浏览器本地完成，图片不会离开你的设备，完全保障隐私安全。',
   'faq.q3': '支持哪些图片格式？',
@@ -281,7 +281,7 @@ export default {
   'about.v.privacy': '隐私',
   'about.v.privacy.desc': '纯本地处理，图片永远不离开你的设备',
   'about.v.free': '免费',
-  'about.v.free.desc': '所有功能免费开放，无隐藏收费',
+  'about.v.free.desc': '核心功能免费，无隐藏收费',
   'about.v.simple': '简洁',
   'about.v.simple.desc': '界面清晰直观，上手零门槛',
   'about.v.smart': '智能',

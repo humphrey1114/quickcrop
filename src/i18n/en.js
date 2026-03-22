@@ -20,8 +20,8 @@ export default {
   'feature.batch.desc': 'Upload hundreds of photos and crop them all to the same size in one click',
   'feature.privacy': '100% Private & Local',
   'feature.privacy.desc': 'Images never leave your device — no uploads, no server, no tracking',
-  'feature.free': 'Free Forever, No Watermark',
-  'feature.free.desc': 'All features are free with no hidden costs, no watermarks, no limits',
+  'feature.free': 'Free to Use, No Watermark',
+  'feature.free.desc': 'Core features are free with no watermarks and no hidden costs',
 
   // Toolbar
   'toolbar.images': '{count} images',
@@ -213,7 +213,7 @@ export default {
   // FAQ page
   'faq.title': 'FAQ',
   'faq.q1': 'Is TapCrop free?',
-  'faq.a1': 'Yes, all features are completely free with no usage limits and no watermarks added to your images.',
+  'faq.a1': 'Yes, TapCrop is free to use with no watermarks added to your images.',
   'faq.q2': 'Are my images uploaded to a server?',
   'faq.a2': 'No. All image processing happens locally in your browser. Your images never leave your device, ensuring complete privacy.',
   'faq.q3': 'What image formats are supported?',
@@ -287,7 +287,7 @@ export default {
   'about.v.privacy': 'Private',
   'about.v.privacy.desc': 'Fully local processing — images never leave your device',
   'about.v.free': 'Free',
-  'about.v.free.desc': 'All features are free with no hidden charges',
+  'about.v.free.desc': 'Core features are free with no hidden charges',
   'about.v.simple': 'Simple',
   'about.v.simple.desc': 'Clean, intuitive interface with zero learning curve',
   'about.v.smart': 'Smart',

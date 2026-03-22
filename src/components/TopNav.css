@@ -18,6 +18,8 @@
   border-radius: var(--r-pill);
   transition: all 0.2s ease;
   margin-right: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .top-nav-back:hover {
