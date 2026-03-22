@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -14,6 +15,29 @@ export default function FAQ() {
     { q: t('faq.q7'), a: t('faq.a7') },
     { q: t('faq.q8'), a: t('faq.a8') },
   ]
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.id = 'faq-schema'
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': FAQS.map(item => ({
+        '@type': 'Question',
+        'name': item.q,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.a,
+        },
+      })),
+    })
+    document.head.appendChild(script)
+    return () => {
+      const el = document.getElementById('faq-schema')
+      if (el) el.remove()
+    }
+  }, [FAQS])
 
   return (
     <PageLayout title={t('faq.title')}>

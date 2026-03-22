@@ -12,16 +12,16 @@ export default {
   'nav.back': 'Back to Home',
 
   // Welcome
-  'welcome.title': 'Batch Crop, All at Once',
-  'welcome.desc': 'Upload images, set dimensions, export with one click. All processing is done locally in your browser — your privacy is safe.',
-  'feature.smartCrop': 'Smart Crop',
-  'feature.smartCrop.desc': 'Auto-detect key areas in your images for precise cropping',
-  'feature.batch': 'Batch Processing',
-  'feature.batch.desc': 'Upload multiple images and export them all at once',
-  'feature.privacy': 'Privacy First',
-  'feature.privacy.desc': 'All processing is local — images never leave your device',
-  'feature.free': 'Totally Free',
-  'feature.free.desc': 'All features are free with no watermarks or usage limits',
+  'welcome.title': 'Crop Multiple Images at Once — Free & Instant',
+  'welcome.desc': 'Batch crop and resize photos for Instagram, Twitter, YouTube, Facebook and more. Smart focal detection keeps the best part of every image. No uploads, no sign-up — runs 100% in your browser.',
+  'feature.smartCrop': 'Smart Focal Detection',
+  'feature.smartCrop.desc': 'AI auto-detects faces and key areas — never lose the important part when cropping',
+  'feature.batch': 'Batch Crop & Resize',
+  'feature.batch.desc': 'Upload hundreds of photos and crop them all to the same size in one click',
+  'feature.privacy': '100% Private & Local',
+  'feature.privacy.desc': 'Images never leave your device — no uploads, no server, no tracking',
+  'feature.free': 'Free Forever, No Watermark',
+  'feature.free.desc': 'All features are free with no hidden costs, no watermarks, no limits',
 
   // Toolbar
   'toolbar.images': '{count} images',
@@ -41,8 +41,8 @@ export default {
   'action.saveToFolder': 'Save to Folder',
 
   // DropZone
-  'dropzone.title': 'Drop images here, or click to upload',
-  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC. Multiple files allowed.',
+  'dropzone.title': 'Drop your images here, or click to upload',
+  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC — upload as many as you need',
   'dropzone.addMore': 'Add more images',
 
   // Settings
