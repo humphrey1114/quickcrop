@@ -26,6 +26,12 @@ export default function TopNav() {
   const { user, logout } = useAuth()
   const [showAuth, setShowAuth] = useState(false)
   const [showSupport, setShowSupport] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
 
   const NAV_ITEMS = [
     { path: '/tutorial', label: t('nav.tutorial') },
@@ -45,7 +51,21 @@ export default function TopNav() {
           {t('nav.back')}
         </Link>
       )}
-      <div className="top-nav-links">
+
+      {/* Hamburger button - mobile only */}
+      <button className="top-nav-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        {menuOpen ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        ) : (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        )}
+      </button>
+
+      <div className={`top-nav-links ${menuOpen ? 'open' : ''}`}>
         {NAV_ITEMS.map(item => (
           <Link
             key={item.path}
@@ -103,6 +123,10 @@ export default function TopNav() {
           </button>
         )}
       </div>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && <div className="top-nav-overlay" onClick={() => setMenuOpen(false)} />}
+
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
       {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
     </nav>

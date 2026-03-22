@@ -42,7 +42,7 @@ export default {
 
   // DropZone
   'dropzone.title': '拖拽图片到这里，或点击上传',
-  'dropzone.hint': '支持 JPG、PNG、WebP、BMP、HEIC，可同时上传多张',
+  'dropzone.hint': '支持 JPG、PNG、WebP、BMP、HEIC — 单文件最大 30MB，最多 100 张',
   'dropzone.addMore': '继续添加图片',
   'dropzone.tooMany': '最多支持同时处理 {max} 张图片',
   'dropzone.invalidType': '{count} 个文件被跳过 — 不支持的格式',

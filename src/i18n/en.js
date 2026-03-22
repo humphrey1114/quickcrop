@@ -42,7 +42,7 @@ export default {
 
   // DropZone
   'dropzone.title': 'Drop your images here, or click to upload',
-  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC — upload as many as you need',
+  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC — max 30MB per file, up to 100 images',
   'dropzone.addMore': 'Add more images',
   'dropzone.tooMany': 'Maximum {max} images allowed at a time',
   'dropzone.invalidType': '{count} file(s) skipped — unsupported format',
