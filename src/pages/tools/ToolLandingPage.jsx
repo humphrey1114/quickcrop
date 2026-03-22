@@ -64,7 +64,7 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
         <div className="tl-hero-icon">{icon}</div>
         <h1 className="tl-hero-title">{title}</h1>
         <p className="tl-hero-desc">{desc}</p>
-        <Link to={`/?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
+        <Link to={`/app?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
         <div className="tl-trust-row">
           {lang === 'zh' ? (
             <>
@@ -118,7 +118,7 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
 
       {/* CTA mid-page */}
       <div className="tl-mid-cta">
-        <Link to={`/?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
+        <Link to={`/app?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
       </div>
 
       {/* FAQ */}
@@ -143,7 +143,7 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
           ? 'TapCrop 是一款免费在线工具，直接在浏览器中运行。无需注册，无需下载，无水印。'
           : 'TapCrop is a free online tool that runs entirely in your browser. No signup, no downloads, no watermarks.'
         }</p>
-        <Link to={`/?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
+        <Link to={`/app?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
       </div>
 
       <footer className="page-footer">

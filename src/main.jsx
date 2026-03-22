@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 import App from './App.jsx'
+import HomePage from './pages/HomePage.jsx'
 import Tutorial from './pages/Tutorial.jsx'
 import FAQ from './pages/FAQ.jsx'
 import Changelog from './pages/Changelog.jsx'
@@ -33,7 +34,8 @@ createRoot(document.getElementById('root')).render(
     <LanguageProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/app" element={<App />} />
           <Route path="/tutorial" element={<Tutorial />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/changelog" element={<Changelog />} />
