@@ -73,7 +73,7 @@ let imageIdCounter = 0
 export default function App() {
   const { t, lang } = useLanguage()
   const [settings, setSettings] = useState(loadSettings)
-  const [images, setImages, { undo, redo, undoAll, redoAll, canUndo, canRedo, historyInfo }] = useHistory([])
+  const [images, setImages] = useHistory([])
   const [processing, setProcessing] = useState(false)
   const [processProgress, setProcessProgress] = useState({ current: 0, total: 0 })
   const fileInputRef = useRef(null)
@@ -89,10 +89,6 @@ export default function App() {
       // Skip if user is typing in an input
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
 
-      if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
-        e.preventDefault()
-        if (e.shiftKey) { redo() } else { undo() }
-      }
       // Delete to clear all images
       if (e.key === 'Delete' && images.length > 0 && !processing) {
         e.preventDefault()
@@ -106,7 +102,7 @@ export default function App() {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [undo, redo, images.length, processing])
+  }, [images.length, processing])
 
   // Scroll reveal animation
   useEffect(() => {
@@ -468,33 +464,6 @@ export default function App() {
                 {doneCount > 0 && <span className="tag tag-done">{t('toolbar.done', { count: doneCount })}</span>}
               </div>
               <div className="toolbar-actions">
-                <button className="btn-ghost" onClick={undoAll} disabled={!canUndo} title={t('history.undoAll')} aria-label={t('history.undoAll')}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                <button className="btn-ghost" onClick={undo} disabled={!canUndo} title={t('toolbar.undo')} aria-label={t('toolbar.undo')}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 14L4 9l5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                {(canUndo || canRedo) && (
-                  <span className="history-badge" title={`${historyInfo.pastLength} undo / ${historyInfo.futureLength} redo`}>
-                    {historyInfo.pastLength + historyInfo.futureLength}
-                  </span>
-                )}
-                <button className="btn-ghost" onClick={redo} disabled={!canRedo} title={t('toolbar.redo')} aria-label={t('toolbar.redo')}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 14l5-5-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                <button className="btn-ghost" onClick={redoAll} disabled={!canRedo} title={t('history.redoAll')} aria-label={t('history.redoAll')}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M13 17l5-5-5-5M6 17l5-5-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
                 <button className="btn-ghost" onClick={() => fileInputRef.current?.click()}>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
