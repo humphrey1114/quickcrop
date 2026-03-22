@@ -4,46 +4,11 @@ import { useLanguage } from '../i18n/LanguageContext'
 import './HomePage.css'
 
 const TOOLS = [
-  {
-    key: 'crop',
-    titleEn: 'Crop',
-    titleZh: '裁剪',
-    descEn: 'Batch crop with custom focal points',
-    descZh: '自定义焦点批量裁剪',
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 2v6H2M6 8h10a2 2 0 012 2v10M18 22v-6h4M18 16H8a2 2 0 01-2-2V4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
-  {
-    key: 'resize',
-    titleEn: 'Resize',
-    titleZh: '缩放',
-    descEn: '50+ presets for social & print',
-    descZh: '50+ 社交媒体与打印预设',
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
-  {
-    key: 'compress',
-    titleEn: 'Compress',
-    titleZh: '压缩',
-    descEn: 'Reduce file size up to 90%',
-    descZh: '文件体积缩小高达 90%',
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M8 8h8M6 12h12M8 16h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-  },
-  {
-    key: 'watermark',
-    titleEn: 'Watermark',
-    titleZh: '水印',
-    descEn: 'Add text watermarks in batch',
-    descZh: '批量添加文字水印',
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" strokeWidth="1.8"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
-  {
-    key: 'convert',
-    titleEn: 'Convert',
-    titleZh: '转换',
-    descEn: 'JPG, PNG, WebP, HEIC',
-    descZh: 'JPG、PNG、WebP、HEIC 互转',
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 1l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M3 11V9a4 4 0 014-4h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M7 23l-4-4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M21 13v2a4 4 0 01-4 4H3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
+  { key: 'crop', titleEn: 'Crop', titleZh: '裁剪', descEn: 'Batch crop with custom focal points', descZh: '自定义焦点批量裁剪' },
+  { key: 'resize', titleEn: 'Resize', titleZh: '缩放', descEn: '50+ presets for social & print', descZh: '50+ 社交媒体与打印预设' },
+  { key: 'compress', titleEn: 'Compress', titleZh: '压缩', descEn: 'Reduce file size up to 90%', descZh: '文件体积缩小高达 90%' },
+  { key: 'watermark', titleEn: 'Watermark', titleZh: '水印', descEn: 'Add text watermarks in batch', descZh: '批量添加文字水印' },
+  { key: 'convert', titleEn: 'Convert', titleZh: '转换', descEn: 'JPG, PNG, WebP, HEIC', descZh: 'JPG、PNG、WebP、HEIC 互转' },
 ]
 
 export default function HomePage() {
@@ -109,37 +74,36 @@ export default function HomePage() {
             {lang === 'zh' ? '开始使用' : 'Get Started'}
           </Link>
           <a href="#tools" className="home-cta-secondary">
-            {lang === 'zh' ? '了解功能 ↓' : 'See Features ↓'}
+            {lang === 'zh' ? '了解功能' : 'Learn More'}
           </a>
         </div>
-        <div className="home-hero-tags">
-          <span>🔒 {lang === 'zh' ? '无需上传' : 'No Uploads'}</span>
-          <span>⚡ {lang === 'zh' ? '免费无限量' : 'Free & Unlimited'}</span>
-          <span>✨ {lang === 'zh' ? '无水印' : 'No Watermarks'}</span>
-        </div>
+        <p className="home-hero-note">
+          {lang === 'zh'
+            ? '无需注册 · 完全免费 · 图片不离开设备'
+            : 'No signup · 100% free · Images stay on your device'
+          }
+        </p>
       </section>
 
       {/* Tools */}
       <section className="home-tools" id="tools">
-        <div className="home-tools-header">
-          <h2>{lang === 'zh' ? '五大核心工具' : 'Five Core Tools'}</h2>
-          <p>{lang === 'zh' ? '每个工具独立可用，也可组合使用' : 'Use each tool alone, or combine them all at once'}</p>
-        </div>
+        <h2 className="home-tools-title">
+          {lang === 'zh' ? '工具' : 'Tools'}
+        </h2>
         <div className="home-tools-grid">
           {TOOLS.map(tool => (
             <Link key={tool.key} to={`/${tool.key}`} className="home-tool-card">
-              <div className="home-tool-icon">{tool.svg}</div>
               <div className="home-tool-text">
                 <h3>{lang === 'zh' ? tool.titleZh : tool.titleEn}</h3>
                 <p>{lang === 'zh' ? tool.descZh : tool.descEn}</p>
               </div>
-              <svg className="home-tool-go" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span className="home-tool-arrow">&rarr;</span>
             </Link>
           ))}
         </div>
         <div className="home-tools-allbtn">
           <Link to="/app" className="home-cta-primary">
-            {lang === 'zh' ? '🚀 一键使用全部功能' : '🚀 Use All Tools at Once'}
+            {lang === 'zh' ? '一键使用全部功能' : 'Use All Tools at Once'}
           </Link>
         </div>
       </section>
@@ -149,31 +113,31 @@ export default function HomePage() {
         <h2>{lang === 'zh' ? '三步搞定' : 'How It Works'}</h2>
         <div className="home-how-steps">
           <div className="home-how-step">
-            <div className="home-how-num">1</div>
-            <h3>{lang === 'zh' ? '上传图片' : 'Upload'}</h3>
-            <p>{lang === 'zh' ? '拖拽或点击，支持 JPG/PNG/WebP/HEIC' : 'Drag & drop, supports JPG/PNG/WebP/HEIC'}</p>
+            <span className="home-how-num">1</span>
+            <div>
+              <h3>{lang === 'zh' ? '上传图片' : 'Upload'}</h3>
+              <p>{lang === 'zh' ? '拖拽或点击，支持 JPG/PNG/WebP/HEIC' : 'Drag & drop, supports JPG/PNG/WebP/HEIC'}</p>
+            </div>
           </div>
-          <div className="home-how-divider" />
           <div className="home-how-step">
-            <div className="home-how-num">2</div>
-            <h3>{lang === 'zh' ? '选择设置' : 'Configure'}</h3>
-            <p>{lang === 'zh' ? '选预设或自定义尺寸、压缩等参数' : 'Pick presets or customize size, compression, etc.'}</p>
+            <span className="home-how-num">2</span>
+            <div>
+              <h3>{lang === 'zh' ? '选择设置' : 'Configure'}</h3>
+              <p>{lang === 'zh' ? '选预设或自定义参数' : 'Pick presets or customize settings'}</p>
+            </div>
           </div>
-          <div className="home-how-divider" />
           <div className="home-how-step">
-            <div className="home-how-num">3</div>
-            <h3>{lang === 'zh' ? '导出下载' : 'Export'}</h3>
-            <p>{lang === 'zh' ? '一键处理，单张或 ZIP 打包下载' : 'One click to process, download one by one or as ZIP'}</p>
+            <span className="home-how-num">3</span>
+            <div>
+              <h3>{lang === 'zh' ? '导出下载' : 'Export'}</h3>
+              <p>{lang === 'zh' ? '一键处理，单张或 ZIP 下载' : 'One click, download individually or as ZIP'}</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="home-footer">
-        <div className="home-footer-brand">
-          <img src="/2048.png" alt="TapCrop" className="home-footer-logo" />
-          <span>TapCrop</span>
-        </div>
         <div className="home-footer-links">
           <Link to="/tutorial">Tutorial</Link>
           <Link to="/faq">FAQ</Link>
@@ -182,7 +146,7 @@ export default function HomePage() {
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
         </div>
-        <p className="home-footer-copy">&copy; {new Date().getFullYear()} TapCrop. {lang === 'zh' ? '图片不离开你的设备。' : 'Your images never leave your device.'}</p>
+        <p className="home-footer-copy">&copy; {new Date().getFullYear()} TapCrop</p>
       </footer>
     </div>
   )

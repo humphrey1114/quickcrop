@@ -1,9 +1,9 @@
 .home-page {
   min-height: 100vh;
   background: var(--bg);
-  max-width: 840px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 16px 28px 40px;
+  padding: 16px 24px 40px;
 }
 
 /* ---- Nav ---- */
@@ -21,14 +21,13 @@
 }
 
 .home-nav-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  object-fit: cover;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
 }
 
 .home-nav-name {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.03em;
@@ -48,7 +47,7 @@
   height: 32px;
   border-radius: 8px;
   background: none;
-  border: 1px solid var(--border-light);
+  border: 1px solid transparent;
   color: var(--text-3);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -56,86 +55,76 @@
 
 .home-nav-icon-btn:hover {
   color: var(--text);
-  border-color: var(--border);
 }
 
 .home-nav-text-btn {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-3);
   background: none;
-  border: 1px solid var(--border-light);
-  padding: 5px 12px;
-  border-radius: 8px;
+  border: none;
+  padding: 4px 8px;
   cursor: pointer;
-  transition: all 0.15s ease;
-  letter-spacing: 0.02em;
+  transition: color 0.15s ease;
 }
 
 .home-nav-text-btn:hover {
   color: var(--text);
-  border-color: var(--border);
 }
 
 /* ---- Hero ---- */
 .home-hero {
-  text-align: center;
-  padding: 56px 0 40px;
+  padding: 64px 0 48px;
 }
 
 .home-hero-title {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.04em;
   line-height: 1.15;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .home-hero-sub {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--text-3);
   font-weight: 400;
   line-height: 1.6;
   margin-bottom: 28px;
-  letter-spacing: -0.01em;
 }
 
 .home-hero-actions {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .home-cta-primary {
   display: inline-block;
-  padding: 12px 32px;
+  padding: 10px 24px;
   background: var(--primary);
   color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
   text-decoration: none;
-  transition: all 0.15s ease;
-  letter-spacing: -0.01em;
+  transition: opacity 0.15s ease;
 }
 
 .home-cta-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  opacity: 0.85;
 }
 
 .home-cta-secondary {
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px;
-  background: none;
+  padding: 10px 20px;
   color: var(--text-2);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.15s ease;
 }
@@ -145,89 +134,53 @@
   color: var(--text);
 }
 
-.home-hero-tags {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.home-hero-tags span {
+.home-hero-note {
   font-size: 12px;
   color: var(--text-3);
-  font-weight: 500;
+  opacity: 0.7;
 }
 
 /* ---- Tools ---- */
 .home-tools {
-  padding: 24px 0 32px;
+  padding: 0 0 32px;
 }
 
-.home-tools-header {
-  margin-bottom: 20px;
-}
-
-.home-tools-header h2 {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.03em;
-  margin-bottom: 4px;
-}
-
-.home-tools-header p {
-  font-size: 14px;
+.home-tools-title {
+  font-size: 12px;
+  font-weight: 600;
   color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
 }
 
 .home-tools-grid {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 1px;
+  background: var(--divider);
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .home-tool-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
+  justify-content: space-between;
+  padding: 16px 20px;
   background: var(--surface);
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
   text-decoration: none;
-  transition: all 0.15s ease;
+  transition: background 0.12s ease;
 }
 
 .home-tool-card:hover {
-  border-color: var(--border);
-  background: var(--glass-strong);
-}
-
-.home-tool-card:hover .home-tool-go {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.home-tool-icon {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
   background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-2);
-}
-
-.home-tool-text {
-  flex: 1;
-  min-width: 0;
 }
 
 .home-tool-text h3 {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
   letter-spacing: -0.02em;
   margin-bottom: 1px;
@@ -239,123 +192,95 @@
   margin: 0;
 }
 
-.home-tool-go {
-  flex-shrink: 0;
+.home-tool-arrow {
+  font-size: 16px;
   color: var(--text-3);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease;
+}
+
+.home-tool-card:hover .home-tool-arrow {
+  transform: translateX(3px);
 }
 
 .home-tools-allbtn {
-  text-align: center;
   margin-top: 16px;
 }
 
-/* ---- How it works ---- */
+/* ---- How ---- */
 .home-how {
   padding: 32px 0 24px;
   border-top: 1px solid var(--divider);
 }
 
 .home-how h2 {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
 }
 
 .home-how-steps {
   display: flex;
-  align-items: flex-start;
-  gap: 0;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .home-how-step {
-  flex: 1;
-  text-align: center;
-  padding: 0 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
 }
 
 .home-how-num {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 800;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
 }
 
 .home-how-step h3 {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 1px;
 }
 
 .home-how-step p {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-3);
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
-}
-
-.home-how-divider {
-  width: 1px;
-  height: 60px;
-  background: var(--divider);
-  flex-shrink: 0;
-  margin-top: 8px;
 }
 
 /* ---- Footer ---- */
 .home-footer {
   margin-top: 32px;
-  padding-top: 24px;
+  padding-top: 20px;
   border-top: 1px solid var(--divider);
-  text-align: center;
-}
-
-.home-footer-brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.home-footer-logo {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-}
-
-.home-footer-brand span {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
 }
 
 .home-footer-links {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .home-footer-links a {
   font-size: 12px;
   color: var(--text-3);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.12s ease;
 }
 
 .home-footer-links a:hover {
@@ -365,50 +290,30 @@
 .home-footer-copy {
   font-size: 11px;
   color: var(--text-3);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .home-page {
     padding: 12px 16px 32px;
   }
 
   .home-hero {
-    padding: 40px 0 28px;
-  }
-
-  .home-hero-logo {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
+    padding: 40px 0 32px;
   }
 
   .home-hero-title {
     font-size: 26px;
   }
 
-  .home-hero-sub {
-    font-size: 14px;
-  }
-
   .home-hero-actions {
     flex-direction: column;
-    align-items: center;
   }
 
-  .home-how-steps {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .home-how-divider {
-    width: 40px;
-    height: 1px;
-  }
-
-  .home-how-step {
-    padding: 0;
+  .home-cta-primary,
+  .home-cta-secondary {
+    text-align: center;
+    justify-content: center;
   }
 }
