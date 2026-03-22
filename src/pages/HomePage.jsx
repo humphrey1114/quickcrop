@@ -4,10 +4,10 @@ import { useLanguage } from '../i18n/LanguageContext'
 import './HomePage.css'
 
 const TOOLS = [
-  { key: 'crop', titleEn: 'Crop', titleZh: '裁剪', descEn: 'Batch crop with custom focal points', descZh: '自定义焦点批量裁剪' },
-  { key: 'resize', titleEn: 'Resize', titleZh: '缩放', descEn: '50+ presets for social & print', descZh: '50+ 社交媒体与打印预设' },
-  { key: 'compress', titleEn: 'Compress', titleZh: '压缩', descEn: 'Reduce file size up to 90%', descZh: '文件体积缩小高达 90%' },
-  { key: 'watermark', titleEn: 'Watermark', titleZh: '水印', descEn: 'Add text watermarks in batch', descZh: '批量添加文字水印' },
+  { key: 'crop', titleEn: 'Crop', titleZh: '裁剪', descEn: 'Custom focal points, batch crop', descZh: '自定义焦点批量裁剪' },
+  { key: 'resize', titleEn: 'Resize', titleZh: '缩放', descEn: '50+ social & print presets', descZh: '50+ 社交媒体与打印预设' },
+  { key: 'compress', titleEn: 'Compress', titleZh: '压缩', descEn: 'Shrink files up to 90%', descZh: '文件体积缩小高达 90%' },
+  { key: 'watermark', titleEn: 'Watermark', titleZh: '水印', descEn: 'Batch text watermarks', descZh: '批量添加文字水印' },
   { key: 'convert', titleEn: 'Convert', titleZh: '转换', descEn: 'JPG, PNG, WebP, HEIC', descZh: 'JPG、PNG、WebP、HEIC 互转' },
 ]
 
@@ -17,11 +17,11 @@ export default function HomePage() {
   useEffect(() => {
     document.title = lang === 'zh'
       ? 'TapCrop 秒裁 — 免费在线批量图片处理工具'
-      : 'TapCrop — Free Online Batch Image Tools'
+      : 'TapCrop — Free Batch Image Editor | Crop, Resize, Compress Online'
     const meta = document.querySelector('meta[name="description"]')
     const desc = lang === 'zh'
       ? '免费在线批量裁剪、缩放、压缩、加水印、转换图片格式。100% 浏览器端处理，无需注册，图片不上传。'
-      : 'Free online batch image cropper, resizer, compressor, watermark tool, and format converter. 100% browser-based, no signup, no uploads.'
+      : 'Free online batch image editor. Crop, resize, compress, watermark, and convert photos instantly. No signup, no uploads — runs 100% in your browser.'
     if (meta) meta.setAttribute('content', desc)
   }, [lang])
 
@@ -60,18 +60,18 @@ export default function HomePage() {
         <h1 className="home-hero-title">
           {lang === 'zh'
             ? '批量处理图片，快人一步'
-            : 'Batch Image Processing, Simplified'
+            : 'Edit Hundreds of Images at Once'
           }
         </h1>
         <p className="home-hero-sub">
           {lang === 'zh'
             ? '裁剪 · 缩放 · 压缩 · 水印 · 转换 — 浏览器端完成，隐私零风险'
-            : 'Crop · Resize · Compress · Watermark · Convert — all in your browser'
+            : 'Crop, resize, compress, watermark, and convert — right in your browser. Nothing gets uploaded.'
           }
         </p>
         <div className="home-hero-actions">
           <Link to="/app" className="home-cta-primary">
-            {lang === 'zh' ? '开始使用' : 'Get Started'}
+            {lang === 'zh' ? '开始使用' : 'Start for Free'}
           </Link>
           <a href="#tools" className="home-cta-secondary">
             {lang === 'zh' ? '了解功能' : 'Learn More'}
@@ -80,7 +80,7 @@ export default function HomePage() {
         <p className="home-hero-note">
           {lang === 'zh'
             ? '无需注册 · 完全免费 · 图片不离开设备'
-            : 'No signup · 100% free · Images stay on your device'
+            : 'No account needed · Always free · Your files stay private'
           }
         </p>
       </section>
@@ -115,22 +115,22 @@ export default function HomePage() {
           <div className="home-how-step">
             <span className="home-how-num">1</span>
             <div>
-              <h3>{lang === 'zh' ? '上传图片' : 'Upload'}</h3>
-              <p>{lang === 'zh' ? '拖拽或点击，支持 JPG/PNG/WebP/HEIC' : 'Drag & drop, supports JPG/PNG/WebP/HEIC'}</p>
+              <h3>{lang === 'zh' ? '上传图片' : 'Drop Your Files'}</h3>
+              <p>{lang === 'zh' ? '拖拽或点击，支持 JPG/PNG/WebP/HEIC' : 'Drag & drop or browse. Supports JPG, PNG, WebP, HEIC.'}</p>
             </div>
           </div>
           <div className="home-how-step">
             <span className="home-how-num">2</span>
             <div>
-              <h3>{lang === 'zh' ? '选择设置' : 'Configure'}</h3>
-              <p>{lang === 'zh' ? '选预设或自定义参数' : 'Pick presets or customize settings'}</p>
+              <h3>{lang === 'zh' ? '选择设置' : 'Pick Your Settings'}</h3>
+              <p>{lang === 'zh' ? '选预设或自定义参数' : 'Choose a preset or dial in your own dimensions.'}</p>
             </div>
           </div>
           <div className="home-how-step">
             <span className="home-how-num">3</span>
             <div>
-              <h3>{lang === 'zh' ? '导出下载' : 'Export'}</h3>
-              <p>{lang === 'zh' ? '一键处理，单张或 ZIP 下载' : 'One click, download individually or as ZIP'}</p>
+              <h3>{lang === 'zh' ? '导出下载' : 'Download'}</h3>
+              <p>{lang === 'zh' ? '一键处理，单张或 ZIP 下载' : 'One click to process. Grab them one by one or as a ZIP.'}</p>
             </div>
           </div>
         </div>
