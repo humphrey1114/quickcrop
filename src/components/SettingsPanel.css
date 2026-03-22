@@ -509,7 +509,7 @@
 .sp-opt-row label {
   font-size: 13px;
   color: var(--text-3);
-  width: 36px;
+  width: 72px;
   flex-shrink: 0;
 }
 
