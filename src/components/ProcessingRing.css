@@ -1,0 +1,83 @@
+.ring-wrap {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.ring-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Processing state - spinning arc */
+.ring-track {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 2.5;
+}
+
+[data-theme="dark"] .ring-track {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.ring-fill {
+  fill: none;
+  stroke: var(--accent, #c8a87c);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 28 66;
+  transform-origin: center;
+  animation: ring-spin 1s linear infinite;
+}
+
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Done state - checkmark */
+.ring-bg-done {
+  fill: #34c759;
+  opacity: 0;
+  animation: ring-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.ring-check {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: ring-draw 0.4s 0.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes ring-pop {
+  0% { opacity: 0; r: 10; }
+  100% { opacity: 1; r: 15; }
+}
+
+@keyframes ring-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Error state - X mark */
+.ring-bg-error {
+  fill: #ff3b30;
+  opacity: 0;
+  animation: ring-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.ring-x {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: ring-draw-x 0.3s 0.2s ease forwards;
+}
+
+@keyframes ring-draw-x {
+  to { stroke-dashoffset: 0; }
+}

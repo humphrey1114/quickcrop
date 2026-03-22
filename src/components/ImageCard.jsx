@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback, useEffect, useMemo } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+import ProcessingRing from './ProcessingRing'
 import './ImageCard.css'
 
 export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemoveImage }) {
@@ -190,9 +191,11 @@ export default function ImageCard({ image, settings, onUpdateFocalPoint, onRemov
           </>
         )}
 
-        {/* Status label */}
-        {statusLabel && (
-          <span className={`status-label ${statusLabel.cls}`} title={statusLabel.tooltip || ''}>{statusLabel.text}</span>
+        {/* Status indicator */}
+        {image.status && (
+          <div className="status-ring-wrap" title={statusLabel?.tooltip || ''}>
+            <ProcessingRing status={image.status} />
+          </div>
         )}
 
         {/* Remove button */}

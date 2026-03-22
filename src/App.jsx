@@ -4,6 +4,7 @@ import DropZone from './components/DropZone'
 import SettingsPanel from './components/SettingsPanel'
 import PreviewGrid from './components/PreviewGrid'
 import TopNav from './components/TopNav'
+import BeforeAfter from './components/BeforeAfter'
 import { useLanguage } from './i18n/LanguageContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
@@ -86,6 +87,23 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [undo, redo])
+
+  // Scroll reveal animation
+  useEffect(() => {
+    let observer
+    const id = requestAnimationFrame(() => {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { threshold: 0.1 })
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    })
+    return () => { cancelAnimationFrame(id); observer?.disconnect() }
+  }, [images.length])
 
   const updateSetting = useCallback((key, value) => {
     setSettings(prev => {
@@ -350,42 +368,36 @@ export default function App() {
         <TopNav />
         {images.length === 0 ? (
           <div className="welcome">
-            <div className="welcome-header">
+            <div className="welcome-header reveal reveal-up">
               <h2 className="welcome-title">{t('welcome.title')}</h2>
               <p className="welcome-desc">
                 {t('welcome.desc')}
               </p>
             </div>
-            <DropZone onFilesAdded={handleFilesAdded} currentCount={images.length} />
+            <div className="reveal reveal-up reveal-d1">
+              <DropZone onFilesAdded={handleFilesAdded} currentCount={images.length} />
+            </div>
+            <div className="welcome-demo reveal reveal-up reveal-d2">
+              <h3 className="demo-title">{lang === 'zh' ? '裁剪效果演示' : 'See the Difference'}</h3>
+              <BeforeAfter />
+            </div>
             <div className="features">
-              <div className="feature">
-                <div className="feature-dot" style={{ background: '#007AFF' }} />
-                <div>
-                  <div className="feature-name">{t('feature.smartCrop')}</div>
-                  <div className="feature-text">{t('feature.smartCrop.desc')}</div>
+              {[
+                { color: '#007AFF', icon: '🎯', key: 'smartCrop' },
+                { color: '#FF9500', icon: '⚡', key: 'batch' },
+                { color: '#34C759', icon: '🔒', key: 'privacy' },
+                { color: '#AF52DE', icon: '✨', key: 'free' },
+              ].map((item, i) => (
+                <div className={`feature reveal reveal-up reveal-d${i + 3}`} key={item.key}>
+                  <div className="feature-icon" style={{ background: `${item.color}15`, color: item.color }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="feature-name">{t(`feature.${item.key}`)}</div>
+                    <div className="feature-text">{t(`feature.${item.key}.desc`)}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="feature">
-                <div className="feature-dot" style={{ background: '#FF9500' }} />
-                <div>
-                  <div className="feature-name">{t('feature.batch')}</div>
-                  <div className="feature-text">{t('feature.batch.desc')}</div>
-                </div>
-              </div>
-              <div className="feature">
-                <div className="feature-dot" style={{ background: '#34C759' }} />
-                <div>
-                  <div className="feature-name">{t('feature.privacy')}</div>
-                  <div className="feature-text">{t('feature.privacy.desc')}</div>
-                </div>
-              </div>
-              <div className="feature">
-                <div className="feature-dot" style={{ background: '#AF52DE' }} />
-                <div>
-                  <div className="feature-name">{t('feature.free')}</div>
-                  <div className="feature-text">{t('feature.free.desc')}</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         ) : (
