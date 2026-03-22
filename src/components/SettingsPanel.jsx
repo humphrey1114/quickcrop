@@ -506,7 +506,15 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
       <div className="sp-section">
         <div className="sp-label">{t('settings.enhancements')}</div>
         <div className="sp-tools-grid">
-          <WatermarkSettings settings={settings} onUpdate={onUpdate} />
+          <button
+            className={`sp-toggle-btn sp-toggle-sm ${settings.watermarkEnabled ? 'active' : ''}`}
+            onClick={() => onUpdate('watermarkEnabled', !settings.watermarkEnabled)}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 12L12 2M5 2h7v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {t('watermark')}
+          </button>
           <button
             className={`sp-toggle-btn sp-toggle-sm ${settings.borderEnabled ? 'active' : ''}`}
             onClick={() => onUpdate('borderEnabled', !settings.borderEnabled)}
@@ -517,6 +525,9 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             {t('border')}
           </button>
         </div>
+        {settings.watermarkEnabled && (
+          <WatermarkSettings settings={settings} onUpdate={onUpdate} />
+        )}
         {settings.borderEnabled && (
           <div className="sp-border-opts">
             <div className="sp-opt-row">
