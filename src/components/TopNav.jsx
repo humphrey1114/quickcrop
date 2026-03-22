@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAuth } from '../contexts/AuthContext'
 import AuthModal from './AuthModal'
+import SupportModal from './SupportModal'
 import './TopNav.css'
 
 function useTheme() {
@@ -24,6 +25,7 @@ export default function TopNav() {
   const { theme, toggleTheme } = useTheme()
   const { user, logout } = useAuth()
   const [showAuth, setShowAuth] = useState(false)
+  const [showSupport, setShowSupport] = useState(false)
 
   const NAV_ITEMS = [
     { path: '/tutorial', label: t('nav.tutorial') },
@@ -73,6 +75,16 @@ export default function TopNav() {
           </svg>
           <span>{lang === 'zh' ? 'English' : '中文'}</span>
         </button>
+        <button
+          className="top-nav-support"
+          onClick={() => setShowSupport(true)}
+          title={lang === 'zh' ? '支持我们' : 'Support Us'}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>{lang === 'zh' ? '打赏' : 'Support'}</span>
+        </button>
         {user ? (
           <div className="top-nav-user">
             <span className="top-nav-avatar">{user.email[0].toUpperCase()}</span>
@@ -92,6 +104,7 @@ export default function TopNav() {
         )}
       </div>
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+      {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
     </nav>
   )
 }

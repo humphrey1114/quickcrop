@@ -162,3 +162,31 @@
   background: var(--surface);
   color: var(--text);
 }
+
+.top-nav-support {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-left: 6px;
+  text-decoration: none;
+}
+
+.top-nav-support:hover {
+  color: #e25555;
+  border-color: #e25555;
+  background: rgba(226, 85, 85, 0.06);
+}
+
+.top-nav-support:hover svg path {
+  fill: #e25555;
+  stroke: #e25555;
+}

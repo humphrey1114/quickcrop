@@ -12,6 +12,10 @@ import FAQ from './pages/FAQ.jsx'
 import Changelog from './pages/Changelog.jsx'
 import Feedback from './pages/Feedback.jsx'
 import About from './pages/About.jsx'
+import InstagramGuide from './pages/guides/InstagramGuide.jsx'
+import TwitterGuide from './pages/guides/TwitterGuide.jsx'
+import YouTubeGuide from './pages/guides/YouTubeGuide.jsx'
+import BatchCropGuide from './pages/guides/BatchCropGuide.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -25,6 +29,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="/changelog" element={<Changelog />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
+          <Route path="/guides/instagram" element={<InstagramGuide />} />
+          <Route path="/guides/twitter" element={<TwitterGuide />} />
+          <Route path="/guides/youtube" element={<YouTubeGuide />} />
+          <Route path="/guides/batch-crop" element={<BatchCropGuide />} />
         </Routes>
       </BrowserRouter>
       <Analytics />
