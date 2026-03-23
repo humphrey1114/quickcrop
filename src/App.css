@@ -108,34 +108,40 @@
   gap: 6px;
 }
 
-.sidebar-brand-row {
+.sidebar-cta-btn {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.sidebar-pro-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 3px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #fff;
-  background: linear-gradient(135deg, #f59e0b, #ef4444, #a855f7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: transform 0.15s, box-shadow 0.15s;
-  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
-.sidebar-pro-badge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+.sidebar-cta-btn:hover {
+  background: var(--glass-strong);
+  color: var(--text);
+  border-color: var(--text-3);
+}
+
+.sidebar-cta-upgrade {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: rgba(0, 122, 255, 0.06);
+}
+
+.sidebar-cta-upgrade:hover {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .daily-usage-bar {
@@ -535,6 +541,12 @@
   .preview-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+  }
+
+  .sidebar-cta-btn {
+    margin: 0 0 8px;
+    padding: 6px 12px;
+    font-size: 11px;
   }
 
   .sidebar-footer {
