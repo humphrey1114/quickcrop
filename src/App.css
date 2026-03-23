@@ -56,11 +56,18 @@
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   margin: -14px -18px 14px;
   padding: 12px 18px;
   background: rgba(0, 0, 0, 0.04);
   border-bottom: 1px solid var(--border-light);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 }
 
 .brand-icon {
@@ -109,14 +116,12 @@
 }
 
 .sidebar-cta-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 0 0 10px;
-  padding: 7px 14px;
+  gap: 5px;
+  padding: 6px 14px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-2);
   background: var(--surface);
   border: 1px solid var(--border);
@@ -124,6 +129,8 @@
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .sidebar-cta-btn:hover {
@@ -544,8 +551,7 @@
   }
 
   .sidebar-cta-btn {
-    margin: 0 0 8px;
-    padding: 6px 12px;
+    padding: 5px 10px;
     font-size: 11px;
   }
 
