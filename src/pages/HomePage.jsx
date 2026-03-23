@@ -11,6 +11,16 @@ const TOOLS = [
   { key: 'convert', titleEn: 'Convert', titleZh: '转换', descEn: 'JPG, PNG, WebP, HEIC', descZh: 'JPG、PNG、WebP、HEIC 互转' },
 ]
 
+const SUB_TOOLS = [
+  { path: '/resize-jpg', titleEn: 'Resize JPG', titleZh: '缩放 JPG', descEn: 'Batch resize JPG images', descZh: '批量缩放 JPG 图片' },
+  { path: '/resize-png', titleEn: 'Resize PNG', titleZh: '缩放 PNG', descEn: 'Keep transparency', descZh: '保留透明度' },
+  { path: '/compress-jpg', titleEn: 'Compress JPG', titleZh: '压缩 JPG', descEn: 'Reduce JPG file size', descZh: '缩小 JPG 文件体积' },
+  { path: '/resize-image-kb', titleEn: 'Resize in KB', titleZh: '按 KB 调整', descEn: 'Resize to exact file size', descZh: '精确调整文件大小' },
+  { path: '/resize-to-100kb', titleEn: 'Resize to 100 KB', titleZh: '调整到 100KB', descEn: 'Exact 100 KB target', descZh: '精确 100KB 目标' },
+  { path: '/webp-to-png', titleEn: 'WebP to PNG', titleZh: 'WebP 转 PNG', descEn: 'Convert WebP, PNG, JPG', descZh: 'WebP、PNG、JPG 互转' },
+  { path: '/heic-to-jpg', titleEn: 'HEIC to JPG', titleZh: 'HEIC 转 JPG', descEn: 'Convert iPhone photos', descZh: '转换 iPhone 照片' },
+]
+
 const TOOL_DETAILS = [
   {
     key: 'crop',
@@ -220,6 +230,17 @@ export default function HomePage() {
                   <h3>{lang === 'zh' ? tool.titleZh : tool.titleEn}</h3>
                   <p>{lang === 'zh' ? tool.descZh : tool.descEn}</p>
                 </div>
+              </Link>
+            ))}
+          </div>
+          <h2 className="home-tools-subtitle">
+            {lang === 'zh' ? '更多工具' : 'More Tools'}
+          </h2>
+          <div className="home-subtools-grid">
+            {SUB_TOOLS.map(tool => (
+              <Link key={tool.path} to={tool.path} className="home-subtool-card">
+                <h3>{lang === 'zh' ? tool.titleZh : tool.titleEn}</h3>
+                <p>{lang === 'zh' ? tool.descZh : tool.descEn}</p>
               </Link>
             ))}
           </div>

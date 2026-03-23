@@ -211,6 +211,56 @@
   display: none;
 }
 
+.home-tools-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 32px 0 16px;
+  text-align: center;
+}
+
+.home-subtools-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.home-subtool-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.home-subtool-card:hover {
+  border-color: var(--border);
+  background: var(--glass-strong);
+  transform: translateY(-2px);
+}
+
+.home-subtool-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.home-subtool-card p {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.4;
+  margin: 0;
+}
+
 .home-tools-allbtn {
   margin-top: 24px;
   text-align: center;
@@ -658,6 +708,10 @@
   .home-tools-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .home-subtools-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* iPad portrait / large phone 481-768 */
@@ -753,6 +807,10 @@
   }
 
   .home-tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-subtools-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 

@@ -26,7 +26,11 @@ import WatermarkPage from './pages/tools/WatermarkPage.jsx'
 import ConvertPage from './pages/tools/ConvertPage.jsx'
 import ResizeKbPage from './pages/tools/ResizeKbPage.jsx'
 import WebpToPngPage from './pages/tools/WebpToPngPage.jsx'
-import ResizeIndiaPage from './pages/tools/ResizeIndiaPage.jsx'
+import ResizeJpgPage from './pages/tools/ResizeJpgPage.jsx'
+import ResizePngPage from './pages/tools/ResizePngPage.jsx'
+import CompressJpgPage from './pages/tools/CompressJpgPage.jsx'
+import ResizeTo100KbPage from './pages/tools/ResizeTo100KbPage.jsx'
+import HeicToJpgPage from './pages/tools/HeicToJpgPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 
@@ -55,7 +59,11 @@ createRoot(document.getElementById('root')).render(
           <Route path="/convert" element={<ConvertPage />} />
           <Route path="/resize-image-kb" element={<ResizeKbPage />} />
           <Route path="/webp-to-png" element={<WebpToPngPage />} />
-          <Route path="/resize-photo-india" element={<ResizeIndiaPage />} />
+          <Route path="/resize-jpg" element={<ResizeJpgPage />} />
+          <Route path="/resize-png" element={<ResizePngPage />} />
+          <Route path="/compress-jpg" element={<CompressJpgPage />} />
+          <Route path="/resize-to-100kb" element={<ResizeTo100KbPage />} />
+          <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
