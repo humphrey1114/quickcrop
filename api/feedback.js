@@ -84,7 +84,7 @@ export default async function handler(req, res) {
 
   const mailOptions = {
     from: `"秒裁反馈" <${process.env.SMTP_USER}>`,
-    to: 'feedback294@163.com',
+    to: 'humphrey1114@gmail.com',
     replyTo: email,
     subject: `[秒裁反馈] ${typeLabels[type] || '反馈'} - ${name}`,
     html: `
