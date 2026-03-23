@@ -342,7 +342,7 @@ export default {
   'feedback.form.submit': 'Submit Feedback',
   'feedback.form.sending': 'Sending...',
   'feedback.form.success': 'Feedback sent successfully. Thank you!',
-  'feedback.form.error': 'Failed to send. Please try again or email feedback294@163.com directly.',
+  'feedback.form.error': 'Failed to send. Please try again or email humphrey1114@gmail.com directly.',
   'feedback.noteTitle': 'Feedback Policy',
   'feedback.note1': 'We carefully read every piece of feedback and work to improve in future releases. Due to limited resources, we may not reply individually, but your suggestions will always be seen.',
   'feedback.note2': 'If you enjoy TapCrop, please share it with friends who might find it useful — that\'s the best support you can give us.',

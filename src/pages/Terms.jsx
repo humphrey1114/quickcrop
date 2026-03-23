@@ -51,13 +51,13 @@ export default function Terms() {
         </ul>
 
         <h2>8. 退款政策</h2>
-        <p>由于打赏属于自愿捐助，不构成购买商品或服务，一般不予退款。但如果您认为扣款有误，请联系 <a href="mailto:feedback294@163.com">feedback294@163.com</a>，我们将审核您的请求。适用消费者保护法律（包括欧盟/英国远程销售法规）要求的退款将予以执行。</p>
+        <p>由于打赏属于自愿捐助，不构成购买商品或服务，一般不予退款。但如果您认为扣款有误，请联系 <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a>，我们将审核您的请求。适用消费者保护法律（包括欧盟/英国远程销售法规）要求的退款将予以执行。</p>
 
         <h2>9. 知识产权</h2>
         <p>TapCrop 及其原创内容、功能、品牌和源代码均为 TapCrop 的财产，受国际版权、商标和其他知识产权法律保护。您保留对您图片的所有权利，我们绝不访问、存储或主张对您内容的任何权利。</p>
 
         <h2>10. DMCA / 版权政策</h2>
-        <p>我们尊重他人的知识产权。如果您认为 TapCrop 上的任何内容侵犯了您的版权，请联系 <a href="mailto:feedback294@163.com">feedback294@163.com</a> 并提供相关信息。</p>
+        <p>我们尊重他人的知识产权。如果您认为 TapCrop 上的任何内容侵犯了您的版权，请联系 <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a> 并提供相关信息。</p>
 
         <h2>11. 免责声明</h2>
         <p>TapCrop 按"现有状态"和"可用状态"提供，不提供任何明示或暗示的保证，包括但不限于对适销性、特定用途适用性和非侵权性的暗示保证。我们不保证服务不会中断、安全或无错误。</p>
@@ -81,7 +81,7 @@ export default function Terms() {
         <p>我们保留随时更新这些条款的权利。重大变更将通过更新页面顶部的"最后更新"日期来指示。在变更发布后继续使用 TapCrop 即构成接受修订后的条款。</p>
 
         <h2>18. 联系方式</h2>
-        <p>如对服务条款有任何疑问，请联系 <a href="mailto:feedback294@163.com">feedback294@163.com</a>。</p>
+        <p>如对服务条款有任何疑问，请联系 <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a>。</p>
       </PageLayout>
     )
   }
@@ -125,13 +125,13 @@ export default function Terms() {
       </ul>
 
       <h2>8. Refund Policy</h2>
-      <p>As donations are voluntary contributions and do not constitute a purchase of goods or services, they are generally non-refundable. However, if you believe a charge was made in error, please contact us at <a href="mailto:feedback294@163.com">feedback294@163.com</a> and we will review your request. Refunds required by applicable consumer protection law (including EU/UK distance selling regulations) will be honored.</p>
+      <p>As donations are voluntary contributions and do not constitute a purchase of goods or services, they are generally non-refundable. However, if you believe a charge was made in error, please contact us at <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a> and we will review your request. Refunds required by applicable consumer protection law (including EU/UK distance selling regulations) will be honored.</p>
 
       <h2>9. Intellectual Property</h2>
       <p>TapCrop and its original content, features, functionality, branding, and source code are the property of TapCrop and are protected by international copyright, trademark, and other intellectual property laws. You retain all rights to your images — we never access, store, or claim any rights to your content.</p>
 
       <h2>10. DMCA / Copyright Policy</h2>
-      <p>We respect the intellectual property rights of others. If you believe that any content on TapCrop infringes your copyright, please contact us at <a href="mailto:feedback294@163.com">feedback294@163.com</a> with the following information:</p>
+      <p>We respect the intellectual property rights of others. If you believe that any content on TapCrop infringes your copyright, please contact us at <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a> with the following information:</p>
       <ul>
         <li>A description of the copyrighted work you claim has been infringed</li>
         <li>The URL or location of the allegedly infringing material</li>
@@ -162,7 +162,7 @@ export default function Terms() {
       <p>We reserve the right to update these Terms at any time. Material changes will be indicated by updating the "Last updated" date at the top of this page. Your continued use of TapCrop after changes are posted constitutes acceptance of the revised terms.</p>
 
       <h2>18. Contact</h2>
-      <p>For questions about these Terms of Service, please contact us at <a href="mailto:feedback294@163.com">feedback294@163.com</a>.</p>
+      <p>For questions about these Terms of Service, please contact us at <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a>.</p>
     </PageLayout>
   )
 }

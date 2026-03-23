@@ -76,7 +76,7 @@ export default function Privacy() {
         <p>我们可能会不时更新本隐私政策。变更将通过页面顶部的"最后更新"日期反映。</p>
 
         <h2>11. 联系方式</h2>
-        <p>如对本隐私政策有任何疑问，请联系 <a href="mailto:feedback294@163.com">feedback294@163.com</a>。</p>
+        <p>如对本隐私政策有任何疑问，请联系 <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a>。</p>
       </PageLayout>
     )
   }
@@ -146,7 +146,7 @@ export default function Privacy() {
       <p>We may update this Privacy Policy from time to time. Changes will be reflected by the "Last updated" date at the top of this page.</p>
 
       <h2>11. Contact</h2>
-      <p>For questions about this Privacy Policy, please contact us at <a href="mailto:feedback294@163.com">feedback294@163.com</a>.</p>
+      <p>For questions about this Privacy Policy, please contact us at <a href="mailto:humphrey1114@gmail.com">humphrey1114@gmail.com</a>.</p>
     </PageLayout>
   )
 }

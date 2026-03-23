@@ -346,7 +346,7 @@ export default {
   'feedback.form.submit': '提交反馈',
   'feedback.form.sending': '发送中...',
   'feedback.form.success': '反馈已发送成功，感谢你的意见！',
-  'feedback.form.error': '发送失败，请稍后重试或直接发送邮件至 feedback294@163.com',
+  'feedback.form.error': '发送失败，请稍后重试或直接发送邮件至 humphrey1114@gmail.com',
   'feedback.noteTitle': '常见反馈说明',
   'feedback.note1': '我们会认真阅读每一条反馈，并在后续版本中逐步改进。由于开发资源有限，不一定能逐一回复，但你的建议一定会被看到。',
   'feedback.note2': '如果你喜欢秒裁，也欢迎分享给身边有需要的朋友，这是对我们最大的支持。',
