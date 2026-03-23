@@ -2,28 +2,24 @@ import ToolLandingPage from './ToolLandingPage'
 
 const features = [
   {
-    icon: '🔄',
-    titleEn: 'JPG ↔ PNG ↔ WebP',
-    titleZh: 'JPG ↔ PNG ↔ WebP',
+    titleEn: 'JPG, PNG, WebP',
+    titleZh: 'JPG、PNG、WebP',
     descEn: 'Convert between all major image formats with a single click.',
     descZh: '一键在所有主流图片格式之间进行转换。',
   },
   {
-    icon: '⚡',
     titleEn: 'Batch Convert',
     titleZh: '批量转换',
     descEn: 'Convert hundreds of images to the same format in seconds.',
     descZh: '几秒钟内将数百张图片转换为同一格式。',
   },
   {
-    icon: '📱',
     titleEn: 'HEIC to JPG',
     titleZh: 'HEIC 转 JPG',
     descEn: 'Easily convert iPhone HEIC photos to widely compatible JPG format.',
     descZh: '轻松将 iPhone 的 HEIC 照片转换为兼容性更好的 JPG 格式。',
   },
   {
-    icon: '🔒',
     titleEn: '100% Private',
     titleZh: '100% 隐私安全',
     descEn: 'Images never leave your device. All conversion happens in your browser.',
@@ -47,21 +43,20 @@ const faqEn = [
   { q: 'What formats can I convert between?', a: 'TapCrop supports input of JPG, PNG, WebP, GIF, BMP, TIFF, and HEIC/HEIF. You can output to JPG, PNG, or WebP.' },
   { q: 'Can I convert HEIC photos from iPhone?', a: 'Yes! TapCrop can convert HEIC/HEIF photos to JPG, PNG, or WebP.' },
   { q: 'Does conversion change image dimensions?', a: 'By default, no. But you can also resize images during conversion if you want.' },
-  { q: 'Which format should I use?', a: 'JPG is best for photos (smaller files). PNG is best for graphics with transparency. WebP offers the best compression for web use.' },
+  { q: 'Which format should I use?', a: 'JPG is best for photos. PNG is best for graphics with transparency. WebP offers the best compression for web use.' },
 ]
 
 const faqZh = [
   { q: '可以在哪些格式之间转换？', a: 'TapCrop 支持输入 JPG、PNG、WebP、GIF、BMP、TIFF 和 HEIC/HEIF，可以输出为 JPG、PNG 或 WebP。' },
   { q: '可以转换 iPhone 的 HEIC 照片吗？', a: '可以！TapCrop 可以将 HEIC/HEIF 照片转换为 JPG、PNG 或 WebP。' },
   { q: '转换会改变图片尺寸吗？', a: '默认不会。但如果你需要，可以在转换的同时调整图片尺寸。' },
-  { q: '应该使用哪种格式？', a: 'JPG 最适合照片（文件更小）。PNG 最适合有透明度的图形。WebP 为网页使用提供最佳压缩效果。' },
+  { q: '应该使用哪种格式？', a: 'JPG 最适合照片。PNG 最适合有透明度的图形。WebP 为网页使用提供最佳压缩效果。' },
 ]
 
 export default function ConvertPage() {
   return (
     <ToolLandingPage
       toolKey="convert"
-      icon="🔄"
       titleEn="Free Online Image Format Converter"
       titleZh="免费在线图片格式转换工具"
       descEn="Convert images between JPG, PNG, WebP, and HEIC. Batch convert hundreds of photos in seconds. Free, private, no signup."

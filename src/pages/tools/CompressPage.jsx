@@ -2,28 +2,24 @@ import ToolLandingPage from './ToolLandingPage'
 
 const features = [
   {
-    icon: '📉',
     titleEn: 'Up to 90% Smaller',
     titleZh: '最高缩小 90%',
     descEn: 'Dramatically reduce file sizes while maintaining visual quality.',
     descZh: '大幅缩小文件体积，同时保持视觉质量。',
   },
   {
-    icon: '⚡',
     titleEn: 'Batch Compress',
     titleZh: '批量压缩',
     descEn: 'Compress hundreds of images at once. No more compressing one by one.',
     descZh: '一次压缩数百张图片，无需逐张操作。',
   },
   {
-    icon: '🎛️',
     titleEn: 'Adjustable Quality',
     titleZh: '可调节质量',
     descEn: 'Fine-tune compression level from 10% to 90% with a simple slider.',
     descZh: '通过简单的滑块将压缩级别从 10% 调到 90%。',
   },
   {
-    icon: '🔒',
     titleEn: '100% Private',
     titleZh: '100% 隐私安全',
     descEn: 'Images never leave your device. All compression happens in your browser.',
@@ -61,7 +57,6 @@ export default function CompressPage() {
   return (
     <ToolLandingPage
       toolKey="compress"
-      icon="📦"
       titleEn="Free Online Image Compressor"
       titleZh="免费在线图片压缩工具"
       descEn="Compress images by up to 90% without losing quality. Batch compress hundreds of photos at once — free, private, no signup required."

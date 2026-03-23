@@ -61,7 +61,6 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
 
       {/* Hero */}
       <div className="tl-hero">
-        <div className="tl-hero-icon">{icon}</div>
         <h1 className="tl-hero-title">{title}</h1>
         <p className="tl-hero-desc">{desc}</p>
         <Link to={`/app?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
@@ -91,7 +90,6 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
           <div className="tl-features-grid">
             {features.map((f, i) => (
               <div key={i} className="tl-feature-card">
-                <div className="tl-feature-icon">{f.icon}</div>
                 <h3>{lang === 'zh' ? f.titleZh : f.titleEn}</h3>
                 <p>{lang === 'zh' ? f.descZh : f.descEn}</p>
               </div>
