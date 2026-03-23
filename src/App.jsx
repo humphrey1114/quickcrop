@@ -6,6 +6,7 @@ import PreviewGrid from './components/PreviewGrid'
 import TopNav from './components/TopNav'
 import HeroDemo from './components/HeroDemo'
 import { useLanguage } from './i18n/LanguageContext'
+import { useAuth } from './contexts/AuthContext'
 import { usePro } from './contexts/ProContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
@@ -72,6 +73,7 @@ let imageIdCounter = 0
 
 export default function App() {
   const { t, lang } = useLanguage()
+  const { user } = useAuth()
   const { isPro, limits, canProcess, addUsage, remainingToday } = usePro()
   const [searchParams] = useSearchParams()
   const [settings, setSettings] = useState(loadSettings)
@@ -421,6 +423,16 @@ export default function App() {
               {lang === 'zh' && <span className="brand-tag">{t('brand.tag')}</span>}
             </div>
           </Link>
+          {!user && !isPro && (
+            <Link to="/pricing" className="sidebar-unlock-hint">
+              {lang === 'zh' ? '🔓 登录解锁更多功能' : '🔓 Log in to unlock more'}
+            </Link>
+          )}
+          {user && !isPro && (
+            <Link to="/pricing" className="sidebar-unlock-hint">
+              {lang === 'zh' ? '⚡ 升级 Pro 解锁全部功能' : '⚡ Upgrade to Pro'}
+            </Link>
+          )}
 
           <SettingsPanel settings={settings} onUpdate={updateSetting} onBatchUpdate={updateSettingsBatch} />
         </div>

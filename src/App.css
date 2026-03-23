@@ -108,6 +108,21 @@
   gap: 6px;
 }
 
+.sidebar-unlock-hint {
+  display: block;
+  font-size: 11px;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 4px 12px 8px;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+
+.sidebar-unlock-hint:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 .daily-usage-bar {
   display: flex;
   justify-content: space-between;
