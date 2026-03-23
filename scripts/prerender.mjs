@@ -1,11 +1,10 @@
 /**
  * Post-build prerender script.
- * After `vite build`, this script serves the dist folder,
- * visits each route with Puppeteer, and saves the rendered HTML.
+ * Uses puppeteer-core + @sparticuz/chromium to work on both
+ * local machines and Vercel/Lambda build environments.
  *
- * FAULT-TOLERANT: If Puppeteer fails (e.g. on Vercel), the script
- * exits gracefully with code 0 — the site works fine as a normal SPA.
- * Prerendering is an SEO enhancement, not a requirement.
+ * FAULT-TOLERANT: If browser fails to launch, the script exits
+ * gracefully — the site works fine as a normal SPA.
  */
 import { createServer } from 'http'
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
@@ -42,7 +41,6 @@ const ROUTES = [
   '/terms',
 ]
 
-// Simple static file server for the dist folder
 function startServer() {
   return new Promise((resolve) => {
     const server = createServer((req, res) => {
@@ -51,11 +49,7 @@ function startServer() {
 
       if (!existsSync(filePath) || !filePath.includes('.')) {
         const htmlPath = join(DIST, url, 'index.html')
-        if (existsSync(htmlPath)) {
-          filePath = htmlPath
-        } else {
-          filePath = join(DIST, 'index.html')
-        }
+        filePath = existsSync(htmlPath) ? htmlPath : join(DIST, 'index.html')
       }
 
       try {
@@ -82,26 +76,62 @@ function startServer() {
   })
 }
 
-async function prerender() {
-  // Try to import puppeteer — if it fails, skip prerendering gracefully
-  let puppeteer
-  try {
-    puppeteer = (await import('puppeteer')).default
-  } catch {
-    console.log('\n⏭️  Puppeteer not available — skipping prerender (site works fine as SPA)\n')
-    process.exit(0)
-  }
+async function getBrowser() {
+  const puppeteer = (await import('puppeteer-core')).default
 
+  // Try @sparticuz/chromium first (works on Vercel/Lambda)
+  try {
+    const chromium = (await import('@sparticuz/chromium')).default
+    chromium.setHeadlessMode = true
+    chromium.setGraphicsMode = false
+    const executablePath = await chromium.executablePath()
+    return await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath,
+      headless: true,
+    })
+  } catch {
+    // Fallback: try local Chrome/Chromium
+    const paths = [
+      // Windows
+      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+      process.env.LOCALAPPDATA + '\\Google\\Chrome\\Application\\chrome.exe',
+      // macOS
+      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      // Linux
+      '/usr/bin/google-chrome',
+      '/usr/bin/chromium-browser',
+      '/usr/bin/chromium',
+    ]
+
+    for (const p of paths) {
+      if (p && existsSync(p)) {
+        return await puppeteer.launch({
+          executablePath: p,
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+        })
+      }
+    }
+
+    throw new Error('No Chrome/Chromium found')
+  }
+}
+
+async function prerender() {
   console.log('\n🔍 Prerendering routes for SEO...\n')
 
   let server, browser
   try {
     server = await startServer()
-    browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
+    browser = await getBrowser()
   } catch (err) {
-    console.log(`\n⏭️  Cannot launch browser — skipping prerender: ${err.message}\n`)
+    console.log(`\n⏭️  Cannot launch browser — skipping prerender: ${err.message}`)
+    console.log('   Site will work fine as a normal SPA.\n')
     server?.close()
-    process.exit(0) // Exit 0 so build succeeds
+    process.exit(0)
   }
 
   let success = 0
@@ -114,17 +144,13 @@ async function prerender() {
         waitUntil: 'networkidle0',
         timeout: 15000,
       })
-
-      // Wait for React to render an h1
       await page.waitForFunction(() => document.querySelector('h1') !== null, { timeout: 5000 }).catch(() => {})
 
       const html = await page.content()
       await page.close()
 
       const outDir = route === '/' ? DIST : join(DIST, route)
-      if (!existsSync(outDir)) {
-        mkdirSync(outDir, { recursive: true })
-      }
+      if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
       const outFile = route === '/' ? join(DIST, 'index.html') : join(outDir, 'index.html')
       writeFileSync(outFile, html)
 
@@ -138,11 +164,9 @@ async function prerender() {
 
   await browser.close()
   server.close()
-
   console.log(`\n  Done: ${success} prerendered, ${failed} failed\n`)
 }
 
-// Always exit 0 — prerendering is an enhancement, not a requirement
 prerender().catch((err) => {
   console.log(`\n⏭️  Prerender error (non-fatal): ${err.message}\n`)
   process.exit(0)
