@@ -42,11 +42,11 @@ export default function Terms() {
         <p>您的隐私对我们非常重要。TapCrop 不会收集、存储或传输您的图片。所有图片处理完全在您的浏览器中进行。我们使用 Vercel Analytics 收集匿名的、无 Cookie 的使用统计数据。详情请参阅我们的<Link to="/privacy">隐私政策</Link>。</p>
 
         <h2>7. 打赏与支付</h2>
-        <p>TapCrop 的核心功能免费使用。自愿打赏通过第三方支付处理商 Creem 处理。我们保留在未来推出高级功能或付费计划的权利。打赏即表示您确认：</p>
+        <p>TapCrop 的核心功能免费使用。自愿打赏通过 Buy Me a Coffee 这一第三方支持平台处理。我们保留在未来推出高级功能或付费计划的权利。打赏即表示您确认：</p>
         <ul>
           <li>打赏是自愿的，不会解锁额外功能</li>
           <li>除适用法律要求外，打赏不可退款</li>
-          <li>支付由 Creem 处理，我们不存储您的支付信息</li>
+          <li>支付由 Buy Me a Coffee 处理，我们不存储您的支付信息</li>
           <li>在您确认付款前，价格会清晰显示</li>
         </ul>
 
@@ -69,7 +69,7 @@ export default function Terms() {
         <p>您同意就因您使用本服务或违反这些条款而产生的任何索赔、损害、损失、责任和费用（包括合理的法律费用），为 TapCrop 及其运营者进行辩护、赔偿并使其免受损害。</p>
 
         <h2>14. 第三方服务</h2>
-        <p>TapCrop 可能包含第三方服务的链接或集成（如 Creem 用于支付、Firebase 用于认证、Vercel 用于托管）。我们不对这些第三方服务的内容、隐私政策或做法负责。</p>
+        <p>TapCrop 可能包含第三方服务的链接或集成（如 Buy Me a Coffee 用于自愿打赏、Firebase 用于认证、Vercel 用于托管）。我们不对这些第三方服务的内容、隐私政策或做法负责。</p>
 
         <h2>15. 适用法律</h2>
         <p>这些条款应受 TapCrop 运营所在司法管辖区法律的管辖和解释。对于欧盟或英国用户，这些条款中的任何内容均不影响您的法定消费者权利。</p>
@@ -116,11 +116,11 @@ export default function Terms() {
       <p>Your privacy is important to us. TapCrop does not collect, store, or transmit your images. All image processing happens entirely in your browser. We use Vercel Analytics to collect anonymous, cookie-free usage statistics. For full details, please see our <Link to="/privacy">Privacy Policy</Link>.</p>
 
       <h2>7. Donations and Payments</h2>
-      <p>TapCrop's core features are free to use. Voluntary donations are processed through Creem, a third-party payment processor. We reserve the right to introduce premium features or paid plans in the future. By making a donation, you acknowledge that:</p>
+      <p>TapCrop's core features are free to use. Voluntary donations are handled through Buy Me a Coffee, a third-party support platform. We reserve the right to introduce premium features or paid plans in the future. By making a donation, you acknowledge that:</p>
       <ul>
         <li>Donations are voluntary and do not unlock additional features</li>
         <li>Donations are non-refundable unless required by applicable law</li>
-        <li>Payment processing is handled by Creem — we do not store your payment information</li>
+        <li>Payment processing is handled by Buy Me a Coffee — we do not store your payment information</li>
         <li>Prices are displayed clearly before you confirm any payment</li>
       </ul>
 
@@ -150,7 +150,7 @@ export default function Terms() {
       <p>You agree to defend, indemnify, and hold harmless TapCrop and its operators from any claims, damages, losses, liabilities, and expenses (including reasonable legal fees) arising out of your use of the service or violation of these terms.</p>
 
       <h2>14. Third-Party Services</h2>
-      <p>TapCrop may contain links to or integrate with third-party services (such as Creem for payments, Firebase for authentication, and Vercel for hosting). We are not responsible for the content, privacy policies, or practices of these third-party services. Your use of such services is governed by their respective terms and policies.</p>
+      <p>TapCrop may contain links to or integrate with third-party services (such as Buy Me a Coffee for voluntary support, Firebase for authentication, and Vercel for hosting). We are not responsible for the content, privacy policies, or practices of these third-party services. Your use of such services is governed by their respective terms and policies.</p>
 
       <h2>15. Governing Law</h2>
       <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which TapCrop operates, without regard to conflict of law provisions. For users in the European Union or United Kingdom, nothing in these terms affects your statutory consumer rights.</p>

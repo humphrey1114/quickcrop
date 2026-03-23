@@ -45,7 +45,7 @@ export default function Privacy() {
         <p>我们使用浏览器的本地存储来保存您的设置偏好（裁剪尺寸、格式、质量等），以便在会话之间保持。这些数据保留在您的设备上，不会发送到我们的服务器。</p>
 
         <h2>4. 支付</h2>
-        <p>自愿打赏通过第三方支付处理商 Creem 处理。我们不存储您的支付信息。有关 Creem 如何处理支付数据的详情，请参阅 Creem 的隐私政策。</p>
+        <p>自愿打赏通过 Buy Me a Coffee 这一第三方支持平台处理。我们不存储您的支付信息。有关其如何处理支付数据的详情，请参阅 Buy Me a Coffee 的隐私政策。</p>
 
         <h2>5. Cookie</h2>
         <p>TapCrop 不使用 Cookie 进行跟踪。Vercel Analytics 不使用 Cookie。如果您创建了账户，Firebase 可能会出于认证目的使用 Cookie。</p>
@@ -55,7 +55,7 @@ export default function Privacy() {
         <ul>
           <li><strong>Vercel</strong> — 托管和分析</li>
           <li><strong>Firebase</strong> — 认证和数据存储（可选账户）</li>
-          <li><strong>Creem</strong> — 支付处理（自愿打赏）</li>
+          <li><strong>Buy Me a Coffee</strong> — 自愿打赏处理</li>
         </ul>
 
         <h2>7. 数据保留</h2>
@@ -115,7 +115,7 @@ export default function Privacy() {
       <p>We use your browser's local storage to save your settings preferences (crop dimensions, format, quality, etc.) so they persist between sessions. This data stays on your device and is never sent to our servers.</p>
 
       <h2>4. Payments</h2>
-      <p>Voluntary donations are processed through Creem, a third-party payment processor. We do not store your payment information. Please refer to Creem's privacy policy for details on how they handle payment data.</p>
+      <p>Voluntary donations are handled through Buy Me a Coffee, a third-party support platform. We do not store your payment information. Please refer to Buy Me a Coffee's privacy policy for details on how they handle payment data.</p>
 
       <h2>5. Cookies</h2>
       <p>TapCrop does not use cookies for tracking. Vercel Analytics is cookie-free. Firebase may use cookies for authentication purposes if you create an account.</p>
@@ -125,7 +125,7 @@ export default function Privacy() {
       <ul>
         <li><strong>Vercel</strong> — Hosting and analytics</li>
         <li><strong>Firebase</strong> — Authentication and data storage (optional accounts)</li>
-        <li><strong>Creem</strong> — Payment processing (voluntary donations)</li>
+        <li><strong>Buy Me a Coffee</strong> — Voluntary support payments</li>
       </ul>
 
       <h2>7. Data Retention</h2>
