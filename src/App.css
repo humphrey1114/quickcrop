@@ -140,15 +140,15 @@
 }
 
 .sidebar-cta-upgrade {
-  color: var(--primary);
-  border-color: var(--primary);
-  background: rgba(0, 122, 255, 0.06);
+  color: var(--text-2);
+  border-color: var(--border);
+  background: var(--surface);
 }
 
 .sidebar-cta-upgrade:hover {
-  background: rgba(0, 122, 255, 0.12);
-  color: var(--primary);
-  border-color: var(--primary);
+  background: var(--glass-strong);
+  color: var(--text);
+  border-color: var(--text-3);
 }
 
 .daily-usage-bar {
