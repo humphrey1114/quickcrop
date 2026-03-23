@@ -15,21 +15,29 @@
 .home-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 16px 80px;
   width: 100%;
   background: rgba(0, 0, 0, 0.03);
   border-bottom: 2px solid var(--border);
 }
 
-[data-theme="dark"] .home-nav {
-  background: rgba(255, 255, 255, 0.03);
+.home-nav-brand {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .home-nav-links {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 48px;
+}
+
+
+[data-theme="dark"] .home-nav {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .home-nav-links a {
@@ -42,12 +50,6 @@
 
 .home-nav-links a:hover {
   color: var(--text);
-}
-
-.home-nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 .home-nav-logo {
@@ -64,8 +66,10 @@
 }
 
 .home-nav-actions {
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
 }
 
