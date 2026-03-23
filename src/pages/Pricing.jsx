@@ -33,7 +33,9 @@ export default function Pricing() {
         { label: t('pricing.dailyLimit'), value: t('pricing.free.daily') },
         { label: t('pricing.batchUpload'), value: t('pricing.free.batch') },
         { label: t('pricing.fileSize'), value: '20 MB' },
-        { label: t('pricing.allTools'), value: '✓' },
+        { label: t('pricing.basicTools'), value: t('pricing.free.basicTools') },
+        { label: t('pricing.adjust'), value: t('pricing.free.adjust'), disabled: true },
+        { label: t('pricing.watermarkPos'), value: t('pricing.free.watermarkPos'), disabled: true },
         { label: t('pricing.templates'), value: t('pricing.free.templates') },
         { label: t('pricing.exportQuality'), value: '80%' },
         { label: t('pricing.ads'), value: t('pricing.free.ads') },
@@ -48,7 +50,9 @@ export default function Pricing() {
         { label: t('pricing.dailyLimit'), value: t('pricing.pro.daily') },
         { label: t('pricing.batchUpload'), value: t('pricing.pro.batch') },
         { label: t('pricing.fileSize'), value: '50 MB' },
-        { label: t('pricing.allTools'), value: '✓' },
+        { label: t('pricing.basicTools'), value: t('pricing.pro.basicTools') },
+        { label: t('pricing.adjust'), value: t('pricing.pro.adjust') },
+        { label: t('pricing.watermarkPos'), value: t('pricing.pro.watermarkPos') },
         { label: t('pricing.templates'), value: t('pricing.pro.templates') },
         { label: t('pricing.exportQuality'), value: '100%' },
         { label: t('pricing.ads'), value: t('pricing.pro.ads') },
@@ -88,7 +92,7 @@ export default function Pricing() {
             </div>
             <ul className="pricing-features">
               {plan.features.map(f => (
-                <li key={f.label}>
+                <li key={f.label} className={f.disabled ? 'pricing-feature-disabled' : ''}>
                   <span className="pricing-feature-label">{f.label}</span>
                   <span className="pricing-feature-value">{f.value}</span>
                 </li>

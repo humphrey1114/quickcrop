@@ -88,6 +88,35 @@
   box-shadow: 0 0 0 3px var(--accent-light);
 }
 
+.wm-pos-locked {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.wm-pos-locked-text {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.wm-pro-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(0, 122, 255, 0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.wm-pos-hint {
+  font-size: 11px;
+  color: var(--text-3);
+  width: 100%;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .wm-row {

@@ -5,7 +5,32 @@
       "Bash(npm install:*)",
       "Bash(find C:UsersASUSDesktopjicai/src -type f \\\\\\(-name *.jsx -o -name *.js -o -name *.css \\\\\\))",
       "Bash(grep -r \"^import\\\\|^export\" C:UsersASUSDesktopjicai/src --include=*.jsx --include=*.js)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm i:*)",
+      "Bash(gh api:*)",
+      "Bash(git reset:*)",
+      "Bash(grep -E \"\\\\.\\(js|jsx|ts|tsx\\)$\")",
+      "Bash(npm run:*)",
+      "Bash(gh repo:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.creem.io)",
+      "Bash(wc -l /c/Users/ASUS/Desktop/jicai/src/core/*.js)",
+      "Bash(npx vite:*)",
+      "Bash(cat:*)",
+      "Bash(curl -H 'Content-Type:text/plain' --data-binary @- \"http://data.zz.baidu.com/urls?site=https://www.tapcrop.com&token=0mv4KAgShEg2Zm7t\")",
+      "Bash(grep -r \"aria-\\\\|role=\\\\|tabindex\\\\|focus\" /c/Users/ASUS/Desktop/jicai/src/components/*.jsx)",
+      "Bash(npm uninstall:*)",
+      "Bash(xargs wc:*)",
+      "Bash(for f:*)",
+      "Bash(do powershell:*)",
+      "Bash(done)",
+      "Bash(npm ls:*)",
+      "Bash(npx puppeteer:*)",
+      "WebFetch(domain:www.tapcrop.com)",
+      "Bash(ls public/favicon.* public/*.ico public/*.png)"
     ]
   }
 }

@@ -1,8 +1,10 @@
 import './WatermarkSettings.css'
 import { useLanguage } from '../i18n/LanguageContext'
+import { usePro } from '../contexts/ProContext'
 
 export default function WatermarkSettings({ settings, onUpdate }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  const { limits } = usePro()
 
   const POSITIONS = [
     { value: 'top-left', label: t('watermark.pos.topLeft') },
@@ -63,15 +65,23 @@ export default function WatermarkSettings({ settings, onUpdate }) {
 
       <div className="wm-row">
         <label>{t('watermark.position')}</label>
-        <select
-          value={settings.watermarkPosition}
-          onChange={e => onUpdate('watermarkPosition', e.target.value)}
-          className="wm-select"
-        >
-          {POSITIONS.map(p => (
-            <option key={p.value} value={p.value}>{p.label}</option>
-          ))}
-        </select>
+        {limits.watermarkPositionLocked ? (
+          <div className="wm-pos-locked">
+            <span className="wm-pos-locked-text">{t('watermark.pos.bottomRight')}</span>
+            <span className="wm-pro-tag">Pro</span>
+            <span className="wm-pos-hint">{lang === 'zh' ? '升级 Pro 自定义位置' : 'Upgrade to customize'}</span>
+          </div>
+        ) : (
+          <select
+            value={settings.watermarkPosition}
+            onChange={e => onUpdate('watermarkPosition', e.target.value)}
+            className="wm-select"
+          >
+            {POSITIONS.map(p => (
+              <option key={p.value} value={p.value}>{p.label}</option>
+            ))}
+          </select>
+        )}
       </div>
     </div>
   )

@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.home-inner {
+.home-section-inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 48px;
@@ -137,7 +137,12 @@
 /* ---- Hero ---- */
 .home-hero {
   text-align: center;
-  padding: 80px 0 64px;
+  width: 100%;
+}
+
+.home-hero > .home-section-inner {
+  padding-top: 80px;
+  padding-bottom: 64px;
 }
 
 .home-hero-title {
@@ -238,7 +243,12 @@
 
 /* ---- Tools ---- */
 .home-tools {
-  padding: 0 0 48px;
+  padding: 0;
+  width: 100%;
+}
+
+.home-tools > .home-section-inner {
+  padding-bottom: 48px;
 }
 
 .home-tools-title {
@@ -422,8 +432,13 @@
 
 /* ---- How ---- */
 .home-how {
-  padding: 48px 0 40px;
+  width: 100%;
   border-top: 1px solid var(--divider);
+}
+
+.home-how > .home-section-inner {
+  padding-top: 48px;
+  padding-bottom: 40px;
 }
 
 .home-how h2 {
@@ -478,8 +493,13 @@
 
 /* ---- Tool Details ---- */
 .home-details {
-  padding: 48px 0 24px;
+  width: 100%;
   border-top: 3px solid var(--border);
+}
+
+.home-details > .home-section-inner {
+  padding-top: 48px;
+  padding-bottom: 24px;
 }
 
 .home-details-heading {
@@ -840,7 +860,7 @@
 
 /* Large desktop 1440+ */
 @media (min-width: 1440px) {
-  .home-inner {
+  .home-section-inner {
     max-width: 1320px;
   }
 
@@ -855,7 +875,7 @@
     padding: 20px 32px;
   }
 
-  .home-inner {
+  .home-section-inner {
     padding: 0 32px;
   }
 
@@ -882,12 +902,13 @@
     display: none;
   }
 
-  .home-inner {
+  .home-section-inner {
     padding: 0 20px;
   }
 
-  .home-hero {
-    padding: 56px 0 40px;
+  .home-hero > .home-section-inner {
+    padding-top: 56px;
+    padding-bottom: 40px;
   }
 
   .home-hero-title {
@@ -940,12 +961,13 @@
     padding: 14px 16px;
   }
 
-  .home-inner {
+  .home-section-inner {
     padding: 0 16px;
   }
 
-  .home-hero {
-    padding: 40px 0 32px;
+  .home-hero > .home-section-inner {
+    padding-top: 40px;
+    padding-bottom: 32px;
   }
 
   .home-hero-title {

@@ -114,6 +114,11 @@
   flex-shrink: 0;
 }
 
+.pricing-feature-disabled .pricing-feature-value {
+  color: var(--text-3);
+  font-weight: 400;
+}
+
 .pricing-btn {
   display: block;
   width: 100%;

@@ -14,6 +14,7 @@ export const LIMITS = {
     maxTemplates: 2,
     maxQuality: 80,
     adjustEnabled: false, // brightness/contrast/saturation is Pro only
+    watermarkPositionLocked: true, // free users: forced bottom-right
     ads: true,
   },
   pro: {
@@ -23,6 +24,7 @@ export const LIMITS = {
     maxTemplates: Infinity,
     maxQuality: 100,
     adjustEnabled: true,
+    watermarkPositionLocked: false,
     ads: false,
   },
 }

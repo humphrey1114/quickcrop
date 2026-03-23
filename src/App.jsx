@@ -309,6 +309,10 @@ export default function App() {
     if (!isPro) {
       effectiveSettings.adjustEnabled = false
     }
+    // Force watermark position to bottom-right for free users
+    if (!isPro && effectiveSettings.watermarkEnabled) {
+      effectiveSettings.watermarkPosition = 'bottom-right'
+    }
 
     for (let i = 0; i < updatedImages.length; i++) {
       const img = updatedImages[i]
