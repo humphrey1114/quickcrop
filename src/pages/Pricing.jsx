@@ -78,7 +78,7 @@ export default function Pricing() {
   }
 
   return (
-    <PageLayout title={t('pricing.title')}>
+    <PageLayout title={t('pricing.title')} wide>
       <p className="pricing-subtitle">{t('pricing.subtitle')}</p>
 
       <div className="pricing-grid">

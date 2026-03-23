@@ -30,7 +30,8 @@
       "Bash(npm ls:*)",
       "Bash(npx puppeteer:*)",
       "WebFetch(domain:www.tapcrop.com)",
-      "Bash(ls public/favicon.* public/*.ico public/*.png)"
+      "Bash(ls public/favicon.* public/*.ico public/*.png)",
+      "Bash(npx vercel:*)"
     ]
   }
 }

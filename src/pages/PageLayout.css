@@ -6,6 +6,10 @@
   margin: 0 auto;
 }
 
+.page-layout-wide {
+  max-width: 1060px;
+}
+
 .page-container {
   background: var(--surface);
   backdrop-filter: blur(12px);
