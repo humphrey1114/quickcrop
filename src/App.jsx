@@ -6,6 +6,7 @@ import PreviewGrid from './components/PreviewGrid'
 import TopNav from './components/TopNav'
 import HeroDemo from './components/HeroDemo'
 import { useLanguage } from './i18n/LanguageContext'
+import { usePro } from './contexts/ProContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
 import useHistory from './hooks/useHistory'
@@ -71,6 +72,7 @@ let imageIdCounter = 0
 
 export default function App() {
   const { t, lang } = useLanguage()
+  const { isPro, limits, canProcess, addUsage, remainingToday } = usePro()
   const [searchParams] = useSearchParams()
   const [settings, setSettings] = useState(loadSettings)
   const [images, setImages] = useHistory([])
@@ -281,9 +283,28 @@ export default function App() {
 
   const handleProcess = useCallback(async () => {
     if (images.length === 0) return
+
+    // Check daily limit
+    if (!canProcess(images.length)) {
+      alert(lang === 'zh'
+        ? `今日免费额度剩余 ${remainingToday} 张，当前 ${images.length} 张超出限制。升级 Pro 可无限处理。`
+        : `Daily free limit: ${remainingToday} remaining, but ${images.length} selected. Upgrade to Pro for unlimited.`)
+      return
+    }
+
     setProcessing(true)
     setProcessProgress({ current: 0, total: images.length })
     const updatedImages = [...images]
+
+    // Cap quality for free users
+    const effectiveSettings = { ...settings }
+    if (!isPro && effectiveSettings.quality > limits.maxQuality) {
+      effectiveSettings.quality = limits.maxQuality
+    }
+    // Disable adjust for free users
+    if (!isPro) {
+      effectiveSettings.adjustEnabled = false
+    }
 
     for (let i = 0; i < updatedImages.length; i++) {
       const img = updatedImages[i]
@@ -292,7 +313,7 @@ export default function App() {
         setImages(prev => prev.map(x =>
           x.id === img.id ? { ...x, status: 'processing' } : x
         ), { track: false })
-        const imgSettings = { ...settings }
+        const imgSettings = { ...effectiveSettings }
         if (img.customWidth) imgSettings.width = img.customWidth
         if (img.customHeight) imgSettings.height = img.customHeight
         const result = await processImage(img.file, {
@@ -315,9 +336,14 @@ export default function App() {
         ), { track: false })
       }
     }
+
+    // Track usage after successful processing
+    const doneCount = updatedImages.filter(i => i.status === 'done').length
+    if (doneCount > 0) addUsage(doneCount)
+
     setProcessing(false)
     setProcessProgress({ current: 0, total: 0 })
-  }, [images, settings])
+  }, [images, settings, isPro, limits, canProcess, addUsage, remainingToday, lang])
   processRef.current = handleProcess
 
   const buildFileList = useCallback((doneImages) => {
@@ -400,6 +426,12 @@ export default function App() {
         </div>
 
         <div className="sidebar-footer">
+          {!isPro && (
+            <div className="daily-usage-bar">
+              <span>{lang === 'zh' ? `今日已用 ${remainingToday < 100 ? 100 - remainingToday : 0}/100` : `Today: ${remainingToday < 100 ? 100 - remainingToday : 0}/100 used`}</span>
+              <Link to="/pricing" className="daily-usage-upgrade">{lang === 'zh' ? '升级 Pro' : 'Upgrade'}</Link>
+            </div>
+          )}
           <button
             className="btn-action btn-process"
             onClick={handleProcess}
@@ -531,7 +563,7 @@ export default function App() {
           <span>&copy; {new Date().getFullYear()} TapCrop</span>
           <Link to="/terms">{t('footer.terms')}</Link>
           <Link to="/privacy">{t('footer.privacy')}</Link>
-          <a href="mailto:feedback294@163.com">{t('footer.contact')}</a>
+          <a href="mailto:humphrey1114@gmail.com">{t('footer.contact')}</a>
         </footer>
       </main>
 

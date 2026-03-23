@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import WatermarkSettings from './WatermarkSettings'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAuth } from '../contexts/AuthContext'
+import { usePro } from '../contexts/ProContext'
 import { db } from '../firebase'
 import { collection, doc, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore'
 import './SettingsPanel.css'
@@ -72,9 +73,11 @@ function useTemplates() {
 export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
   const { t, lang } = useLanguage()
   const { user } = useAuth()
+  const { isPro, limits } = usePro()
   const { templates, save: saveTemplate, remove: removeTemplate, update: updateTemplate } = useTemplates()
   const [templateName, setTemplateName] = useState('')
   const [editingId, setEditingId] = useState(null)
+  const [showLoginHint, setShowLoginHint] = useState(false)
   const [activeCategory, setActiveCategory] = useState('ratio')
 
   const SIZE_CATEGORIES = useMemo(() => [
@@ -561,14 +564,22 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
         )}
         <div className="sp-tools-grid" style={{ marginTop: '6px' }}>
           <button
-            className={`sp-toggle-btn sp-toggle-sm ${settings.adjustEnabled ? 'active' : ''}`}
-            onClick={() => onUpdate('adjustEnabled', !settings.adjustEnabled)}
+            className={`sp-toggle-btn sp-toggle-sm ${settings.adjustEnabled ? 'active' : ''} ${!isPro ? 'sp-pro-locked' : ''}`}
+            onClick={() => {
+              if (!isPro) {
+                alert(lang === 'zh'
+                  ? '亮度/对比度/饱和度调整为 Pro 专属功能，请升级后使用'
+                  : 'Brightness/Contrast/Saturation is a Pro feature. Please upgrade to use it.')
+                return
+              }
+              onUpdate('adjustEnabled', !settings.adjustEnabled)
+            }}
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.5" />
               <path d="M7 3v8M4.5 5l5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            {t('adjust')}
+            {t('adjust')}{!isPro && ' Pro'}
           </button>
           <button
             className={`sp-toggle-btn sp-toggle-sm ${settings.compressEnabled ? 'active' : ''}`}
@@ -694,11 +705,11 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                     const raw = e.target.value.replace(/[^0-9]/g, '')
                     if (raw === '') { onUpdate('quality', ''); return }
                     const num = parseInt(raw, 10)
-                    onUpdate('quality', Math.min(100, num))
+                    onUpdate('quality', Math.min(limits.maxQuality, num))
                   }}
                   onBlur={() => {
                     const v = typeof settings.quality === 'number' ? settings.quality : 10
-                    onUpdate('quality', Math.max(10, Math.min(100, v || 10)))
+                    onUpdate('quality', Math.max(10, Math.min(limits.maxQuality, v || 10)))
                   }}
                 />
                 <span className="sp-quality-pct">%</span>
@@ -707,10 +718,11 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
             <input
               type="range"
               min="10"
-              max="100"
-              value={settings.quality}
+              max={limits.maxQuality}
+              value={Math.min(settings.quality, limits.maxQuality)}
               onChange={e => onUpdate('quality', parseInt(e.target.value))}
             />
+            {!isPro && <div className="sp-pro-hint">{lang === 'zh' ? `免费版最高 ${limits.maxQuality}%，升级 Pro 可达 100%` : `Free plan max ${limits.maxQuality}%. Upgrade to Pro for 100%`}</div>}
           </div>
         )}
       </div>
@@ -792,7 +804,18 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
                 updateTemplate(editingId, templateName.trim(), settings)
                 setEditingId(null)
               } else {
+                // Check template limit for free users
+                if (!isPro && templates.length >= limits.maxTemplates) {
+                  alert(lang === 'zh'
+                    ? `免费版最多保存 ${limits.maxTemplates} 个模板，升级 Pro 可无限保存`
+                    : `Free plan allows ${limits.maxTemplates} templates. Upgrade to Pro for unlimited.`)
+                  return
+                }
                 saveTemplate(templateName.trim(), settings)
+                if (!user && !localStorage.getItem('tapcrop-login-hint-shown')) {
+                  setShowLoginHint(true)
+                  localStorage.setItem('tapcrop-login-hint-shown', '1')
+                }
               }
               setTemplateName('')
             }}
@@ -804,6 +827,12 @@ export default function SettingsPanel({ settings, onUpdate, onBatchUpdate }) {
           <button className="sp-template-cancel" onClick={() => { setEditingId(null); setTemplateName('') }}>
             ✕ {t('template.cancelEdit')}
           </button>
+        )}
+        {showLoginHint && (
+          <div className="sp-login-hint">
+            <span>{lang === 'zh' ? '登录后模板可云端同步，清除缓存也不会丢失' : 'Log in to sync templates to the cloud — they won\'t be lost if you clear your browser data'}</span>
+            <button onClick={() => setShowLoginHint(false)}>✕</button>
+          </div>
         )}
         {templates.length === 0 ? (
           <div className="sp-template-empty">{t('template.empty')}</div>

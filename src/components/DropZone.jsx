@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+import { usePro } from '../contexts/ProContext'
 import './DropZone.css'
 
 async function convertHeic(file) {
@@ -16,11 +17,11 @@ function isHeic(file) {
   return /\.(heic|heif)$/i.test(file.name) || file.type === 'image/heic' || file.type === 'image/heif'
 }
 
-const MAX_FILE_SIZE = 30 * 1024 * 1024 // 30MB per file
-const MAX_FILE_COUNT = 100
-
 export default function DropZone({ onFilesAdded, compact = false, currentCount = 0 }) {
   const { t } = useLanguage()
+  const { limits } = usePro()
+  const MAX_FILE_SIZE = limits.maxFileSize
+  const MAX_FILE_COUNT = limits.batchUpload
   const [dragging, setDragging] = useState(false)
   const [toast, setToast] = useState(null)
   const inputRef = useRef(null)

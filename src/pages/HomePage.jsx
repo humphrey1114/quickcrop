@@ -147,12 +147,12 @@ export default function HomePage() {
 
   useEffect(() => {
     document.title = lang === 'zh'
-      ? 'TapCrop 秒裁 — 免费在线批量图片处理工具'
-      : 'TapCrop — Free Online Image Resizer & Batch Photo Editor'
+      ? 'TapCrop 秒裁 — 在线批量图片处理工具'
+      : 'TapCrop — Online Image Resizer & Batch Photo Editor'
     const meta = document.querySelector('meta[name="description"]')
     const desc = lang === 'zh'
-      ? '免费在线批量裁剪、缩放、压缩、加水印、转换图片格式。100% 浏览器端处理，无需注册，图片不上传。'
-      : 'Free online image resizer & batch photo editor. Resize, crop, compress, watermark and convert images in bulk. No signup, 100% browser processing.'
+      ? '在线批量裁剪、缩放、压缩、加水印、转换图片格式。免费可用，100% 浏览器端处理，无需注册，图片不上传。'
+      : 'Online image resizer & batch photo editor. Resize, crop, compress, watermark and convert images in bulk. Free to start, no signup, 100% browser processing.'
     if (meta) meta.setAttribute('content', desc)
   }, [lang])
 
@@ -178,6 +178,7 @@ export default function HomePage() {
           <Link to="/changelog">{lang === 'zh' ? '更新日志' : 'Changelog'}</Link>
           <Link to="/feedback">{lang === 'zh' ? '反馈建议' : 'Feedback'}</Link>
           <Link to="/about">{lang === 'zh' ? '关于我们' : 'About'}</Link>
+          <Link to="/pricing">{lang === 'zh' ? '定价' : 'Pricing'}</Link>
         </div>
         <div className="home-nav-actions">
           <button className="home-nav-icon-btn" onClick={toggleTheme} title={theme === 'light' ? 'Dark Mode' : 'Light Mode'}>
@@ -205,10 +206,10 @@ export default function HomePage() {
           </Link>
         </div>
       </nav>
-      <div className="home-inner">
 
         {/* Hero */}
         <section className="home-hero">
+          <div className="home-section-inner">
           <h1 className="home-hero-title">
             {lang === 'zh'
               ? '批量处理图片，快人一步'
@@ -231,14 +232,16 @@ export default function HomePage() {
           </div>
           <p className="home-hero-note">
             {lang === 'zh'
-              ? '无需注册 · 完全免费 · 图片不离开设备'
-              : 'No account needed · Always free · Your files stay private'
+              ? '无需注册 · 免费可用 · 图片不离开设备'
+              : 'No account needed · Free to use · Your files stay private'
             }
           </p>
+          </div>
         </section>
 
         {/* Tools */}
         <section className="home-tools" id="tools">
+          <div className="home-section-inner">
           <h2 className="home-tools-title">
             {lang === 'zh' ? '功能' : 'Features'}
           </h2>
@@ -268,10 +271,12 @@ export default function HomePage() {
               {lang === 'zh' ? '一键使用全部功能' : 'Use All Tools at Once'}
             </Link>
           </div>
+          </div>
         </section>
 
         {/* How it works */}
         <section className="home-how">
+          <div className="home-section-inner">
           <h2>{lang === 'zh' ? '三步搞定' : 'How It Works'}</h2>
           <div className="home-how-steps">
             <div className="home-how-step">
@@ -296,10 +301,12 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          </div>
         </section>
 
         {/* Tool Details */}
         <section className="home-details">
+          <div className="home-section-inner">
           <h2 className="home-details-heading">
             {lang === 'zh' ? '功能介绍' : 'What You Can Do'}
           </h2>
@@ -331,21 +338,22 @@ export default function HomePage() {
               </div>
             </div>
           ))}
+          </div>
         </section>
 
-        {/* Footer */}
-        <footer className="home-footer">
-          <div className="home-footer-links">
-            <Link to="/tutorial">Tutorial</Link>
-            <Link to="/faq">FAQ</Link>
-            <Link to="/about">About</Link>
-            <Link to="/feedback">Feedback</Link>
-            <Link to="/privacy">Privacy</Link>
-            <Link to="/terms">Terms</Link>
-          </div>
-          <p className="home-footer-copy">&copy; {new Date().getFullYear()} TapCrop</p>
-        </footer>
-      </div>
+      {/* Footer - full width */}
+      <footer className="home-footer">
+        <div className="home-footer-links">
+          <Link to="/tutorial">Tutorial</Link>
+          <Link to="/faq">FAQ</Link>
+          <Link to="/about">About</Link>
+          <Link to="/feedback">Feedback</Link>
+          <Link to="/privacy">Privacy</Link>
+          <Link to="/pricing">Pricing</Link>
+          <Link to="/terms">Terms</Link>
+        </div>
+        <p className="home-footer-copy">&copy; {new Date().getFullYear()} TapCrop</p>
+      </footer>
     </div>
   )
 }

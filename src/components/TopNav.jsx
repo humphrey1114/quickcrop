@@ -39,6 +39,7 @@ export default function TopNav() {
     { path: '/changelog', label: t('nav.changelog') },
     { path: '/feedback', label: t('nav.feedback') },
     { path: '/about', label: t('nav.about') },
+    { path: '/pricing', label: t('nav.pricing') },
   ]
 
   return (

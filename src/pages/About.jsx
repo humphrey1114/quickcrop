@@ -22,7 +22,7 @@ export default function About() {
 
       <h2>{t('about.contactTitle')}</h2>
       <p>
-        {t('about.contactDesc')} <a href="mailto:feedback294@163.com" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: 500 }}>feedback294@163.com</a>
+        {t('about.contactDesc')} <a href="mailto:humphrey1114@gmail.com" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: 500 }}>humphrey1114@gmail.com</a>
       </p>
     </PageLayout>
   )

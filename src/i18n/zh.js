@@ -20,8 +20,8 @@ export default {
   'feature.batch.desc': '一次上传多张图片，统一尺寸一键导出',
   'feature.privacy': '隐私保护',
   'feature.privacy.desc': '纯本地处理，图片不上传服务器',
-  'feature.free': '免费使用，无水印',
-  'feature.free.desc': '核心功能免费，无水印、无隐藏费用',
+  'feature.free': '免费开始，无水印',
+  'feature.free.desc': '核心功能免费可用，无水印。升级 Pro 解锁更多',
 
   // Toolbar
   'toolbar.images': '{count} 张图片',
@@ -215,7 +215,7 @@ export default {
 
   // Tutorial page
   'tutorial.title': '使用教程 — 秒裁图片编辑器完整指南',
-  'tutorial.intro': '秒裁是一款免费在线批量图片处理工具，100% 浏览器端运行。支持裁剪、缩放、压缩、加水印、调整亮度对比度、格式转换等功能，图片不上传，隐私安全。跟着本教程快速上手。',
+  'tutorial.intro': '秒裁是一款在线批量图片处理工具，100% 浏览器端运行。支持裁剪、缩放、压缩、加水印、调整亮度对比度、格式转换等功能，图片不上传，隐私安全。免费版每天可处理 100 张图片，跟着本教程快速上手。',
 
   // Section: Getting Started
   'tutorial.section.start': '快速上手',
@@ -279,8 +279,8 @@ export default {
 
   // FAQ page
   'faq.title': '常见问题',
-  'faq.q1': '秒裁是免费的吗？',
-  'faq.a1': '是的，秒裁免费使用，不会在图片上添加任何水印。',
+  'faq.q1': '秒裁可以免费使用吗？',
+  'faq.a1': '秒裁提供免费版，每天可处理 100 张图片，所有核心功能均可使用，无水印。需要更多用量可升级 Pro。',
   'faq.q2': '我的图片会被上传到服务器吗？',
   'faq.a2': '不会。秒裁的所有图片处理都在你的浏览器本地完成，图片不会离开你的设备，完全保障隐私安全。',
   'faq.q3': '支持哪些图片格式？',
@@ -320,6 +320,14 @@ export default {
   'changelog.v1.0.0.10': '宽高一键对换',
   'changelog.v1.0.0.11': '纯本地处理，隐私安全',
 
+  'changelog.v1.1.0.0': '新增批量图片压缩，可调质量，体积最高缩小 90%',
+  'changelog.v1.1.0.1': '新增格式转换 — JPG、PNG、WebP、HEIC 互转',
+  'changelog.v1.1.0.2': '新增批量缩放 — 精确像素尺寸，锁定宽高比',
+  'changelog.v1.1.0.3': '支持 Google / 邮箱登录，模板云端同步不丢失',
+  'changelog.v1.1.0.4': '首页全新改版，功能一目了然',
+  'changelog.v1.1.0.5': '深色模式全面适配',
+  'changelog.v1.1.0.6': '教程页面升级，使用更轻松',
+
   // Feedback page
   'feedback.title': '反馈建议',
   'feedback.intro': '秒裁还在持续完善中，你的每一条反馈都对我们非常重要。',
@@ -346,15 +354,15 @@ export default {
   // About page
   'about.title': '关于我们',
   'about.heading': '关于秒裁',
-  'about.intro1': '秒裁（TapCrop）是一款免费的在线批量图片裁剪工具。我们相信，图片处理不应该复杂、不应该收费、更不应该牺牲你的隐私。',
+  'about.intro1': '秒裁（TapCrop）是一款在线批量图片处理工具。我们相信，图片处理不应该复杂，更不应该牺牲你的隐私。免费版涵盖所有核心功能，满足日常需求。',
   'about.intro2': '无论你是内容创作者、设计师、运营人员，还是只是偶尔需要调整图片尺寸的普通用户，秒裁都能帮你在几秒钟内完成批量裁剪。',
   'about.valuesTitle': '我们的理念',
   'about.v.efficient': '高效',
   'about.v.efficient.desc': '批量处理，一键导出，不浪费你的时间',
   'about.v.privacy': '隐私',
   'about.v.privacy.desc': '纯本地处理，图片永远不离开你的设备',
-  'about.v.free': '免费',
-  'about.v.free.desc': '核心功能免费，无隐藏收费',
+  'about.v.free': '普惠',
+  'about.v.free.desc': '免费版涵盖全部核心功能，轻松上手',
   'about.v.simple': '简洁',
   'about.v.simple.desc': '界面清晰直观，上手零门槛',
   'about.v.smart': '精准',
@@ -456,4 +464,37 @@ export default {
   'footer.terms': '服务条款',
   'footer.privacy': '隐私政策',
   'footer.contact': '联系我们',
+
+  // Pricing
+  'nav.pricing': '定价',
+  'pricing.title': '定价方案',
+  'pricing.subtitle': '秒裁为所有用户提供强大的免费功能，满足日常图片处理需求。重度用户可升级 Pro 获取更多空间和更好体验。',
+  'pricing.free': '免费版',
+  'pricing.forever': '永久免费',
+  'pricing.month': '月',
+  'pricing.popular': '最受欢迎',
+  'pricing.dailyLimit': '每日处理量',
+  'pricing.batchUpload': '单次批量上传',
+  'pricing.fileSize': '单张文件大小',
+  'pricing.allTools': '全部核心功能',
+  'pricing.templates': '模板保存',
+  'pricing.exportQuality': '导出最高质量',
+  'pricing.ads': '广告',
+  'pricing.free.daily': '100 张',
+  'pricing.free.batch': '30 张',
+  'pricing.free.templates': '2 个',
+  'pricing.free.ads': '有',
+  'pricing.pro.daily': '无限制',
+  'pricing.pro.batch': '100 张',
+  'pricing.pro.templates': '无限',
+  'pricing.pro.ads': '无广告',
+  'pricing.upgrade': '升级 Pro',
+  'pricing.startFree': '免费开始使用',
+  'pricing.faq.title': '常见问题',
+  'pricing.faq.q1': '免费版有什么限制？',
+  'pricing.faq.a1': '免费版每天可处理 100 张图片，单次最多上传 30 张，单张最大 20MB。所有核心功能（裁剪、缩放、压缩、转换、水印、边框）均可使用。',
+  'pricing.faq.q2': '可以随时取消订阅吗？',
+  'pricing.faq.a2': '可以，Pro 订阅支持随时取消，取消后当前计费周期内仍可使用 Pro 功能。',
+  'pricing.faq.q3': '支持哪些支付方式？',
+  'pricing.faq.a3': '支持信用卡、借记卡等主流支付方式，通过安全的第三方支付平台 Creem 处理。',
 }

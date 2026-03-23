@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { AuthProvider } from './contexts/AuthContext'
+import { ProProvider } from './contexts/ProContext'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
@@ -29,6 +30,7 @@ import ResizeJpgPage from './pages/tools/ResizeJpgPage.jsx'
 import ResizePngPage from './pages/tools/ResizePngPage.jsx'
 import CompressJpgPage from './pages/tools/CompressJpgPage.jsx'
 import HeicToJpgPage from './pages/tools/HeicToJpgPage.jsx'
+import Pricing from './pages/Pricing.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 
@@ -37,6 +39,7 @@ root.render(
   <StrictMode>
     <ErrorBoundary>
     <AuthProvider>
+    <ProProvider>
     <LanguageProvider>
       <BrowserRouter>
         <Routes>
@@ -47,6 +50,7 @@ root.render(
           <Route path="/changelog" element={<Changelog />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/about" element={<About />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/guides/instagram" element={<InstagramGuide />} />
           <Route path="/guides/twitter" element={<TwitterGuide />} />
           <Route path="/guides/youtube" element={<YouTubeGuide />} />
@@ -69,8 +73,10 @@ root.render(
       <Analytics />
       <SpeedInsights />
     </LanguageProvider>
+    </ProProvider>
     </AuthProvider>
     </ErrorBoundary>
+
   </StrictMode>,
 )
 

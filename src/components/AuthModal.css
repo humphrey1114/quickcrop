@@ -127,6 +127,31 @@
   border-radius: var(--r-sm);
 }
 
+.auth-success {
+  font-size: 13px;
+  color: #27ae60;
+  padding: 8px 12px;
+  background: rgba(39, 174, 96, 0.08);
+  border-radius: var(--r-sm);
+}
+
+.auth-forgot {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 8px 0 0;
+  transition: color 0.2s;
+}
+
+.auth-forgot:hover {
+  color: var(--primary);
+}
+
 .auth-submit {
   width: 100%;
   padding: 12px;

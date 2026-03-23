@@ -20,8 +20,8 @@ export default {
   'feature.batch.desc': 'Upload hundreds of photos and crop them all to the same size in one click',
   'feature.privacy': '100% Private & Local',
   'feature.privacy.desc': 'Images never leave your device — no uploads, no server, no tracking',
-  'feature.free': 'Free to Use, No Watermark',
-  'feature.free.desc': 'Core features are free with no watermarks and no hidden costs',
+  'feature.free': 'Free to Start, No Watermark',
+  'feature.free.desc': 'Core features free with no watermarks. Upgrade to Pro for more',
 
   // Toolbar
   'toolbar.images': '{count} images',
@@ -211,7 +211,7 @@ export default {
 
   // Tutorial page
   'tutorial.title': 'Tutorial — How to Use TapCrop Image Editor',
-  'tutorial.intro': 'TapCrop is a free online batch image editor that runs 100% in your browser. Crop, resize, compress, watermark, adjust, and convert images — all without uploading. Follow this guide to get started.',
+  'tutorial.intro': 'TapCrop is an online batch image editor that runs 100% in your browser. Crop, resize, compress, watermark, adjust, and convert images — all without uploading. Free plan includes 100 images/day. Follow this guide to get started.',
 
   // Section: Getting Started
   'tutorial.section.start': 'Getting Started',
@@ -275,8 +275,8 @@ export default {
 
   // FAQ page
   'faq.title': 'FAQ',
-  'faq.q1': 'Is TapCrop free?',
-  'faq.a1': 'Yes, TapCrop is free to use with no watermarks added to your images.',
+  'faq.q1': 'Is TapCrop free to use?',
+  'faq.a1': 'TapCrop offers a free plan with 100 images per day and all core features — no watermarks. For heavier usage, you can upgrade to Pro.',
   'faq.q2': 'Are my images uploaded to a server?',
   'faq.a2': 'No. All image processing happens locally in your browser. Your images never leave your device, ensuring complete privacy.',
   'faq.q3': 'What image formats are supported?',
@@ -316,6 +316,14 @@ export default {
   'changelog.v1.0.0.10': 'One-click width/height swap',
   'changelog.v1.0.0.11': 'Fully local processing for privacy',
 
+  'changelog.v1.1.0.0': 'New batch image compression — adjustable quality, up to 90% smaller',
+  'changelog.v1.1.0.1': 'New format conversion — JPG, PNG, WebP, and HEIC',
+  'changelog.v1.1.0.2': 'New batch resize — exact pixel dimensions, lock aspect ratio',
+  'changelog.v1.1.0.3': 'Google / email login with cloud template sync',
+  'changelog.v1.1.0.4': 'Redesigned homepage for a clearer overview',
+  'changelog.v1.1.0.5': 'Full dark mode support',
+  'changelog.v1.1.0.6': 'Improved tutorial page for easier onboarding',
+
   // Feedback page
   'feedback.title': 'Feedback',
   'feedback.intro': 'TapCrop is continuously improving. Your feedback is very important to us.',
@@ -342,15 +350,15 @@ export default {
   // About page
   'about.title': 'About',
   'about.heading': 'About TapCrop',
-  'about.intro1': 'TapCrop is a free online batch image cropping tool. We believe image processing shouldn\'t be complicated, shouldn\'t cost money, and should never compromise your privacy.',
+  'about.intro1': 'TapCrop is an online batch image processing tool. We believe image editing should be simple, fast, and private. The free plan covers all core features for everyday use.',
   'about.intro2': 'Whether you\'re a content creator, designer, marketing professional, or just someone who occasionally needs to resize images, TapCrop helps you batch crop in seconds.',
   'about.valuesTitle': 'Our Values',
   'about.v.efficient': 'Efficient',
   'about.v.efficient.desc': 'Batch process and export with one click — no wasted time',
   'about.v.privacy': 'Private',
   'about.v.privacy.desc': 'Fully local processing — images never leave your device',
-  'about.v.free': 'Free',
-  'about.v.free.desc': 'Core features are free with no hidden charges',
+  'about.v.free': 'Accessible',
+  'about.v.free.desc': 'Free plan with all core features to get you started',
   'about.v.simple': 'Simple',
   'about.v.simple.desc': 'Clean, intuitive interface with zero learning curve',
   'about.v.smart': 'Precise',
@@ -452,4 +460,37 @@ export default {
   'footer.terms': 'Terms of Service',
   'footer.privacy': 'Privacy Policy',
   'footer.contact': 'Contact',
+
+  // Pricing
+  'nav.pricing': 'Pricing',
+  'pricing.title': 'Pricing',
+  'pricing.subtitle': 'TapCrop offers powerful free features for everyday image processing. Power users can upgrade to Pro for more capacity and a better experience.',
+  'pricing.free': 'Free',
+  'pricing.forever': 'Free forever',
+  'pricing.month': 'mo',
+  'pricing.popular': 'Most Popular',
+  'pricing.dailyLimit': 'Daily processing',
+  'pricing.batchUpload': 'Batch upload',
+  'pricing.fileSize': 'Max file size',
+  'pricing.allTools': 'All core tools',
+  'pricing.templates': 'Saved templates',
+  'pricing.exportQuality': 'Max export quality',
+  'pricing.ads': 'Ads',
+  'pricing.free.daily': '100 images',
+  'pricing.free.batch': '30 images',
+  'pricing.free.templates': '2',
+  'pricing.free.ads': 'Yes',
+  'pricing.pro.daily': 'Unlimited',
+  'pricing.pro.batch': '100 images',
+  'pricing.pro.templates': 'Unlimited',
+  'pricing.pro.ads': 'No ads',
+  'pricing.upgrade': 'Upgrade to Pro',
+  'pricing.startFree': 'Start for Free',
+  'pricing.faq.title': 'FAQ',
+  'pricing.faq.q1': 'What are the limits of the free plan?',
+  'pricing.faq.a1': 'The free plan allows 100 images per day, up to 30 per batch, with a 20MB max per file. All core tools (crop, resize, compress, convert, watermark, border) are fully available.',
+  'pricing.faq.q2': 'Can I cancel my subscription anytime?',
+  'pricing.faq.a2': 'Yes, you can cancel Pro anytime. You will keep Pro features until the end of your current billing period.',
+  'pricing.faq.q3': 'What payment methods are supported?',
+  'pricing.faq.a3': 'We accept credit cards, debit cards, and other major payment methods through our secure payment partner Creem.',
 }
