@@ -15,8 +15,6 @@ const SUB_TOOLS = [
   { path: '/resize-jpg', titleEn: 'Resize JPG', titleZh: '缩放 JPG', descEn: 'Batch resize JPG images', descZh: '批量缩放 JPG 图片' },
   { path: '/resize-png', titleEn: 'Resize PNG', titleZh: '缩放 PNG', descEn: 'Keep transparency', descZh: '保留透明度' },
   { path: '/compress-jpg', titleEn: 'Compress JPG', titleZh: '压缩 JPG', descEn: 'Reduce JPG file size', descZh: '缩小 JPG 文件体积' },
-  { path: '/resize-image-kb', titleEn: 'Resize in KB', titleZh: '按 KB 调整', descEn: 'Resize to exact file size', descZh: '精确调整文件大小' },
-  { path: '/resize-to-100kb', titleEn: 'Resize to 100 KB', titleZh: '调整到 100KB', descEn: 'Exact 100 KB target', descZh: '精确 100KB 目标' },
   { path: '/webp-to-png', titleEn: 'WebP to PNG', titleZh: 'WebP 转 PNG', descEn: 'Convert WebP, PNG, JPG', descZh: 'WebP、PNG、JPG 互转' },
   { path: '/heic-to-jpg', titleEn: 'HEIC to JPG', titleZh: 'HEIC 转 JPG', descEn: 'Convert iPhone photos', descZh: '转换 iPhone 照片' },
 ]
@@ -150,11 +148,11 @@ export default function HomePage() {
   useEffect(() => {
     document.title = lang === 'zh'
       ? 'TapCrop 秒裁 — 免费在线批量图片处理工具'
-      : 'TapCrop — Free Image Resizer & Photo Editor Online | Resize, Crop, Compress Images'
+      : 'TapCrop — Free Online Image Resizer & Batch Photo Editor'
     const meta = document.querySelector('meta[name="description"]')
     const desc = lang === 'zh'
       ? '免费在线批量裁剪、缩放、压缩、加水印、转换图片格式。100% 浏览器端处理，无需注册，图片不上传。'
-      : 'Free online image resizer, photo resizer & batch editor. Resize, crop, compress, watermark and convert images in bulk. Reduce image size up to 90%. No signup, no uploads — 100% browser processing.'
+      : 'Free online image resizer & batch photo editor. Resize, crop, compress, watermark and convert images in bulk. No signup, 100% browser processing.'
     if (meta) meta.setAttribute('content', desc)
   }, [lang])
 
@@ -172,14 +170,35 @@ export default function HomePage() {
       <nav className="home-nav">
         <div className="home-nav-brand">
           <img src="/2048.png" alt="TapCrop" className="home-nav-logo" />
-          <span className="home-nav-name">TapCrop</span>
+          <span className="home-nav-name">{lang === 'zh' ? '秒裁' : 'TapCrop'}</span>
+        </div>
+        <div className="home-nav-links">
+          <Link to="/tutorial">{lang === 'zh' ? '使用教程' : 'Tutorial'}</Link>
+          <Link to="/faq">{lang === 'zh' ? '常见问题' : 'FAQ'}</Link>
+          <Link to="/changelog">{lang === 'zh' ? '更新日志' : 'Changelog'}</Link>
+          <Link to="/feedback">{lang === 'zh' ? '反馈建议' : 'Feedback'}</Link>
+          <Link to="/about">{lang === 'zh' ? '关于我们' : 'About'}</Link>
         </div>
         <div className="home-nav-actions">
-          <button className="home-nav-text-btn" onClick={toggleTheme}>
-            {theme === 'light' ? 'Dark' : 'Light'}
+          <button className="home-nav-icon-btn" onClick={toggleTheme} title={theme === 'light' ? 'Dark Mode' : 'Light Mode'}>
+            {theme === 'light' ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+              </svg>
+            )}
           </button>
-          <button className="home-nav-text-btn" onClick={toggleLang}>
-            {lang === 'zh' ? 'EN' : '中文'}
+          <button className="home-nav-lang-btn" onClick={toggleLang} title={lang === 'zh' ? 'English' : '中文'}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.3"/>
+              <ellipse cx="8" cy="8" rx="3" ry="6.5" stroke="currentColor" strokeWidth="1.3"/>
+              <path d="M1.5 8h13M2.5 5h11M2.5 11h11" stroke="currentColor" strokeWidth="1.1"/>
+            </svg>
+            <span>{lang === 'zh' ? 'English' : '中文'}</span>
           </button>
           <Link to="/app" className="home-nav-login">
             {lang === 'zh' ? '登录' : 'Log in'}
@@ -221,7 +240,7 @@ export default function HomePage() {
         {/* Tools */}
         <section className="home-tools" id="tools">
           <h2 className="home-tools-title">
-            {lang === 'zh' ? '工具' : 'Tools'}
+            {lang === 'zh' ? '功能' : 'Features'}
           </h2>
           <div className="home-tools-grid">
             {TOOLS.map(tool => (
@@ -234,7 +253,7 @@ export default function HomePage() {
             ))}
           </div>
           <h2 className="home-tools-subtitle">
-            {lang === 'zh' ? '更多工具' : 'More Tools'}
+            {lang === 'zh' ? '更多功能' : 'More Features'}
           </h2>
           <div className="home-subtools-grid">
             {SUB_TOOLS.map(tool => (

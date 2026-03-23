@@ -214,23 +214,68 @@ export default {
   'history.redoAll': '全部重做',
 
   // Tutorial page
-  'tutorial.title': '使用教程',
-  'tutorial.intro': '秒裁是一款纯浏览器端的批量图片裁剪工具，只需简单几步即可完成操作。',
+  'tutorial.title': '使用教程 — 秒裁图片编辑器完整指南',
+  'tutorial.intro': '秒裁是一款免费在线批量图片处理工具，100% 浏览器端运行。支持裁剪、缩放、压缩、加水印、调整亮度对比度、格式转换等功能，图片不上传，隐私安全。跟着本教程快速上手。',
+
+  // Section: Getting Started
+  'tutorial.section.start': '快速上手',
   'tutorial.step1.title': '上传图片',
-  'tutorial.step1.desc': '点击上传区域或直接拖拽图片到页面中，支持 JPG、PNG、WebP、BMP 格式，可一次上传多张。',
-  'tutorial.step2.title': '设置裁剪参数',
-  'tutorial.step2.desc': '在左侧面板选择目标尺寸：可从常用比例、各平台预设中选择，也可以自定义宽高。点击中间的对换按钮可快速切换横竖版。',
+  'tutorial.step1.desc': '拖拽图片到页面任意位置，或点击上传区域浏览选择。支持 JPG、PNG、WebP、BMP、HEIC（iPhone 照片）格式，一次最多上传 100 张，单张最大 30 MB。',
+  'tutorial.step2.title': '设置输出尺寸',
+  'tutorial.step2.desc': '在左侧面板选择目标尺寸。内置 50+ 预设尺寸，覆盖社交媒体（Instagram、YouTube、Twitter、Facebook、LinkedIn、Pinterest 等）、证件照、纸张等。也可以自定义宽高，锁定宽高比，或一键对换横竖版。',
   'tutorial.step3.title': '调整焦点',
-  'tutorial.step3.desc': '在图片上点击或拖拽来设置焦点位置，裁剪时会优先保留该区域。默认为居中裁剪，被裁掉的区域会显示灰色遮罩。',
-  'tutorial.step4.title': '添加水印和边框（可选）',
-  'tutorial.step4.desc': '在左侧面板开启水印功能，输入文字并设置字号、颜色、透明度和位置。也可以开启边框功能为图片添加纯色边框。',
-  'tutorial.step5.title': '开始裁剪',
-  'tutorial.step5.desc': '点击「开始裁剪」按钮，等待处理完成。处理完成后可单张下载、打包下载 ZIP，或直接保存到本地文件夹。',
-  'tutorial.tips': '小技巧',
-  'tutorial.tip1': '批量重命名：开启后可统一设置文件名前缀和起始编号，导出更整齐',
-  'tutorial.tip2': '仅转换格式：不裁剪不缩放，只转换图片格式（JPG/PNG/WebP）',
-  'tutorial.tip3': '各平台预设包含小红书、抖音、微博、微信、证件照等常用尺寸',
-  'tutorial.tip4': '支持 File System Access API 的浏览器（Chrome）可以直接保存到文件夹',
+  'tutorial.step3.desc': '在图片上点击或拖拽来设置焦点位置，裁剪时会优先保留该区域。默认为居中裁剪，被裁掉的区域显示灰色遮罩。每张图片可以设置独立焦点。',
+  'tutorial.step4.title': '处理并下载',
+  'tutorial.step4.desc': '点击「开始裁剪」按钮（或按 Ctrl+Enter）。处理完成后可单张下载、打包下载 ZIP，或直接保存到本地文件夹（Chrome/Edge）。也可以开启批量重命名，统一文件名格式。',
+
+  // Section: Image Compression
+  'tutorial.section.compress': '图片压缩',
+  'tutorial.compress.title': '缩小文件体积',
+  'tutorial.compress.desc': '在左侧面板开启压缩功能。拖动滑块设置压缩程度，最高可缩小 90%，画质损失极小。适合网站优化、邮件附件、社交媒体上传等场景。支持 JPG 和 WebP 格式。',
+
+  // Section: Watermark
+  'tutorial.section.watermark': '添加水印',
+  'tutorial.watermark.title': '用水印保护图片',
+  'tutorial.watermark.desc': '开启水印功能，输入文字内容。可自定义字号、颜色、透明度（0–100%），并从 7 个位置中选择（左上、上方居中、右上、正中、左下、下方居中、右下）。水印会在批量处理时统一添加到所有图片。',
+
+  // Section: Format Conversion
+  'tutorial.section.convert': '格式转换',
+  'tutorial.convert.title': '图片格式互转',
+  'tutorial.convert.desc': '在左侧面板选择输出格式（JPEG、PNG 或 WebP）。开启「仅转换格式」可跳过裁剪和缩放，只做格式转换。iPhone 的 HEIC 照片上传时会自动转为 JPG，并保留原始文件名。',
+
+  // Section: Image Adjustments
+  'tutorial.section.adjust': '图片调整',
+  'tutorial.adjust.title': '调整亮度、对比度和饱和度',
+  'tutorial.adjust.desc': '开启调整面板，可修改亮度、对比度和饱和度。向左拖动滑块减小，向右增大。调整会在处理时应用到所有图片，适合批量修正曝光不足或色彩偏差的照片。',
+
+  // Section: Border
+  'tutorial.section.border': '添加边框',
+  'tutorial.border.title': '添加纯色边框',
+  'tutorial.border.desc': '开启边框功能为图片添加纯色边框。设置边框粗细和颜色，适合为社交媒体或商品展示图创建统一的画框效果。',
+
+  // Section: Advanced Features
+  'tutorial.section.advanced': '进阶功能',
+  'tutorial.advanced.rename.title': '批量重命名',
+  'tutorial.advanced.rename.desc': '开启批量重命名，设置文件名前缀和起始编号。例如前缀「产品图」起始编号「001」，输出 产品图_001.jpg、产品图_002.jpg 等。',
+  'tutorial.advanced.rotate.title': '旋转和翻转',
+  'tutorial.advanced.rotate.desc': '点击图片卡片上的旋转/翻转按钮，可顺时针或逆时针旋转 90°，或水平/垂直翻转。每张图片独立设置。',
+  'tutorial.advanced.customsize.title': '单图自定义尺寸',
+  'tutorial.advanced.customsize.desc': '点击图片卡片上的「自定义尺寸」可为该图片单独设置输出尺寸，覆盖全局设置。适合批量中个别图片需要不同尺寸的场景。',
+  'tutorial.advanced.presets.title': '50+ 平台预设尺寸',
+  'tutorial.advanced.presets.desc': '预设涵盖 Instagram、YouTube、Twitter/X、Facebook、LinkedIn、Pinterest、Twitch、SoundCloud、Tumblr、Etsy、小红书、抖音、微博、微信、证件照（护照、驾照、1寸、2寸）和纸张尺寸。',
+  'tutorial.advanced.keyboard.title': '快捷键',
+  'tutorial.advanced.keyboard.desc': 'Ctrl+Enter 开始处理，Delete 清空所有图片，Ctrl+Z / Ctrl+Y 撤销/重做。',
+  'tutorial.advanced.dragdrop.title': '拖拽排序',
+  'tutorial.advanced.dragdrop.desc': '在预览区域拖拽图片可调整排列顺序，导出时按新顺序排列。',
+
+  // Tips
+  'tutorial.tips': '实用技巧',
+  'tutorial.tip1': '所有处理在浏览器本地完成，图片不会上传到任何服务器，隐私安全',
+  'tutorial.tip2': '建议上传高分辨率原图，让秒裁来处理缩放，效果更好',
+  'tutorial.tip3': '网站和社交媒体场景建议使用 WebP 格式，体积更小',
+  'tutorial.tip4': 'Chrome 和 Edge 浏览器支持「保存到文件夹」功能，可直接导出到指定目录',
+  'tutorial.tip5': 'iPhone 的 HEIC 照片上传时会自动转换为 JPG',
+  'tutorial.tip6': '可以同时使用多个功能：裁剪 + 压缩 + 水印 + 重命名，一次批量完成',
 
   // FAQ page
   'faq.title': '常见问题',
@@ -406,17 +451,6 @@ export default {
   'auth.error.generic': '操作失败，请重试',
   'auth.google': '使用 Google 账号登录',
   'auth.or': '或',
-
-  // Export Bundle
-  'bundle.title': '套图导出',
-  'bundle.desc': '一键导出多种尺寸，适配平台需求',
-  'bundle.generate': '生成套图',
-  'bundle.generating': '生成中...',
-  'bundle.sizes': '{count} 种尺寸',
-  'bundle.instagram': 'Instagram 套图',
-  'bundle.youtube': 'YouTube 套图',
-  'bundle.twitter': 'Twitter/X 套图',
-  'bundle.facebook': 'Facebook 套图',
 
   // Footer
   'footer.terms': '服务条款',

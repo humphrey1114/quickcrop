@@ -210,23 +210,68 @@ export default {
   'history.redoAll': 'Redo All',
 
   // Tutorial page
-  'tutorial.title': 'Tutorial',
-  'tutorial.intro': 'TapCrop is a browser-based batch image cropping tool. Just follow a few simple steps.',
+  'tutorial.title': 'Tutorial — How to Use TapCrop Image Editor',
+  'tutorial.intro': 'TapCrop is a free online batch image editor that runs 100% in your browser. Crop, resize, compress, watermark, adjust, and convert images — all without uploading. Follow this guide to get started.',
+
+  // Section: Getting Started
+  'tutorial.section.start': 'Getting Started',
   'tutorial.step1.title': 'Upload Images',
-  'tutorial.step1.desc': 'Click the upload area or drag and drop images onto the page. Supports JPG, PNG, WebP, and BMP. You can upload multiple files at once.',
-  'tutorial.step2.title': 'Set Crop Parameters',
-  'tutorial.step2.desc': 'Choose a target size from the left panel: pick from common ratios, platform presets, or enter custom dimensions. Use the swap button to quickly switch between landscape and portrait.',
+  'tutorial.step1.desc': 'Drag and drop images anywhere on the page, or click the upload area to browse. Supports JPG, PNG, WebP, BMP, and HEIC (iPhone photos). You can upload up to 100 images at once, each up to 30 MB.',
+  'tutorial.step2.title': 'Set Output Size',
+  'tutorial.step2.desc': 'Choose a target size from the left panel. Pick from 50+ presets for social media (Instagram, YouTube, Twitter, Facebook, LinkedIn, Pinterest, etc.), ID photos, paper sizes, or enter custom dimensions. Lock the aspect ratio or swap width/height with one click.',
   'tutorial.step3.title': 'Adjust Focal Point',
-  'tutorial.step3.desc': 'Click or drag on the image to set the focal point — the area you want to keep. The default is center crop. Cropped areas are shown with a gray overlay.',
-  'tutorial.step4.title': 'Add Watermark & Border (Optional)',
-  'tutorial.step4.desc': 'Enable watermark in the left panel, enter text and configure font size, color, opacity, and position. You can also enable borders to add a solid-color frame around images.',
-  'tutorial.step5.title': 'Start Cropping',
-  'tutorial.step5.desc': 'Click "Start Cropping" and wait for processing to complete. Then download individual files, a ZIP archive, or save directly to a local folder.',
-  'tutorial.tips': 'Tips',
-  'tutorial.tip1': 'Batch Rename: Enable to set a uniform filename prefix and starting number for cleaner exports',
-  'tutorial.tip2': 'Convert Format Only: No cropping or resizing — just convert between JPG/PNG/WebP',
-  'tutorial.tip3': 'Platform presets include sizes for Xiaohongshu, TikTok, Weibo, WeChat, ID photos, and more',
-  'tutorial.tip4': 'Browsers supporting File System Access API (Chrome) can save directly to a folder',
+  'tutorial.step3.desc': 'Click or drag on any image to set the focal point — the area you want to keep in the crop. The default is center crop. A gray overlay shows the area that will be trimmed. Each image can have its own focal point.',
+  'tutorial.step4.title': 'Process & Download',
+  'tutorial.step4.desc': 'Click "Start Cropping" (or press Ctrl+Enter). Once processed, download individual files, a ZIP archive, or save directly to a local folder (Chrome/Edge). You can also use batch rename to give all files a uniform naming pattern.',
+
+  // Section: Image Compression
+  'tutorial.section.compress': 'Image Compression',
+  'tutorial.compress.title': 'Reduce File Size',
+  'tutorial.compress.desc': 'Enable the Compress option in the left panel. Drag the slider to set how much to shrink the file — up to 90% smaller with minimal quality loss. Perfect for reducing image size for websites, email attachments, or social media uploads. Works with JPG and WebP formats.',
+
+  // Section: Watermark
+  'tutorial.section.watermark': 'Add Watermark',
+  'tutorial.watermark.title': 'Protect Images with Watermarks',
+  'tutorial.watermark.desc': 'Enable the Watermark option and enter your text. Customize font size, color, opacity (0–100%), and choose from 7 positions (top-left, top-center, top-right, center, bottom-left, bottom-center, bottom-right). The watermark is applied to all images during batch processing.',
+
+  // Section: Format Conversion
+  'tutorial.section.convert': 'Format Conversion',
+  'tutorial.convert.title': 'Convert Between Image Formats',
+  'tutorial.convert.desc': 'Choose your output format (JPEG, PNG, or WebP) from the left panel. Enable "Convert Format Only" to skip cropping/resizing and just convert. TapCrop automatically converts iPhone HEIC photos to JPG on upload, preserving the original filename.',
+
+  // Section: Image Adjustments
+  'tutorial.section.adjust': 'Image Adjustments',
+  'tutorial.adjust.title': 'Fine-tune Brightness, Contrast & Saturation',
+  'tutorial.adjust.desc': 'Enable the Adjust panel to modify brightness, contrast, and saturation. Drag the sliders left to decrease or right to increase. Changes are applied to all images during processing. Great for batch-correcting underexposed or oversaturated photos.',
+
+  // Section: Border
+  'tutorial.section.border': 'Add Border',
+  'tutorial.border.title': 'Add Solid-Color Borders',
+  'tutorial.border.desc': 'Enable the Border option to add a solid-color frame around your images. Set the border thickness and pick any color. Ideal for creating uniform framing across a batch of photos for social media or product listings.',
+
+  // Section: Advanced Features
+  'tutorial.section.advanced': 'Advanced Features',
+  'tutorial.advanced.rename.title': 'Batch Rename',
+  'tutorial.advanced.rename.desc': 'Enable Batch Rename to set a filename prefix and starting number. For example, prefix "product" starting at "001" outputs product_001.jpg, product_002.jpg, etc.',
+  'tutorial.advanced.rotate.title': 'Rotate & Flip',
+  'tutorial.advanced.rotate.desc': 'Click the rotate/flip buttons on any image card to rotate 90° clockwise or counterclockwise, or flip horizontally/vertically. Changes are per-image.',
+  'tutorial.advanced.customsize.title': 'Per-Image Custom Size',
+  'tutorial.advanced.customsize.desc': 'Click "Custom Size" on any image card to override the global output size for that specific image. Useful when one image in a batch needs a different dimension.',
+  'tutorial.advanced.presets.title': '50+ Platform Presets',
+  'tutorial.advanced.presets.desc': 'Size presets cover Instagram, YouTube, Twitter/X, Facebook, LinkedIn, Pinterest, Twitch, SoundCloud, Tumblr, Etsy, Xiaohongshu, Douyin, Weibo, WeChat, ID photos (passport, driver\'s license, 1-inch, 2-inch), and paper sizes.',
+  'tutorial.advanced.keyboard.title': 'Keyboard Shortcuts',
+  'tutorial.advanced.keyboard.desc': 'Ctrl+Enter starts processing. Delete clears all images. Ctrl+Z / Ctrl+Y to undo/redo.',
+  'tutorial.advanced.dragdrop.title': 'Drag & Drop Reorder',
+  'tutorial.advanced.dragdrop.desc': 'Drag images in the preview grid to rearrange their order before export.',
+
+  // Tips
+  'tutorial.tips': 'Tips & Best Practices',
+  'tutorial.tip1': 'All processing happens locally in your browser — your images are never uploaded to any server',
+  'tutorial.tip2': 'For best results, upload high-resolution source images and let TapCrop handle the resizing',
+  'tutorial.tip3': 'Use WebP format for smaller file sizes when targeting web and social media',
+  'tutorial.tip4': 'Chrome and Edge support the "Save to Folder" feature for direct export without ZIP',
+  'tutorial.tip5': 'HEIC photos from iPhones are automatically converted to JPG on upload',
+  'tutorial.tip6': 'You can combine multiple features: crop + compress + watermark + rename in a single batch',
 
   // FAQ page
   'faq.title': 'FAQ',
@@ -402,17 +447,6 @@ export default {
   'auth.error.generic': 'Operation failed, please try again',
   'auth.google': 'Continue with Google',
   'auth.or': 'or',
-
-  // Export Bundle
-  'bundle.title': 'Export Kit',
-  'bundle.desc': 'Export your images in multiple sizes for a platform',
-  'bundle.generate': 'Generate Kit',
-  'bundle.generating': 'Generating...',
-  'bundle.sizes': '{count} sizes',
-  'bundle.instagram': 'Instagram Kit',
-  'bundle.youtube': 'YouTube Kit',
-  'bundle.twitter': 'Twitter/X Kit',
-  'bundle.facebook': 'Facebook Kit',
 
   // Footer
   'footer.terms': 'Terms of Service',

@@ -43,12 +43,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.tapcrop.com/resize-image-kb</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://www.tapcrop.com/webp-to-png</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -68,12 +62,6 @@
   </url>
   <url>
     <loc>https://www.tapcrop.com/compress-jpg</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.tapcrop.com/resize-to-100kb</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -133,6 +121,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.tapcrop.com/changelog</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.tapcrop.com/privacy</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
@@ -143,11 +137,5 @@
     <lastmod>2026-03-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.tapcrop.com/changelog</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>

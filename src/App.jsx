@@ -9,7 +9,6 @@ import { useLanguage } from './i18n/LanguageContext'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
 import useHistory from './hooks/useHistory'
-import ExportBundleModal from './components/ExportBundleModal'
 import './App.css'
 
 const DEFAULT_SETTINGS = {
@@ -78,7 +77,6 @@ export default function App() {
   const [processing, setProcessing] = useState(false)
   const [processProgress, setProcessProgress] = useState({ current: 0, total: 0 })
   const fileInputRef = useRef(null)
-  const [showBundle, setShowBundle] = useState(false)
 
   // Auto-enable feature from ?tool= param (from marketing landing pages)
   useEffect(() => {
@@ -184,14 +182,14 @@ export default function App() {
     const newImages = files.map(file => ({
       id: ++imageIdCounter,
       file,
-      name: file.name,
+      name: file.originalName || file.name,
       originalUrl: URL.createObjectURL(file),
       previewUrl: null,
       processedBlob: null,
       naturalWidth: 0,
       naturalHeight: 0,
       focalPoint: null,
-      status: 'pending',
+      status: null,
     }))
     setImages(prev => [...prev, ...newImages])
 
@@ -209,6 +207,24 @@ export default function App() {
       })
     }
   }, [])
+
+  const handleRawFiles = useCallback(async (rawFiles) => {
+    const isHeic = f => /\.(heic|heif)$/i.test(f.name) || f.type === 'image/heic' || f.type === 'image/heif'
+    const validFiles = rawFiles.filter(f => f.type.startsWith('image/') || isHeic(f))
+    const converted = await Promise.all(validFiles.map(async f => {
+      if (!isHeic(f)) return f
+      try {
+        const heic2any = (await import('heic2any')).default
+        const blob = await heic2any({ blob: f, toType: 'image/jpeg', quality: 0.92 })
+        const result = Array.isArray(blob) ? blob[0] : blob
+        const newFile = new File([result], f.name.replace(/\.(heic|heif)$/i, '.jpg'), { type: 'image/jpeg' })
+        newFile.originalName = f.name
+        return newFile
+      } catch { return null }
+    }))
+    const valid = converted.filter(Boolean)
+    if (valid.length > 0) handleFilesAdded(valid)
+  }, [handleFilesAdded])
 
   const handleUpdateFocalPoint = useCallback((imageId, focalPoint) => {
     setImages(prev => prev.map(img =>
@@ -353,7 +369,7 @@ export default function App() {
 
   const doneCount = images.filter(i => i.status === 'done').length
   const hasProcessed = doneCount > 0
-  const pendingCount = images.filter(i => i.status === 'pending' || i.status === 'error').length
+  const pendingCount = images.filter(i => !i.status || i.status === 'error').length
 
   // Compute display ratio
   const displayRatio = settings.ratioW > 0 && settings.ratioH > 0
@@ -422,22 +438,16 @@ export default function App() {
                   {t('action.saveToFolder')}
                 </button>
               )}
-              <button className="btn-action btn-bundle" onClick={() => setShowBundle(true)}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
-                  <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
-                  <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
-                  <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
-                </svg>
-                {t('bundle.title')}
-              </button>
             </>
           )}
         </div>
       </aside>
 
       {/* Main content */}
-      <main className="main-area">
+      <main className="main-area"
+        onDragOver={e => { e.preventDefault(); e.stopPropagation() }}
+        onDrop={e => { e.preventDefault(); e.stopPropagation(); if (e.dataTransfer.files.length > 0) handleRawFiles(Array.from(e.dataTransfer.files)) }}
+      >
         <TopNav />
         {images.length === 0 ? (
           <div className="welcome">
@@ -494,7 +504,7 @@ export default function App() {
                   multiple
                   style={{ display: 'none' }}
                   onChange={e => {
-                    handleFilesAdded(Array.from(e.target.files))
+                    handleRawFiles(Array.from(e.target.files))
                     e.target.value = ''
                   }}
                 />
@@ -525,13 +535,6 @@ export default function App() {
         </footer>
       </main>
 
-      {showBundle && (
-        <ExportBundleModal
-          onClose={() => setShowBundle(false)}
-          images={images}
-          settings={settings}
-        />
-      )}
     </div>
   )
 }

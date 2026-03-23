@@ -98,6 +98,122 @@
   margin-bottom: 0;
 }
 
+/* Tutorial */
+.tutorial-intro {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.tutorial-cta-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.tutorial-cta-bottom {
+  margin-top: 32px;
+  margin-bottom: 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--divider);
+}
+
+.tutorial-cta {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.tutorial-cta:hover {
+  opacity: 0.85;
+}
+
+.tutorial-cta-secondary {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.tutorial-cta-secondary:hover {
+  color: var(--text);
+}
+
+.tutorial-section {
+  margin-bottom: 28px;
+}
+
+.tutorial-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.tutorial-section-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.tutorial-feature-card {
+  padding: 16px 20px;
+  background: var(--bg);
+  border-radius: var(--r-lg);
+  margin-bottom: 10px;
+}
+
+.tutorial-feature-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.tutorial-feature-card p {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.tutorial-advanced-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tutorial-tips-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.tutorial-tips-list li {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 600px) {
+  .tutorial-advanced-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* FAQ */
 .faq-item {
   padding: 18px 0;

@@ -7,7 +7,9 @@ async function convertHeic(file) {
   const blob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 })
   const converted = Array.isArray(blob) ? blob[0] : blob
   const name = file.name.replace(/\.heic$/i, '.jpg').replace(/\.heif$/i, '.jpg')
-  return new File([converted], name, { type: 'image/jpeg' })
+  const newFile = new File([converted], name, { type: 'image/jpeg' })
+  newFile.originalName = file.name
+  return newFile
 }
 
 function isHeic(file) {
