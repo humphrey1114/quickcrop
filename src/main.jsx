@@ -24,6 +24,9 @@ import CompressPage from './pages/tools/CompressPage.jsx'
 import ResizePage from './pages/tools/ResizePage.jsx'
 import WatermarkPage from './pages/tools/WatermarkPage.jsx'
 import ConvertPage from './pages/tools/ConvertPage.jsx'
+import ResizeKbPage from './pages/tools/ResizeKbPage.jsx'
+import WebpToPngPage from './pages/tools/WebpToPngPage.jsx'
+import ResizeIndiaPage from './pages/tools/ResizeIndiaPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 
@@ -50,6 +53,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="/resize" element={<ResizePage />} />
           <Route path="/watermark" element={<WatermarkPage />} />
           <Route path="/convert" element={<ConvertPage />} />
+          <Route path="/resize-image-kb" element={<ResizeKbPage />} />
+          <Route path="/webp-to-png" element={<WebpToPngPage />} />
+          <Route path="/resize-photo-india" element={<ResizeIndiaPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
