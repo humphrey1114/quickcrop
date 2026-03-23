@@ -16,7 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px 48px;
+  width: 100%;
 }
 
 .home-nav-brand {
@@ -642,6 +643,10 @@
 
 /* iPad landscape / small laptop 769-1024 */
 @media (max-width: 1024px) {
+  .home-nav {
+    padding: 20px 32px;
+  }
+
   .home-inner {
     padding: 0 32px;
   }
@@ -657,6 +662,10 @@
 
 /* iPad portrait / large phone 481-768 */
 @media (max-width: 768px) {
+  .home-nav {
+    padding: 16px 20px;
+  }
+
   .home-inner {
     padding: 0 20px;
   }
@@ -711,6 +720,10 @@
 
 /* Phone 320-480 */
 @media (max-width: 480px) {
+  .home-nav {
+    padding: 14px 16px;
+  }
+
   .home-inner {
     padding: 0 16px;
   }

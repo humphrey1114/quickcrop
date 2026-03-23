@@ -158,25 +158,25 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
+      {/* Nav - full width */}
+      <nav className="home-nav">
+        <div className="home-nav-brand">
+          <img src="/2048.png" alt="TapCrop" className="home-nav-logo" />
+          <span className="home-nav-name">TapCrop</span>
+        </div>
+        <div className="home-nav-actions">
+          <button className="home-nav-text-btn" onClick={toggleTheme}>
+            {theme === 'light' ? 'Dark' : 'Light'}
+          </button>
+          <button className="home-nav-text-btn" onClick={toggleLang}>
+            {lang === 'zh' ? 'EN' : '中文'}
+          </button>
+          <Link to="/app" className="home-nav-login">
+            {lang === 'zh' ? '登录' : 'Log in'}
+          </Link>
+        </div>
+      </nav>
       <div className="home-inner">
-        {/* Nav */}
-        <nav className="home-nav">
-          <div className="home-nav-brand">
-            <img src="/2048.png" alt="TapCrop" className="home-nav-logo" />
-            <span className="home-nav-name">TapCrop</span>
-          </div>
-          <div className="home-nav-actions">
-            <button className="home-nav-text-btn" onClick={toggleTheme}>
-              {theme === 'light' ? 'Dark' : 'Light'}
-            </button>
-            <button className="home-nav-text-btn" onClick={toggleLang}>
-              {lang === 'zh' ? 'EN' : '中文'}
-            </button>
-            <Link to="/app" className="home-nav-login">
-              {lang === 'zh' ? '登录' : 'Log in'}
-            </Link>
-          </div>
-        </nav>
 
         {/* Hero */}
         <section className="home-hero">
