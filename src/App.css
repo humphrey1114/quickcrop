@@ -261,7 +261,7 @@
 .main-area {
   flex: 1;
   margin-left: var(--sidebar-w);
-  padding: 36px 44px;
+  padding: 20px 44px 36px;
   min-width: 0;
 }
 
