@@ -1,7 +1,7 @@
 {
-  "name": "TapCrop - Free Batch Image Cropping Tool",
+  "name": "TapCrop - Free Image Resizer & Batch Photo Editor",
   "short_name": "TapCrop",
-  "description": "Free online batch image cropping tool. Crop multiple images at once with custom focal point. 100% local processing.",
+  "description": "Free online image resizer, photo resizer and batch editor. Resize, crop, compress, watermark and convert images in bulk. 100% local processing.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

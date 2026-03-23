@@ -57,9 +57,9 @@ export default function CompressPage() {
   return (
     <ToolLandingPage
       toolKey="compress"
-      titleEn="Free Online Image Compressor"
+      titleEn="Reduce Image Size Online Free — Image & Photo Size Reducer"
       titleZh="免费在线图片压缩工具"
-      descEn="Compress images by up to 90% without losing quality. Batch compress hundreds of photos at once — free, private, no signup required."
+      descEn="Free image size reducer and photo size reducer. Reduce image size up to 90% without quality loss. Batch compress hundreds of photos at once. No signup, no uploads."
       descZh="将图片体积缩小最多 90%，同时保持画质。批量压缩数百张照片——免费、隐私、无需注册。"
       features={features}
       stepsEn={stepsEn}

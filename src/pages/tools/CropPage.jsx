@@ -59,9 +59,9 @@ export default function CropPage() {
   return (
     <ToolLandingPage
       toolKey="crop"
-      titleEn="Free Online Batch Image Cropper"
+      titleEn="Crop Image Online Free — Batch Photo Cropper"
       titleZh="\u514d\u8d39\u5728\u7ebf\u6279\u91cf\u56fe\u7247\u88c1\u526a\u5de5\u5177"
-      descEn="Crop and resize hundreds of images at once \u2014 right in your browser. Set custom focal points, pick from 50+ presets, and download instantly. No signup, no uploads."
+      descEn="Crop image online free. Batch crop and resize hundreds of photos at once with custom focal points. 50+ presets for Instagram, YouTube, Facebook. No signup, no uploads."
       descZh="\u76f4\u63a5\u5728\u6d4f\u89c8\u5668\u4e2d\u6279\u91cf\u88c1\u526a\u548c\u8c03\u6574\u6570\u767e\u5f20\u56fe\u7247\u3002\u81ea\u5b9a\u4e49\u7126\u70b9\u300150+ \u9884\u8bbe\u5c3a\u5bf8\u3001\u5373\u65f6\u4e0b\u8f7d\u3002\u65e0\u9700\u6ce8\u518c\uff0c\u56fe\u7247\u4e0d\u4e0a\u4f20\u3002"
       features={features}
       stepsEn={stepsEn}

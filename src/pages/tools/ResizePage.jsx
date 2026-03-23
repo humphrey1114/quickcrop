@@ -57,9 +57,9 @@ export default function ResizePage() {
   return (
     <ToolLandingPage
       toolKey="resize"
-      titleEn="Free Online Batch Image Resizer"
+      titleEn="Free Image Resizer Online — Resize Images & Photos in Bulk"
       titleZh="免费在线批量图片缩放工具"
-      descEn="Resize hundreds of images to exact dimensions in seconds. 50+ presets for social media, e-commerce, and print. Free, private, no signup."
+      descEn="Free online image resizer and photo resizer. Resize image to exact pixel dimensions, reduce image size, bulk resize photos. 50+ presets for social media and e-commerce. No signup, no uploads."
       descZh="几秒钟内将数百张图片缩放为精确尺寸。50+ 社交媒体、电商和打印预设。免费、隐私、无需注册。"
       features={features}
       stepsEn={stepsEn}

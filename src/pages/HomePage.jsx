@@ -140,11 +140,11 @@ export default function HomePage() {
   useEffect(() => {
     document.title = lang === 'zh'
       ? 'TapCrop 秒裁 — 免费在线批量图片处理工具'
-      : 'TapCrop — Free Batch Image Editor | Crop, Resize, Compress Online'
+      : 'TapCrop — Free Image Resizer & Photo Editor Online | Resize, Crop, Compress Images'
     const meta = document.querySelector('meta[name="description"]')
     const desc = lang === 'zh'
       ? '免费在线批量裁剪、缩放、压缩、加水印、转换图片格式。100% 浏览器端处理，无需注册，图片不上传。'
-      : 'Free online batch image editor. Crop, resize, compress, watermark, and convert photos instantly. No signup, no uploads — runs 100% in your browser.'
+      : 'Free online image resizer, photo resizer & batch editor. Resize, crop, compress, watermark and convert images in bulk. Reduce image size up to 90%. No signup, no uploads — 100% browser processing.'
     if (meta) meta.setAttribute('content', desc)
   }, [lang])
 
