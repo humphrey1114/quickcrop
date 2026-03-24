@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { track } from '@vercel/analytics/react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAuth } from '../contexts/AuthContext'
 import AuthModal from './AuthModal'
@@ -105,7 +106,10 @@ export default function TopNav() {
         </button>
         <button
           className="top-nav-support"
-          onClick={() => window.open(SUPPORT_LINK, '_blank', 'noopener,noreferrer')}
+          onClick={() => {
+            track('support_clicked', { source: 'top-nav' })
+            window.open(SUPPORT_LINK, '_blank', 'noopener,noreferrer')
+          }}
           title={supportTitle}
           aria-label={supportTitle}
         >

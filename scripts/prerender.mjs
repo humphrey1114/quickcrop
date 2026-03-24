@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DIST = join(__dirname, '..', 'dist')
-const PORT = 4173
+const DEFAULT_PORT = 4173
 
 const ROUTES = [
   '/',
@@ -69,10 +69,25 @@ function startServer() {
       }
     })
 
-    server.listen(PORT, () => {
-      console.log(`  Static server on http://localhost:${PORT}`)
-      resolve(server)
+    const listen = (port) => {
+      server.listen(port, () => {
+        const address = server.address()
+        const actualPort = typeof address === 'object' && address ? address.port : port
+        console.log(`  Static server on http://localhost:${actualPort}`)
+        resolve({ server, port: actualPort })
+      })
+    }
+
+    server.once('error', (err) => {
+      if (err.code === 'EADDRINUSE') {
+        server.removeAllListeners('error')
+        listen(0)
+        return
+      }
+      throw err
     })
+
+    listen(DEFAULT_PORT)
   })
 }
 
@@ -123,14 +138,14 @@ async function getBrowser() {
 async function prerender() {
   console.log('\n🔍 Prerendering routes for SEO...\n')
 
-  let server, browser
+  let serverInfo, browser
   try {
-    server = await startServer()
+    serverInfo = await startServer()
     browser = await getBrowser()
   } catch (err) {
     console.log(`\n⏭️  Cannot launch browser — skipping prerender: ${err.message}`)
     console.log('   Site will work fine as a normal SPA.\n')
-    server?.close()
+    serverInfo?.server?.close()
     process.exit(0)
   }
 
@@ -140,7 +155,7 @@ async function prerender() {
   for (const route of ROUTES) {
     try {
       const page = await browser.newPage()
-      await page.goto(`http://localhost:${PORT}${route}`, {
+      await page.goto(`http://localhost:${serverInfo.port}${route}`, {
         waitUntil: 'networkidle0',
         timeout: 15000,
       })
@@ -163,7 +178,7 @@ async function prerender() {
   }
 
   await browser.close()
-  server.close()
+  serverInfo.server.close()
   console.log(`\n  Done: ${success} prerendered, ${failed} failed\n`)
 }
 

@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { track } from '@vercel/analytics/react'
 import DropZone from './components/DropZone'
 import SettingsPanel from './components/SettingsPanel'
 import PreviewGrid from './components/PreviewGrid'
@@ -290,6 +291,11 @@ export default function App() {
 
     // Check daily limit
     if (!canProcess(images.length)) {
+      track('processing_blocked', {
+        reason: 'daily_limit',
+        selectedCount: images.length,
+        remainingToday,
+      })
       alert(lang === 'zh'
         ? `今日免费额度剩余 ${remainingToday} 张，当前 ${images.length} 张超出限制。升级 Pro 可无限处理。`
         : `Daily free limit: ${remainingToday} remaining, but ${images.length} selected. Upgrade to Pro for unlimited.`)
@@ -348,6 +354,12 @@ export default function App() {
     // Track usage after successful processing
     const doneCount = updatedImages.filter(i => i.status === 'done').length
     if (doneCount > 0) addUsage(doneCount)
+    track('processing_completed', {
+      selectedCount: images.length,
+      successCount: doneCount,
+      errorCount: updatedImages.filter(i => i.status === 'error').length,
+      isPro,
+    })
 
     setProcessing(false)
     setProcessProgress({ current: 0, total: 0 })
@@ -382,6 +394,11 @@ export default function App() {
     } else {
       await downloadAsZip(files)
     }
+
+    track('download_completed', {
+      count: files.length,
+      mode: files.length === 1 ? 'single' : 'zip',
+    })
   }, [images, buildFileList])
 
   const handleSaveToFolder = useCallback(async () => {
@@ -391,6 +408,10 @@ export default function App() {
     const files = buildFileList(doneImages)
 
     await saveToFolder(files)
+    track('download_completed', {
+      count: files.length,
+      mode: 'folder',
+    })
   }, [images, buildFileList])
 
   const handleClear = useCallback(() => {

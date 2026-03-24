@@ -42,7 +42,7 @@ export default {
 
   // DropZone
   'dropzone.title': 'Drop your images here, or click to upload',
-  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC — max 30MB per file, up to 100 images',
+  'dropzone.hint': 'Supports JPG, PNG, WebP, BMP, HEIC — limits depend on your current plan.',
   'dropzone.addMore': 'Add more images',
   'dropzone.tooMany': 'Maximum {max} images allowed at a time',
   'dropzone.invalidType': '{count} file(s) skipped — unsupported format',
@@ -216,7 +216,7 @@ export default {
   // Section: Getting Started
   'tutorial.section.start': 'Getting Started',
   'tutorial.step1.title': 'Upload Images',
-  'tutorial.step1.desc': 'Drag and drop images anywhere on the page, or click the upload area to browse. Supports JPG, PNG, WebP, BMP, and HEIC (iPhone photos). You can upload up to 100 images at once, each up to 30 MB.',
+  'tutorial.step1.desc': 'Drag and drop images anywhere on the page, or click the upload area to browse. Supports JPG, PNG, WebP, BMP, and HEIC (iPhone photos). Upload count and file size limits depend on your current plan.',
   'tutorial.step2.title': 'Set Output Size',
   'tutorial.step2.desc': 'Choose a target size from the left panel. Pick from 50+ presets for social media (Instagram, YouTube, Twitter, Facebook, LinkedIn, Pinterest, etc.), ID photos, paper sizes, or enter custom dimensions. Lock the aspect ratio or swap width/height with one click.',
   'tutorial.step3.title': 'Adjust Focal Point',
@@ -296,7 +296,7 @@ export default {
   'faq.q10': 'Can I use TapCrop on my phone?',
   'faq.a10': 'Yes, TapCrop is responsive and works on mobile devices. You can upload photos from your camera roll and crop them directly in your mobile browser.',
   'faq.q11': 'What should I do if image processing fails?',
-  'faq.a11': 'Try reloading the page and uploading again. If the issue persists, the image might be corrupted or too large. Each image should be under 30MB. You can also try converting the image to JPG or PNG before uploading.',
+  'faq.a11': 'Try reloading the page and uploading again. If the issue persists, the image might be corrupted or larger than your current plan limit. You can also try converting the image to JPG or PNG before uploading.',
   'faq.q12': 'Does TapCrop work offline?',
   'faq.a12': 'Yes, once the page is loaded, TapCrop works without an internet connection since all processing happens in your browser. An internet connection is only needed for initial loading, account sync, and donations.',
 

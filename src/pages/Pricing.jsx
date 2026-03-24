@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { track } from '@vercel/analytics/react'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAuth } from '../contexts/AuthContext'
@@ -10,16 +11,19 @@ export default function Pricing() {
   const { t, lang } = useLanguage()
   const { user } = useAuth()
   const { isPro } = usePro()
+  const [searchParams] = useSearchParams()
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
 
   useEffect(() => {
     document.title = lang === 'zh'
-      ? '定价方案 — 秒裁 TapCrop 免费与 Pro 对比'
-      : 'Pricing — TapCrop Free vs Pro Plans'
+      ? '定价方案 | TapCrop 免费版与 Pro 对比'
+      : 'Pricing | TapCrop Free vs Pro Plans'
+
     const meta = document.querySelector('meta[name="description"]')
     if (meta) {
       meta.setAttribute('content', lang === 'zh'
-        ? '秒裁提供慷慨的免费方案，每天可处理 100 张图片。升级 Pro 享受无限处理、更大文件、无广告体验。'
-        : 'TapCrop offers a generous free plan with 100 images/day. Upgrade to Pro for unlimited processing, larger files, and ad-free experience.')
+        ? 'TapCrop 提供免费版与 Pro 版。免费版每天可处理 100 张图片，升级 Pro 可解锁无限处理、更大文件和更多高级功能。'
+        : 'TapCrop offers a free plan and Pro subscription. Start free with 100 images per day, then upgrade for unlimited processing, larger files, and advanced controls.')
     }
   }, [lang])
 
@@ -60,26 +64,74 @@ export default function Pricing() {
     },
   ]
 
-  const handleUpgrade = () => {
+  const handleUpgrade = async () => {
     if (!user) {
       alert(lang === 'zh' ? '请先登录后再升级 Pro' : 'Please log in before upgrading to Pro')
       return
     }
+
     if (isPro) {
-      alert(lang === 'zh' ? '你已经是 Pro 用户了！' : 'You are already a Pro member!')
+      alert(lang === 'zh' ? '你已经是 Pro 用户了' : 'You are already a Pro member')
       return
     }
-    // Pass Firebase UID and email to Creem for webhook identification
-    const params = new URLSearchParams({
-      client_reference_id: user.uid,
-      prefilled_email: user.email || '',
-    })
-    window.open(`https://www.creem.io/payment/prod_443SQW7gVPLY8Gjx6vhk7x?${params}`, '_blank')
+
+    setCheckoutLoading(true)
+
+    try {
+      const response = await fetch('/api/create-creem-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user.uid,
+          email: user.email || '',
+          locale: lang,
+        }),
+      })
+
+      const data = await response.json().catch(() => ({}))
+      const checkoutUrl = data.checkoutUrl || data.fallbackUrl
+
+      if (!checkoutUrl) {
+        throw new Error(data.error || 'Checkout URL missing')
+      }
+
+      track('pricing_checkout_started', {
+        plan: 'pro',
+        loggedIn: true,
+        checkoutMode: data.checkoutUrl ? 'api' : 'legacy-fallback',
+      })
+
+      window.location.assign(checkoutUrl)
+    } catch (error) {
+      console.error('Checkout start failed:', error)
+      alert(lang === 'zh'
+        ? '暂时无法打开支付页面，请稍后再试。'
+        : 'Unable to open checkout right now. Please try again in a moment.')
+    } finally {
+      setCheckoutLoading(false)
+    }
   }
+
+  const successNotice = searchParams.get('checkout') === 'success'
+  const canceledNotice = searchParams.get('checkout') === 'canceled'
 
   return (
     <PageLayout title={t('pricing.title')} wide>
       <p className="pricing-subtitle">{t('pricing.subtitle')}</p>
+      {successNotice && (
+        <p className="pricing-subtitle">
+          {lang === 'zh'
+            ? '支付已完成。如果你的 Pro 状态没有立刻更新，刷新页面或重新登录一次即可。'
+            : 'Payment completed. If your Pro status does not update immediately, refresh the page or sign in again.'}
+        </p>
+      )}
+      {canceledNotice && (
+        <p className="pricing-subtitle">
+          {lang === 'zh'
+            ? '你已取消本次支付，没有产生扣款。'
+            : 'Checkout canceled. No charge was made.'}
+        </p>
+      )}
 
       <div className="pricing-grid">
         {plans.map(plan => (
@@ -91,16 +143,24 @@ export default function Pricing() {
               <span className="pricing-period">{plan.period}</span>
             </div>
             <ul className="pricing-features">
-              {plan.features.map(f => (
-                <li key={f.label} className={f.disabled ? 'pricing-feature-disabled' : ''}>
-                  <span className="pricing-feature-label">{f.label}</span>
-                  <span className="pricing-feature-value">{f.value}</span>
+              {plan.features.map((feature) => (
+                <li key={feature.label} className={feature.disabled ? 'pricing-feature-disabled' : ''}>
+                  <span className="pricing-feature-label">{feature.label}</span>
+                  <span className="pricing-feature-value">{feature.value}</span>
                 </li>
               ))}
             </ul>
             {plan.highlight ? (
-              <button className="pricing-btn pricing-btn-pro" onClick={handleUpgrade} disabled={isPro}>
-                {isPro ? (lang === 'zh' ? '当前方案' : 'Current Plan') : t('pricing.upgrade')}
+              <button
+                className="pricing-btn pricing-btn-pro"
+                onClick={handleUpgrade}
+                disabled={isPro || checkoutLoading}
+              >
+                {isPro
+                  ? (lang === 'zh' ? '当前方案' : 'Current Plan')
+                  : checkoutLoading
+                    ? (lang === 'zh' ? '跳转中...' : 'Redirecting...')
+                    : t('pricing.upgrade')}
               </button>
             ) : (
               <Link to="/app" className="pricing-btn pricing-btn-free">

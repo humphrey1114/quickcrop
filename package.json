@@ -8,13 +8,15 @@
     "build": "vite build && node scripts/prerender.mjs",
     "build:fast": "vite build",
     "preview": "vite preview",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "file-saver": "^2.0.5",
     "firebase": "^12.11.0",
+    "firebase-admin": "^13.7.0",
     "heic2any": "^0.0.4",
     "jszip": "^3.10.1",
     "nodemailer": "^8.0.3",

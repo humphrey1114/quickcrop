@@ -42,7 +42,7 @@ export default {
 
   // DropZone
   'dropzone.title': '拖拽图片到这里，或点击上传',
-  'dropzone.hint': '支持 JPG、PNG、WebP、BMP、HEIC — 单文件最大 30MB，最多 100 张',
+  'dropzone.hint': '支持 JPG、PNG、WebP、BMP、HEIC，上传数量和文件大小限制取决于你当前的方案。',
   'dropzone.addMore': '继续添加图片',
   'dropzone.tooMany': '最多支持同时处理 {max} 张图片',
   'dropzone.invalidType': '{count} 个文件被跳过 — 不支持的格式',
@@ -220,7 +220,7 @@ export default {
   // Section: Getting Started
   'tutorial.section.start': '快速上手',
   'tutorial.step1.title': '上传图片',
-  'tutorial.step1.desc': '拖拽图片到页面任意位置，或点击上传区域浏览选择。支持 JPG、PNG、WebP、BMP、HEIC（iPhone 照片）格式，一次最多上传 100 张，单张最大 30 MB。',
+  'tutorial.step1.desc': '拖拽图片到页面任意位置，或点击上传区域浏览选择。支持 JPG、PNG、WebP、BMP、HEIC（iPhone 照片）格式，上传数量和文件大小限制取决于你当前的方案。',
   'tutorial.step2.title': '设置输出尺寸',
   'tutorial.step2.desc': '在左侧面板选择目标尺寸。内置 50+ 预设尺寸，覆盖社交媒体（Instagram、YouTube、Twitter、Facebook、LinkedIn、Pinterest 等）、证件照、纸张等。也可以自定义宽高，锁定宽高比，或一键对换横竖版。',
   'tutorial.step3.title': '调整焦点',
@@ -300,7 +300,7 @@ export default {
   'faq.q10': '手机能用吗？',
   'faq.a10': '可以。秒裁支持响应式布局，在手机浏览器中可以直接上传相册照片进行裁剪。',
   'faq.q11': '图片处理失败怎么办？',
-  'faq.a11': '请尝试刷新页面后重新上传。如果问题持续，可能是图片损坏或过大。单张图片不超过 30MB。也可以尝试将图片转换为 JPG 或 PNG 后再上传。',
+  'faq.a11': '请尝试刷新页面后重新上传。如果问题持续，可能是图片损坏，或超出了你当前方案的大小限制。也可以尝试先将图片转换为 JPG 或 PNG 后再上传。',
   'faq.q12': '秒裁可以离线使用吗？',
   'faq.a12': '可以。页面加载后，所有处理都在本地完成，无需网络。只有首次加载、账号同步和打赏需要联网。',
 

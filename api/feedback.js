@@ -41,7 +41,12 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
-  const { name, email, type, message } = req.body
+  const { name, email, type, message, website } = req.body || {}
+
+  // Honeypot field for basic bot filtering
+  if (website) {
+    return res.status(200).json({ success: true })
+  }
 
   // Validate required fields
   if (!name || !email || !message) {

@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react'
+import { track } from '@vercel/analytics/react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { usePro } from '../contexts/ProContext'
 import './DropZone.css'
@@ -18,13 +19,17 @@ function isHeic(file) {
 }
 
 export default function DropZone({ onFilesAdded, compact = false, currentCount = 0 }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const { limits } = usePro()
   const MAX_FILE_SIZE = limits.maxFileSize
   const MAX_FILE_COUNT = limits.batchUpload
   const [dragging, setDragging] = useState(false)
   const [toast, setToast] = useState(null)
   const inputRef = useRef(null)
+  const sizeLimitLabel = `${Math.round(MAX_FILE_SIZE / (1024 * 1024))}MB`
+  const dropzoneHint = lang === 'zh'
+    ? `支持 JPG、PNG、WebP、BMP、HEIC — 单文件最大 ${sizeLimitLabel}，最多 ${MAX_FILE_COUNT} 张`
+    : `Supports JPG, PNG, WebP, BMP, HEIC — max ${sizeLimitLabel} per file, up to ${MAX_FILE_COUNT} images`
 
   const showToast = useCallback((msg) => {
     setToast(msg)
@@ -60,7 +65,7 @@ export default function DropZone({ onFilesAdded, compact = false, currentCount =
       }
     }
     if (oversized > 0) {
-      warnings.push(t('dropzone.tooLarge', { count: oversized, max: '50MB' }))
+      warnings.push(t('dropzone.tooLarge', { count: oversized, max: sizeLimitLabel }))
     }
 
     if (sizeOk.length === 0) {
@@ -78,9 +83,16 @@ export default function DropZone({ onFilesAdded, compact = false, currentCount =
     }
 
     const valid = converted.filter(Boolean)
-    if (valid.length > 0) onFilesAdded(valid)
+    if (valid.length > 0) {
+      track('upload_started', {
+        count: valid.length,
+        source: compact ? 'compact-dropzone' : 'main-dropzone',
+        includesHeic: sizeOk.some(isHeic),
+      })
+      onFilesAdded(valid)
+    }
     if (warnings.length > 0) showToast(warnings.join(' '))
-  }, [onFilesAdded, currentCount, t, showToast])
+  }, [onFilesAdded, currentCount, t, showToast, sizeLimitLabel, compact])
 
   const handleDrop = useCallback((e) => {
     e.preventDefault()
@@ -151,7 +163,7 @@ export default function DropZone({ onFilesAdded, compact = false, currentCount =
             </svg>
           </div>
           <p className="dropzone-title">{t('dropzone.title')}</p>
-          <p className="dropzone-hint">{t('dropzone.hint')}</p>
+          <p className="dropzone-hint">{dropzoneHint}</p>
         </div>
         <input
           ref={inputRef}

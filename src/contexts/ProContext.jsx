@@ -63,6 +63,14 @@ function setDailyUsage(count) {
   } catch { /* ignore */ }
 }
 
+function toDateValue(value) {
+  if (!value) return null
+  if (value instanceof Date) return value
+  if (typeof value?.toDate === 'function') return value.toDate()
+  const parsed = new Date(value)
+  return Number.isNaN(parsed.getTime()) ? null : parsed
+}
+
 export function ProProvider({ children }) {
   const { user } = useAuth()
   const [isPro, setIsPro] = useState(false)
@@ -81,10 +89,10 @@ export function ProProvider({ children }) {
     const unsub = onSnapshot(userDoc, (snap) => {
       if (snap.exists()) {
         const data = snap.data()
-        // Check if subscription is active and not expired
-        const isActive = data.plan === 'pro' && data.status === 'active'
-        const notExpired = !data.expiresAt || data.expiresAt.toDate() > new Date()
-        setIsPro(isActive && notExpired)
+        const expiresAt = toDateValue(data.expiresAt)
+        const notExpired = !expiresAt || expiresAt > new Date()
+        const accessBlocked = ['expired', 'paused'].includes(data.status)
+        setIsPro(data.plan === 'pro' && notExpired && !accessBlocked)
       } else {
         setIsPro(false)
       }

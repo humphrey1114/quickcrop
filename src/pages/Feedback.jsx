@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { track } from '@vercel/analytics/react'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Feedback() {
   const { t } = useLanguage()
-  const [form, setForm] = useState({ name: '', email: '', type: 'bug', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', type: 'bug', message: '', website: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
 
   const updateField = (key, value) => setForm(prev => ({ ...prev, [key]: value }))
@@ -22,7 +23,8 @@ export default function Feedback() {
       })
       if (res.ok) {
         setStatus('success')
-        setForm({ name: '', email: '', type: 'bug', message: '' })
+        track('feedback_submitted', { type: form.type })
+        setForm({ name: '', email: '', type: 'bug', message: '', website: '' })
       } else {
         setStatus('error')
       }
@@ -89,6 +91,19 @@ export default function Feedback() {
             rows={6}
             maxLength={5000}
             required
+          />
+        </div>
+
+        <div className="fb-field" style={{ display: 'none' }} aria-hidden="true">
+          <label className="fb-label" htmlFor="feedback-website">Website</label>
+          <input
+            id="feedback-website"
+            type="text"
+            className="fb-input"
+            tabIndex="-1"
+            autoComplete="off"
+            value={form.website}
+            onChange={e => updateField('website', e.target.value)}
           />
         </div>
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { track } from '@vercel/analytics/react'
 import { useLanguage } from '../i18n/LanguageContext'
 import './HomePage.css'
 
@@ -201,8 +202,12 @@ export default function HomePage() {
             </svg>
             <span>{lang === 'zh' ? 'English' : '中文'}</span>
           </button>
-          <Link to="/app" className="home-nav-login">
-            {lang === 'zh' ? '登录' : 'Log in'}
+          <Link
+            to="/app"
+            className="home-nav-login"
+            onClick={() => track('homepage_open_app_clicked', { source: 'nav' })}
+          >
+            {lang === 'zh' ? '开始使用' : 'Open App'}
           </Link>
         </div>
       </nav>
@@ -223,7 +228,11 @@ export default function HomePage() {
             }
           </p>
           <div className="home-hero-actions">
-            <Link to="/app" className="home-cta-primary">
+            <Link
+              to="/app"
+              className="home-cta-primary"
+              onClick={() => track('homepage_open_app_clicked', { source: 'hero' })}
+            >
               {lang === 'zh' ? '开始使用' : 'Start for Free'}
             </Link>
             <a href="#tools" className="home-cta-secondary">

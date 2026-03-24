@@ -1,105 +1,176 @@
-import { initializeApp, cert, getApps } from 'firebase-admin/app'
-import { getFirestore } from 'firebase-admin/firestore'
+import { getAdminDb } from './_lib/firebaseAdmin.js'
+import { parseWebhookEvent, verifyCreemSignature } from './_lib/creem.js'
 
-// Initialize Firebase Admin (only once)
-if (getApps().length === 0) {
-  initializeApp({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: (process.env.FIREBASE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
-    }),
-  })
+function getDateFromCandidates(...values) {
+  for (const value of values) {
+    if (!value) continue
+
+    if (value instanceof Date && !Number.isNaN(value.getTime())) {
+      return value
+    }
+
+    if (typeof value === 'number') {
+      const date = new Date(value > 1e12 ? value : value * 1000)
+      if (!Number.isNaN(date.getTime())) return date
+    }
+
+    if (typeof value === 'string') {
+      const asNumber = Number(value)
+      if (!Number.isNaN(asNumber) && value.trim() !== '') {
+        const date = new Date(asNumber > 1e12 ? asNumber : asNumber * 1000)
+        if (!Number.isNaN(date.getTime())) return date
+      }
+
+      const date = new Date(value)
+      if (!Number.isNaN(date.getTime())) return date
+    }
+  }
+
+  return null
 }
 
-const db = getFirestore()
+function getMetadata(object) {
+  return object?.metadata || object?.checkout?.metadata || {}
+}
+
+function getEmail(object) {
+  return (
+    object?.customer?.email ||
+    object?.checkout?.customer?.email ||
+    object?.email ||
+    object?.customer_email ||
+    null
+  )
+}
+
+function getCustomerId(object) {
+  return object?.customer?.id || object?.customer_id || null
+}
+
+function getProductId(object) {
+  if (typeof object?.product === 'string') return object.product
+  return object?.product?.id || object?.product_id || object?.checkout?.product?.id || null
+}
+
+function getSubscriptionId(object) {
+  return object?.id || object?.subscription_id || object?.subscription?.id || null
+}
+
+function hasSubscriptionAccess(data) {
+  const status = data?.status || 'free'
+  const expiresAt = data?.expiresAt?.toDate ? data.expiresAt.toDate() : data?.expiresAt
+  const notExpired = !expiresAt || expiresAt > new Date()
+  return data?.plan === 'pro' && notExpired && !['expired', 'paused'].includes(status)
+}
+
+async function findUserIdByEmail(db, email) {
+  if (!email) return null
+  const usersSnap = await db.collection('users').where('email', '==', email).limit(1).get()
+  return usersSnap.empty ? null : usersSnap.docs[0].id
+}
 
 export default async function handler(req, res) {
-  // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
   try {
-    const event = req.body
+    const signature = req.headers['creem-signature']
+    const { rawBody, event } = parseWebhookEvent(req)
 
-    // Creem sends webhook events for subscription lifecycle
-    // Event types: checkout.completed, subscription.active, subscription.canceled, etc.
-    const eventType = event.event_type || event.type
-    const data = event.data || event
-
-    // Extract customer/user info
-    const customerId = data.customer_id || data.metadata?.firebase_uid
-    const email = data.customer_email || data.email
-
-    if (!customerId && !email) {
-      console.log('Webhook received but no user identifier found:', eventType)
-      return res.status(200).json({ received: true })
+    if (!process.env.CREEM_WEBHOOK_SECRET) {
+      throw new Error('CREEM_WEBHOOK_SECRET is not configured')
     }
 
-    // Find Firebase user by email if no direct UID
-    let uid = customerId
-    if (!uid && email) {
-      // Look up by email in users collection
-      const usersSnap = await db.collection('users').where('email', '==', email).limit(1).get()
-      if (!usersSnap.empty) {
-        uid = usersSnap.docs[0].id
-      }
+    if (!verifyCreemSignature(rawBody, signature)) {
+      return res.status(401).json({ error: 'Invalid signature' })
+    }
+
+    const db = getAdminDb()
+    const eventType = event?.eventType || event?.event_type || event?.type
+    const object = event?.object || event?.data || event || {}
+    const metadata = getMetadata(object)
+    const email = getEmail(object)
+
+    let uid = metadata.firebaseUid || metadata.firebase_uid || metadata.referenceId || metadata.userId || null
+    if (!uid) {
+      uid = await findUserIdByEmail(db, email)
     }
 
     if (!uid) {
-      console.log('Could not find user for webhook:', email)
-      return res.status(200).json({ received: true })
+      console.log('Creem webhook ignored: no matching user', { eventType, email })
+      return res.status(200).json({ received: true, ignored: true })
     }
 
     const subRef = db.doc(`users/${uid}/subscription/status`)
+    const existingSnap = await subRef.get()
+    const existingData = existingSnap.exists ? existingSnap.data() : null
+    const expiresAt = getDateFromCandidates(
+      object?.current_period_end_date,
+      object?.current_period_end,
+      object?.next_transaction_date,
+      object?.expires_at,
+      object?.subscription?.current_period_end_date,
+      object?.subscription?.expires_at,
+      existingData?.expiresAt,
+    )
 
-    switch (eventType) {
-      case 'checkout.completed':
-      case 'subscription.active':
-      case 'subscription.renewed': {
-        // Activate Pro
-        const expiresAt = data.current_period_end
-          ? new Date(data.current_period_end * 1000)
-          : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // default 30 days
-
-        await subRef.set({
-          plan: 'pro',
-          status: 'active',
-          customerId: data.customer_id || null,
-          subscriptionId: data.subscription_id || data.id || null,
-          email: email || null,
-          activatedAt: new Date(),
-          expiresAt: expiresAt,
-          updatedAt: new Date(),
-        }, { merge: true })
-
-        console.log(`Pro activated for user ${uid}`)
-        break
-      }
-
-      case 'subscription.canceled':
-      case 'subscription.expired': {
-        // Deactivate Pro
-        await subRef.set({
-          plan: 'free',
-          status: 'canceled',
-          canceledAt: new Date(),
-          updatedAt: new Date(),
-        }, { merge: true })
-
-        console.log(`Pro canceled for user ${uid}`)
-        break
-      }
-
-      default:
-        console.log('Unhandled webhook event:', eventType)
+    const commonPayload = {
+      email,
+      customerId: getCustomerId(object),
+      productId: getProductId(object),
+      subscriptionId: getSubscriptionId(object),
+      updatedAt: new Date(),
+      lastEventType: eventType,
     }
 
-    return res.status(200).json({ received: true })
-  } catch (err) {
-    console.error('Webhook error:', err)
-    // Always return 200 to prevent Creem from retrying
-    return res.status(200).json({ received: true, error: err.message })
+    if (['checkout.completed', 'subscription.active', 'subscription.trialing', 'subscription.paid'].includes(eventType)) {
+      await subRef.set({
+        ...commonPayload,
+        plan: 'pro',
+        status: object?.status || 'active',
+        cancelAtPeriodEnd: false,
+        activatedAt: existingData?.activatedAt || new Date(),
+        expiresAt: expiresAt || null,
+      }, { merge: true })
+
+      return res.status(200).json({ received: true, access: 'granted' })
+    }
+
+    if (['subscription.canceled', 'subscription.unpaid'].includes(eventType)) {
+      await subRef.set({
+        ...commonPayload,
+        plan: 'pro',
+        status: eventType === 'subscription.canceled' ? 'canceled' : 'unpaid',
+        cancelAtPeriodEnd: eventType === 'subscription.canceled',
+        expiresAt: expiresAt || existingData?.expiresAt || null,
+      }, { merge: true })
+
+      return res.status(200).json({ received: true, access: hasSubscriptionAccess({
+        ...existingData,
+        plan: 'pro',
+        status: eventType === 'subscription.canceled' ? 'canceled' : 'unpaid',
+        expiresAt: expiresAt || existingData?.expiresAt || null,
+      }) ? 'retained' : 'pending-expiry' })
+    }
+
+    if (['subscription.expired', 'subscription.paused'].includes(eventType)) {
+      await subRef.set({
+        ...commonPayload,
+        plan: 'free',
+        status: eventType === 'subscription.paused' ? 'paused' : 'expired',
+        cancelAtPeriodEnd: false,
+        expiresAt: expiresAt || new Date(),
+        revokedAt: new Date(),
+      }, { merge: true })
+
+      return res.status(200).json({ received: true, access: 'revoked' })
+    }
+
+    console.log('Unhandled Creem webhook event:', eventType)
+    return res.status(200).json({ received: true, ignored: true })
+  } catch (error) {
+    console.error('Creem webhook error:', error)
+    return res.status(500).json({ error: error.message || 'Webhook processing failed' })
   }
 }
