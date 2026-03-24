@@ -7,6 +7,9 @@ import { useAuth } from '../contexts/AuthContext'
 import { usePro } from '../contexts/ProContext'
 import './Pricing.css'
 
+const CREEM_PRO_PRODUCT_ID = import.meta.env.VITE_CREEM_PRO_PRODUCT_ID || 'prod_443SQW7gVPLY8Gjx6vhk7x'
+const CREEM_PRO_PAYMENT_LINK = `https://www.creem.io/payment/${CREEM_PRO_PRODUCT_ID}`
+
 export default function Pricing() {
   const { t, lang } = useLanguage()
   const { user } = useAuth()
@@ -64,7 +67,7 @@ export default function Pricing() {
     },
   ]
 
-  const handleUpgrade = async () => {
+  const handleUpgrade = () => {
     if (!user) {
       alert(lang === 'zh' ? '请先登录后再升级 Pro' : 'Please log in before upgrading to Pro')
       return
@@ -78,37 +81,25 @@ export default function Pricing() {
     setCheckoutLoading(true)
 
     try {
-      const response = await fetch('/api/create-creem-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: user.uid,
-          email: user.email || '',
-          locale: lang,
-        }),
+      const params = new URLSearchParams({
+        client_reference_id: user.uid,
+        prefilled_email: user.email || '',
       })
-
-      const data = await response.json().catch(() => ({}))
-      const checkoutUrl = data.checkoutUrl || data.fallbackUrl
-
-      if (!checkoutUrl) {
-        throw new Error(data.error || 'Checkout URL missing')
-      }
+      const checkoutUrl = `${CREEM_PRO_PAYMENT_LINK}?${params.toString()}`
 
       track('pricing_checkout_started', {
         plan: 'pro',
         loggedIn: true,
-        checkoutMode: data.checkoutUrl ? 'api' : 'legacy-fallback',
+        checkoutMode: 'direct-link',
       })
 
       window.location.assign(checkoutUrl)
     } catch (error) {
       console.error('Checkout start failed:', error)
+      setCheckoutLoading(false)
       alert(lang === 'zh'
         ? '暂时无法打开支付页面，请稍后再试。'
         : 'Unable to open checkout right now. Please try again in a moment.')
-    } finally {
-      setCheckoutLoading(false)
     }
   }
 
@@ -121,7 +112,7 @@ export default function Pricing() {
       {successNotice && (
         <p className="pricing-subtitle">
           {lang === 'zh'
-            ? '支付已完成。如果你的 Pro 状态没有立刻更新，刷新页面或重新登录一次即可。'
+            ? '支付已完成。如果你的 Pro 状态没有立即更新，刷新页面或重新登录一次即可。'
             : 'Payment completed. If your Pro status does not update immediately, refresh the page or sign in again.'}
         </p>
       )}
