@@ -32,6 +32,12 @@ const ResizeJpgPage = lazy(() => import('./pages/tools/ResizeJpgPage.jsx'))
 const ResizePngPage = lazy(() => import('./pages/tools/ResizePngPage.jsx'))
 const CompressJpgPage = lazy(() => import('./pages/tools/CompressJpgPage.jsx'))
 const HeicToJpgPage = lazy(() => import('./pages/tools/HeicToJpgPage.jsx'))
+const JpgToPngPage = lazy(() => import('./pages/tools/JpgToPngPage.jsx'))
+const SvgToPngPage = lazy(() => import('./pages/tools/SvgToPngPage.jsx'))
+const GifToMp4Page = lazy(() => import('./pages/tools/GifToMp4Page.jsx'))
+const ImageToPdfPage = lazy(() => import('./pages/tools/ImageToPdfPage.jsx'))
+const PassportPhotoPage = lazy(() => import('./pages/tools/PassportPhotoPage.jsx'))
+const SmartCropPage = lazy(() => import('./pages/tools/SmartCropPage.jsx'))
 const Pricing = lazy(() => import('./pages/Pricing.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
@@ -83,6 +89,12 @@ root.render(
                   <Route path="/resize-png" element={<ResizePngPage />} />
                   <Route path="/compress-jpg" element={<CompressJpgPage />} />
                   <Route path="/heic-to-jpg" element={<HeicToJpgPage />} />
+                  <Route path="/jpg-to-png" element={<JpgToPngPage />} />
+                  <Route path="/svg-to-png" element={<SvgToPngPage />} />
+                  <Route path="/gif-to-mp4" element={<GifToMp4Page />} />
+                  <Route path="/image-to-pdf" element={<ImageToPdfPage />} />
+                  <Route path="/passport-photo" element={<PassportPhotoPage />} />
+                  <Route path="/smart-crop" element={<SmartCropPage />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
                   <Route path="*" element={<NotFound />} />
