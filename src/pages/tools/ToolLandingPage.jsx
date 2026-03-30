@@ -1,54 +1,49 @@
 import TopNav from '../../components/TopNav'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useMemo } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
+import useSEO, { buildFAQSchema, buildHowToSchema } from '../../hooks/useSEO'
 import '../PageLayout.css'
 import './ToolLandingPage.css'
 
-export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descEn, descZh, features, stepsEn, stepsZh, faqEn, faqZh }) {
+export default function ToolLandingPage({ toolKey, toolPath, icon, titleEn, titleZh, descEn, descZh, features, stepsEn, stepsZh, faqEn, faqZh, geoSnippetEn, geoSnippetZh, sectionsEn, sectionsZh }) {
   const { lang } = useLanguage()
   const title = lang === 'zh' ? titleZh : titleEn
   const desc = lang === 'zh' ? descZh : descEn
   const steps = lang === 'zh' ? stepsZh : stepsEn
   const faq = lang === 'zh' ? faqZh : faqEn
+  const geoSnippet = lang === 'zh' ? geoSnippetZh : geoSnippetEn
+  const sections = lang === 'zh' ? sectionsZh : sectionsEn
+  const pagePath = toolPath || `/${toolKey}`
 
-  useEffect(() => {
-    document.title = `${title} | TapCrop`
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute('content', desc)
-    } else {
-      const newMeta = document.createElement('meta')
-      newMeta.name = 'description'
-      newMeta.content = desc
-      document.head.appendChild(newMeta)
+  const schema = useMemo(() => {
+    const schemas = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: `TapCrop — ${title}`,
+        description: desc,
+        url: `https://www.tapcrop.com${pagePath}`,
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'Web Browser',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      },
+    ]
+    if (faq && faq.length > 0) {
+      schemas.push(buildFAQSchema(faq))
     }
+    if (steps && steps.length > 0) {
+      schemas.push(buildHowToSchema(title, desc, steps))
+    }
+    return schemas
+  }, [title, desc, pagePath, faq, steps])
 
-    // Schema.org structured data
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: `TapCrop — ${title}`,
-      description: desc,
-      url: `https://tapcrop.com/${toolKey}`,
-      applicationCategory: 'MultimediaApplication',
-      operatingSystem: 'Web Browser',
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    }
-    let script = document.getElementById('tool-schema')
-    if (!script) {
-      script = document.createElement('script')
-      script.id = 'tool-schema'
-      script.type = 'application/ld+json'
-      document.head.appendChild(script)
-    }
-    script.textContent = JSON.stringify(schema)
-
-    return () => {
-      const el = document.getElementById('tool-schema')
-      if (el) el.remove()
-    }
-  }, [title, desc, toolKey])
+  useSEO({
+    title: `${title} | TapCrop`,
+    description: desc,
+    path: pagePath,
+    schema,
+  })
 
   const ctaText = lang === 'zh' ? '立即免费使用' : 'Start Free — No Signup'
   const howToTitle = lang === 'zh' ? '如何使用' : 'How It Works'
@@ -98,6 +93,13 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
         </div>
       )}
 
+      {/* GEO snippet — quotable paragraph for AI search engines */}
+      {geoSnippet && (
+        <div className="tl-section tl-geo-section">
+          <p className="tl-geo-snippet">{geoSnippet}</p>
+        </div>
+      )}
+
       {/* Steps */}
       <div className="tl-section">
         <h2 className="tl-section-title">{howToTitle}</h2>
@@ -118,6 +120,18 @@ export default function ToolLandingPage({ toolKey, icon, titleEn, titleZh, descE
       <div className="tl-mid-cta">
         <Link to={`/app?tool=${toolKey}`} className="tl-hero-cta">{ctaText}</Link>
       </div>
+
+      {/* Detailed content sections for SEO depth */}
+      {sections && sections.length > 0 && (
+        <div className="tl-section tl-detailed">
+          {sections.map((section, i) => (
+            <div key={i} className="tl-detailed-block">
+              <h2>{section.title}</h2>
+              <p>{section.content}</p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* FAQ */}
       {faq && faq.length > 0 && (

@@ -13,6 +13,7 @@ import AuthModal from './components/AuthModal'
 import { processImage } from './core/imageProcessor'
 import { downloadSingle, downloadAsZip, saveToFolder } from './core/fileExporter'
 import useHistory from './hooks/useHistory'
+import useSEO from './hooks/useSEO'
 import './App.css'
 
 const DEFAULT_SETTINGS = {
@@ -77,6 +78,16 @@ export default function App() {
   const { t, lang } = useLanguage()
   const { user } = useAuth()
   const { isPro, limits, canProcess, addUsage, remainingToday } = usePro()
+
+  useSEO({
+    title: lang === 'zh'
+      ? 'TapCrop 秒裁 — 免费在线批量图片处理工具'
+      : 'TapCrop — Free Online Batch Image Cropping Tool | Crop & Resize Multiple Photos',
+    description: lang === 'zh'
+      ? '免费在线批量裁剪、缩放、压缩、加水印、转换图片。100% 浏览器端处理，无需注册，图片不上传。'
+      : 'Free online batch image editor. Crop, resize, compress, watermark and convert multiple photos at once. 100% browser processing, no signup required.',
+    path: '/app',
+  })
   const [searchParams] = useSearchParams()
   const [settings, setSettings] = useState(loadSettings)
   const [images, setImages] = useHistory([])

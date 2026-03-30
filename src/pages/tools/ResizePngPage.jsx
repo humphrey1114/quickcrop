@@ -58,6 +58,7 @@ export default function ResizePngPage() {
   return (
     <ToolLandingPage
       toolKey="resize"
+      toolPath="/resize-png"
       titleEn="Resize PNG Images Online Free — Keep Transparency"
       titleZh="免费在线调整PNG图片大小 — 保留透明背景"
       descEn="Resize PNG images online for free while preserving transparency. Lossless quality, batch processing, and instant downloads — no uploads, fully browser-based."
@@ -67,6 +68,16 @@ export default function ResizePngPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online PNG resizer that resizes PNG images while fully preserving transparency. Batch resize multiple PNG files at once with lossless quality. Perfect for icons, logos, and design assets. All processing happens in your browser — no files uploaded."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线 PNG 缩放工具，缩放 PNG 图片时完全保留透明度。批量无损缩放多个 PNG 文件，适合图标、Logo 和设计素材。所有处理在浏览器中完成，文件不会上传。"
+      sectionsEn={[
+        { title: 'Why PNG Transparency Matters', content: 'PNG transparency (the alpha channel) allows parts of an image to be see-through. This is crucial for logos placed on different colored backgrounds, app icons, UI elements, product photos with removed backgrounds, and overlay graphics. When resizing PNG images, it is essential to use a tool that preserves the alpha channel — some resizers convert transparent areas to white or black. TapCrop keeps transparency perfectly intact at any size.' },
+        { title: 'PNG for Web vs Print', content: 'For web use, resize PNG images to the exact display size to minimize page load time — a 200x200 icon should not be served as a 2000x2000 file. For print, maintain at least 300 DPI resolution. TapCrop includes paper size presets (A4, A3, Letter, etc.) at 300 DPI to help you prepare print-ready PNG files.' },
+      ]}
+      sectionsZh={[
+        { title: '为什么 PNG 透明度很重要', content: 'PNG 透明度（Alpha 通道）让图片的某些部分可以是透明的。这对于放在不同色彩背景上的 Logo、应用图标、UI 元素、去除背景的产品图和叠加图形至关重要。缩放 PNG 时，必须使用保留 Alpha 通道的工具——有些缩放工具会将透明区域转为白色或黑色。TapCrop 在任何尺寸下都能完美保留透明度。' },
+        { title: '网页和印刷用 PNG', content: '网页使用时，将 PNG 缩放到实际显示尺寸以最小化页面加载时间——200x200 的图标不应该用 2000x2000 的文件。印刷用途需要至少 300 DPI 分辨率。TapCrop 包含 A4、A3、Letter 等纸张尺寸的 300 DPI 预设，帮你准备印刷级 PNG 文件。' },
+      ]}
     />
   )
 }

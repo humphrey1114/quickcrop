@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
+import useSEO from '../hooks/useSEO'
 
 function TutorialSection({ icon, title, children }) {
   return (
@@ -39,18 +39,15 @@ function FeatureCard({ title, desc }) {
 export default function Tutorial() {
   const { t, lang } = useLanguage()
 
-  useEffect(() => {
-    document.title = lang === 'zh'
+  useSEO({
+    title: lang === 'zh'
       ? '使用教程 — 秒裁在线图片编辑器指南 | TapCrop'
-      : 'Tutorial — How to Use TapCrop Image Editor'
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute('content', lang === 'zh'
-        ? '秒裁使用教程：学习如何批量裁剪、压缩、加水印、转换格式、调整亮度对比度。支持50+社交媒体预设尺寸，100%浏览器端处理。'
-        : 'Learn how to use TapCrop: batch crop, resize, compress, watermark, convert formats, adjust brightness & contrast. 50+ social media presets. Free, private, browser-based.'
-      )
-    }
-  }, [lang])
+      : 'Tutorial — How to Use TapCrop Image Editor',
+    description: lang === 'zh'
+      ? '秒裁使用教程：学习如何批量裁剪、压缩、加水印、转换格式、调整亮度对比度。支持50+社交媒体预设尺寸，100%浏览器端处理。'
+      : 'Learn how to use TapCrop: batch crop, resize, compress, watermark, convert formats, adjust brightness & contrast. 50+ social media presets. Free, private, browser-based.',
+    path: '/tutorial',
+  })
 
   return (
     <PageLayout title={t('tutorial.title')}>

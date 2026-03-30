@@ -1,14 +1,18 @@
-import { useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import PageLayout from './PageLayout'
+import useSEO from '../hooks/useSEO'
 
 export default function Privacy() {
   const { lang } = useLanguage()
   const isZh = lang === 'zh'
 
-  useEffect(() => {
-    document.title = isZh ? '隐私政策 | TapCrop' : 'Privacy Policy | TapCrop'
-  }, [isZh])
+  useSEO({
+    title: isZh ? '隐私政策 | TapCrop' : 'Privacy Policy | TapCrop',
+    description: isZh
+      ? 'TapCrop 隐私政策：所有图片处理 100% 在浏览器本地完成，不会上传任何图片到服务器。'
+      : 'TapCrop Privacy Policy: all image processing happens 100% in your browser. No images are uploaded to any server.',
+    path: '/privacy',
+  })
 
   if (isZh) {
     return (

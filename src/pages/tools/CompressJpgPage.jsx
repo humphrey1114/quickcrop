@@ -58,6 +58,7 @@ export default function CompressJpgPage() {
   return (
     <ToolLandingPage
       toolKey="compress"
+      toolPath="/compress-jpg"
       titleEn="Compress JPG & Reduce Image Size Online Free"
       titleZh="免费在线压缩JPG和减小图片大小"
       descEn="Compress JPG images and reduce image size online for free. Powerful JPG size reducer with batch processing, adjustable quality, and instant downloads — all in your browser."
@@ -67,6 +68,16 @@ export default function CompressJpgPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online JPG compressor and image size reducer. Compress JPG files by up to 80% with adjustable quality control. Batch compress multiple photos at once. All compression happens in your browser — your JPG images are never uploaded to any server."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线 JPG 压缩和图片大小缩减工具。可调质量控制，将 JPG 文件压缩最多 80%。支持批量压缩多张照片。所有压缩在浏览器中完成，JPG 图片不会上传到任何服务器。"
+      sectionsEn={[
+        { title: 'How JPG Compression Reduces File Size', content: 'JPG compression works by analyzing 8x8 pixel blocks in your image and discarding visual information that humans are least likely to notice. At high quality settings (80-95%), the compression removes subtle color variations in smooth gradients and barely-visible noise. At lower settings (40-70%), it becomes more aggressive, which can introduce visible artifacts around sharp edges and text. TapCrop lets you preview the result before downloading so you can find the perfect quality-to-size ratio.' },
+        { title: 'Compress JPG for Email and Web', content: 'Most email providers limit attachments to 25 MB. A single high-resolution DSLR photo can be 8-15 MB, so sending just a few photos can exceed the limit. Compressing to 60-70% quality typically reduces each photo to 1-3 MB with minimal visible difference. For websites, Google PageSpeed Insights recommends serving images in next-gen formats or properly compressed JPEG. Aim for under 200 KB per image for web pages to maintain fast load times.' },
+      ]}
+      sectionsZh={[
+        { title: 'JPG 压缩如何减小文件大小', content: 'JPG 压缩通过分析图片中的 8x8 像素块并丢弃人类最不容易察觉的视觉信息来工作。在高质量设置（80-95%）下，压缩会去除平滑渐变中的细微颜色变化。在较低设置（40-70%）下，压缩更激进，可能在锐利边缘和文字周围产生可见伪影。TapCrop 让你在下载前预览结果，找到完美的质量与大小比例。' },
+        { title: '为邮件和网页压缩 JPG', content: '大多数邮箱限制附件为 25 MB。一张高分辨率单反照片可能有 8-15 MB，发送几张照片就可能超出限制。压缩到 60-70% 质量通常将每张照片减小到 1-3 MB，视觉差异极小。对于网站，Google PageSpeed 建议每张图片控制在 200 KB 以下以保持快速加载。' },
+      ]}
     />
   )
 }

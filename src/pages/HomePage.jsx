@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { track } from '@vercel/analytics/react'
 import { useLanguage } from '../i18n/LanguageContext'
+import useSEO from '../hooks/useSEO'
 import './HomePage.css'
 
 const TOOLS = [
@@ -146,16 +147,18 @@ function ConvertDemo() {
 export default function HomePage() {
   const { lang, toggleLang } = useLanguage()
 
-  useEffect(() => {
-    document.title = lang === 'zh'
-      ? 'TapCrop 秒裁 — 在线批量图片处理工具'
-      : 'TapCrop — Online Image Resizer & Batch Photo Editor'
-    const meta = document.querySelector('meta[name="description"]')
-    const desc = lang === 'zh'
-      ? '在线批量裁剪、缩放、压缩、加水印、转换图片格式。免费可用，100% 浏览器端处理，无需注册，图片不上传。'
-      : 'Online image resizer & batch photo editor. Resize, crop, compress, watermark and convert images in bulk. Free to start, no signup, 100% browser processing.'
-    if (meta) meta.setAttribute('content', desc)
-  }, [lang])
+  const homeTitle = lang === 'zh'
+    ? 'TapCrop 秒裁 — 在线批量图片处理工具'
+    : 'TapCrop — Online Image Resizer & Batch Photo Editor'
+  const homeDesc = lang === 'zh'
+    ? '在线批量裁剪、缩放、压缩、加水印、转换图片格式。免费可用，100% 浏览器端处理，无需注册，图片不上传。'
+    : 'Online image resizer & batch photo editor. Resize, crop, compress, watermark and convert images in bulk. Free to start, no signup, 100% browser processing.'
+
+  useSEO({
+    title: homeTitle,
+    description: homeDesc,
+    path: '/',
+  })
 
   const [theme, setTheme] = useState(() => localStorage.getItem('tapcrop-theme') || 'light')
   const toggleTheme = () => {

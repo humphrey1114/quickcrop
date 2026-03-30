@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useMemo } from 'react'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
+import useSEO, { buildFAQSchema } from '../hooks/useSEO'
 
 export default function FAQ() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   const FAQS = [
     { q: t('faq.q1'), a: t('faq.a1') },
@@ -20,28 +21,16 @@ export default function FAQ() {
     { q: t('faq.q12'), a: t('faq.a12') },
   ]
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.id = 'faq-schema'
-    script.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      'mainEntity': FAQS.map(item => ({
-        '@type': 'Question',
-        'name': item.q,
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': item.a,
-        },
-      })),
-    })
-    document.head.appendChild(script)
-    return () => {
-      const el = document.getElementById('faq-schema')
-      if (el) el.remove()
-    }
-  }, [FAQS])
+  const faqSchema = useMemo(() => buildFAQSchema(FAQS), [lang]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useSEO({
+    title: lang === 'zh' ? '常见问题 | TapCrop 秒裁' : 'FAQ | TapCrop — Free Image Resizer',
+    description: lang === 'zh'
+      ? 'TapCrop 常见问题解答：支持格式、隐私安全、批量处理、水印、压缩等。'
+      : 'TapCrop FAQ: supported formats, privacy, batch processing, watermarks, compression, and more.',
+    path: '/faq',
+    schema: faqSchema,
+  })
 
   return (
     <PageLayout title={t('faq.title')}>

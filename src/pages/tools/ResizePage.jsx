@@ -66,6 +66,18 @@ export default function ResizePage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online image resizer that lets you resize images to exact pixel dimensions with high-quality resampling. Batch resize hundreds of photos at once using 50+ presets for Instagram, YouTube, Facebook, Etsy, and more. All resizing runs in your browser — no uploads, no signup required."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线图片缩放工具，支持高质量重采样将图片缩放到精确像素尺寸。使用 50+ 预设一次批量缩放数百张照片，适用于 Instagram、YouTube、Facebook、Etsy 等平台。所有缩放在浏览器中完成，无需上传，无需注册。"
+      sectionsEn={[
+        { title: 'Why Image Dimensions Matter', content: 'Every platform has specific image size requirements. Instagram crops landscape photos, YouTube rejects thumbnails under 1280x720, Etsy recommends 2000x2000 for product listings, and LinkedIn displays blurry banners if your image is too small. Using the wrong dimensions means your images get cropped unpredictably, display with black bars, appear pixelated, or get compressed more aggressively by the platform. TapCrop ensures every image meets the exact requirements.' },
+        { title: 'High-Quality Resampling', content: 'When you resize an image, the pixels need to be recalculated — this process is called resampling. Low-quality resizing produces blurry or blocky results. TapCrop uses bicubic interpolation (the same algorithm used by Photoshop) to maintain sharp, clear images at any new size. This is especially important when downsizing high-resolution photos for web use or social media.' },
+        { title: 'Resize Without Cropping', content: 'Sometimes you need to change image dimensions without losing any part of the photo. TapCrop offers an "auto width" and "auto height" mode that scales images proportionally — enter one dimension and the other is calculated automatically. This is perfect for preparing images for websites where you need a consistent width but want to keep the full original composition.' },
+      ]}
+      sectionsZh={[
+        { title: '为什么图片尺寸很重要', content: '每个平台都有特定的图片尺寸要求。Instagram 会裁剪横向照片，YouTube 拒绝低于 1280x720 的缩略图，Etsy 建议商品图使用 2000x2000，LinkedIn 在图片太小时显示模糊的横幅。使用错误的尺寸意味着图片会被不可预测地裁剪、显示黑边、看起来像素化，或被平台更激进地压缩。TapCrop 确保每张图片都满足精确要求。' },
+        { title: '高质量重采样', content: '缩放图片时，像素需要重新计算——这个过程叫重采样。低质量的缩放会产生模糊或块状的结果。TapCrop 使用双三次插值（与 Photoshop 使用的相同算法）在任何新尺寸下保持清晰锐利的图片。这在将高分辨率照片缩小用于网页或社交媒体时尤为重要。' },
+        { title: '无裁剪缩放', content: 'TapCrop 提供"自动宽度"和"自动高度"模式，按比例缩放图片——输入一个维度，另一个自动计算。这非常适合为网站准备需要统一宽度但想保留完整原始构图的图片。' },
+      ]}
     />
   )
 }

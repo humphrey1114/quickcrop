@@ -208,6 +208,44 @@
   margin: 0;
 }
 
+/* GEO snippet */
+.tl-geo-snippet {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.8;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Detailed content sections */
+.tl-detailed {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tl-detailed-block {
+  margin-bottom: 28px;
+}
+
+.tl-detailed-block h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.tl-detailed-block p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin: 0;
+}
+
 /* Bottom CTA */
 .tl-bottom-cta {
   text-align: center;

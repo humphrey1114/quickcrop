@@ -2,9 +2,18 @@ import { useState } from 'react'
 import { track } from '@vercel/analytics/react'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
+import useSEO from '../hooks/useSEO'
 
 export default function Feedback() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+
+  useSEO({
+    title: lang === 'zh' ? '反馈建议 | TapCrop 秒裁' : 'Feedback | TapCrop',
+    description: lang === 'zh'
+      ? '提交反馈建议，帮助我们改进 TapCrop 秒裁。'
+      : 'Submit feedback to help us improve TapCrop.',
+    path: '/feedback',
+  })
   const [form, setForm] = useState({ name: '', email: '', type: 'bug', message: '', website: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
 

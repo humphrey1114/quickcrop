@@ -58,6 +58,7 @@ export default function HeicToJpgPage() {
   return (
     <ToolLandingPage
       toolKey="convert"
+      toolPath="/heic-to-jpg"
       titleEn="HEIC to JPG Converter Free Online — Convert iPhone Photos"
       titleZh="免费在线HEIC转JPG转换器 — 转换iPhone照片"
       descEn="Convert HEIC to JPG online for free. Batch convert iPhone photos to universally compatible JPG format — full quality, instant processing, no uploads required."
@@ -67,6 +68,18 @@ export default function HeicToJpgPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online HEIC to JPG converter for iPhone photos. Convert HEIC and HEIF files to universally compatible JPG format with full quality preservation. Batch convert hundreds of iPhone photos at once. All conversion runs in your browser — your photos never leave your device."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线 HEIC 转 JPG 转换工具，专为 iPhone 照片设计。将 HEIC 和 HEIF 文件转换为通用兼容的 JPG 格式，完整保留画质。批量转换数百张 iPhone 照片。所有转换在浏览器中完成，照片不会离开你的设备。"
+      sectionsEn={[
+        { title: 'What Is HEIC and Why Does iPhone Use It?', content: 'HEIC (High Efficiency Image Container) is a modern image format that Apple adopted as the default for iPhones starting with iOS 11. It uses the HEVC (H.265) codec to compress images about 50% smaller than equivalent JPEG files while maintaining the same visual quality. This saves significant storage space on your phone. However, HEIC is not universally supported — Windows, Android, many websites, and older software cannot open HEIC files without special codecs.' },
+        { title: 'How to Stop iPhone from Taking HEIC Photos', content: 'If you prefer JPG natively, go to Settings > Camera > Formats and select "Most Compatible". This switches your iPhone to save photos as JPG instead of HEIC. Note that JPG files are larger, so you will use more storage space. Alternatively, keep shooting in HEIC for storage efficiency and use TapCrop to convert to JPG only when you need to share with non-Apple users or upload to platforms that require JPG.' },
+        { title: 'HEIC to JPG Without Losing Quality', content: 'When converting HEIC to JPG, some quality loss is inherent because you are going from a more efficient codec to JPEG compression. However, at quality settings of 90-95%, the difference is virtually invisible to the human eye. TapCrop converts at 92% quality by default, which produces JPG files that look identical to the HEIC originals while being universally compatible.' },
+      ]}
+      sectionsZh={[
+        { title: '什么是 HEIC，为什么 iPhone 使用它？', content: 'HEIC（高效图片容器）是 Apple 从 iOS 11 开始在 iPhone 上默认使用的现代图片格式。它使用 HEVC (H.265) 编码，比同等质量的 JPEG 文件小约 50%，大幅节省手机存储空间。然而 HEIC 并非通用格式——Windows、Android、许多网站和旧版软件在没有特殊解码器的情况下无法打开 HEIC 文件。' },
+        { title: '如何让 iPhone 不拍 HEIC 照片', content: '如果你更喜欢原生 JPG，去设置 > 相机 > 格式，选择"兼容性最佳"。这会让 iPhone 以 JPG 格式保存照片。注意 JPG 文件更大，会占用更多存储空间。或者继续用 HEIC 拍摄以节省存储，只在需要与非 Apple 用户分享或上传到需要 JPG 的平台时用 TapCrop 转换。' },
+        { title: 'HEIC 转 JPG 不损失画质', content: '将 HEIC 转为 JPG 时，由于从更高效的编码转为 JPEG 压缩，会有一些固有的质量损失。但在 90-95% 的质量设置下，差异对肉眼几乎不可见。TapCrop 默认以 92% 质量转换，产生的 JPG 文件看起来与 HEIC 原图完全一样，同时通用兼容。' },
+      ]}
     />
   )
 }

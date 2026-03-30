@@ -1,8 +1,17 @@
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
+import useSEO from '../hooks/useSEO'
 
 export default function Changelog() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+
+  useSEO({
+    title: lang === 'zh' ? '更新日志 | TapCrop 秒裁' : 'Changelog | TapCrop — Free Image Editor',
+    description: lang === 'zh'
+      ? 'TapCrop 秒裁更新日志：查看最新功能、改进和修复。'
+      : 'TapCrop changelog: see the latest features, improvements, and fixes.',
+    path: '/changelog',
+  })
 
   const LOGS = [
     {

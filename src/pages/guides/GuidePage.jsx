@@ -1,22 +1,31 @@
+import { useMemo } from 'react'
 import TopNav from '../../components/TopNav'
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import useSEO from '../../hooks/useSEO'
 import '../PageLayout.css'
 import './GuidePage.css'
 
 export default function GuidePage({ title, description, children }) {
-  useEffect(() => {
-    document.title = `${title} | TapCrop`
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute('content', description)
-    } else {
-      const newMeta = document.createElement('meta')
-      newMeta.name = 'description'
-      newMeta.content = description
-      document.head.appendChild(newMeta)
-    }
-  }, [title, description])
+  const location = useLocation()
+
+  const schema = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    url: `https://www.tapcrop.com${location.pathname}`,
+    author: { '@type': 'Organization', name: 'TapCrop' },
+    publisher: { '@type': 'Organization', name: 'TapCrop', url: 'https://www.tapcrop.com' },
+    datePublished: '2026-03-23',
+    dateModified: '2026-03-30',
+  }), [title, description, location.pathname])
+
+  useSEO({
+    title: `${title} | TapCrop`,
+    description,
+    path: location.pathname,
+    schema,
+  })
 
   return (
     <div className="page-layout">

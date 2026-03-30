@@ -66,6 +66,16 @@ export default function ConvertPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online image format converter that converts between JPG, PNG, WebP, and HEIC formats. Batch convert hundreds of images in seconds. Perfect for converting iPhone HEIC photos to JPG. All conversion happens in your browser — no files are uploaded to any server."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线图片格式转换工具，支持 JPG、PNG、WebP 和 HEIC 格式互转。数秒内批量转换数百张图片，完美支持 iPhone HEIC 照片转 JPG。所有转换在浏览器中完成，文件不会上传到任何服务器。"
+      sectionsEn={[
+        { title: 'Understanding Image Formats', content: 'JPEG (JPG) uses lossy compression and is the universal standard for photographs — supported everywhere, small file sizes, but no transparency support. PNG uses lossless compression and supports transparency (alpha channel), making it ideal for logos, screenshots, and graphics with sharp edges. WebP is a modern format developed by Google that offers 25-35% better compression than JPEG and supports both lossy and lossless modes plus transparency. HEIC is Apple\'s default photo format on iPhones — excellent compression but limited compatibility outside Apple devices.' },
+        { title: 'When to Convert Image Formats', content: 'Convert HEIC to JPG when sharing iPhone photos with non-Apple users or uploading to platforms that do not support HEIC. Convert PNG to JPG to reduce file size when transparency is not needed. Convert JPG or PNG to WebP to optimize images for websites — WebP files are significantly smaller with equivalent visual quality. Convert WebP to PNG when you need to edit an image in software that does not support WebP.' },
+      ]}
+      sectionsZh={[
+        { title: '了解图片格式', content: 'JPEG (JPG) 使用有损压缩，是照片的通用标准——到处都支持、文件小，但不支持透明度。PNG 使用无损压缩并支持透明度（Alpha 通道），适合 Logo、截图和有锐利边缘的图形。WebP 是 Google 开发的现代格式，比 JPEG 压缩效果好 25-35%，同时支持有损和无损模式以及透明度。HEIC 是 iPhone 的默认照片格式——压缩效果出色但在 Apple 设备之外兼容性有限。' },
+        { title: '什么时候需要转换格式', content: '向非 Apple 用户分享 iPhone 照片或上传到不支持 HEIC 的平台时，将 HEIC 转为 JPG。不需要透明度时将 PNG 转为 JPG 以减小文件大小。将 JPG 或 PNG 转为 WebP 以优化网站图片。在不支持 WebP 的软件中编辑图片时将 WebP 转为 PNG。' },
+      ]}
     />
   )
 }

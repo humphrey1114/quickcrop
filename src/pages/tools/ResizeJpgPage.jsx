@@ -58,6 +58,7 @@ export default function ResizeJpgPage() {
   return (
     <ToolLandingPage
       toolKey="resize"
+      toolPath="/resize-jpg"
       titleEn="Resize JPG & JPEG Images Online Free — Batch JPG Resizer"
       titleZh="免费在线调整JPG和JPEG图片大小 — 批量JPG调整工具"
       descEn="Resize JPG and JPEG images online for free. Batch resize multiple photos, control quality, and handle EXIF data — all in your browser with no uploads required."
@@ -67,6 +68,16 @@ export default function ResizeJpgPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online JPG resizer that lets you resize JPG and JPEG images to exact pixel dimensions. Batch resize multiple JPG photos at once with high-quality resampling and adjustable compression. All resizing happens in your browser — no JPG files are ever uploaded to a server."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线 JPG 缩放工具，支持将 JPG 和 JPEG 图片调整为精确像素尺寸。高质量重采样批量缩放多张 JPG 照片，可调压缩质量。所有缩放在浏览器中完成，JPG 文件不会上传到服务器。"
+      sectionsEn={[
+        { title: 'JPG vs JPEG: What Is the Difference?', content: 'JPG and JPEG are exactly the same image format — the only difference is the file extension. Early versions of Windows limited file extensions to three characters, so ".jpeg" was shortened to ".jpg". Both use the same JPEG compression algorithm and produce identical files. TapCrop handles .jpg and .jpeg files interchangeably.' },
+        { title: 'Best Practices for Resizing JPG Images', content: 'Always resize from the highest resolution source available — resizing an already-small JPG and then enlarging it later produces blurry results. When downsizing, use a quality setting of 80-92% for the best balance between file size and visual clarity. Avoid resizing the same JPG file multiple times, as each save cycle introduces additional compression artifacts. If you need to resize frequently, keep the original high-resolution file and always resize from that.' },
+      ]}
+      sectionsZh={[
+        { title: 'JPG 和 JPEG 有什么区别？', content: 'JPG 和 JPEG 是完全相同的图片格式——唯一的区别是文件扩展名。早期 Windows 将文件扩展名限制为三个字符，所以 ".jpeg" 被缩短为 ".jpg"。两者使用相同的 JPEG 压缩算法，产生完全相同的文件。TapCrop 可以互换处理 .jpg 和 .jpeg 文件。' },
+        { title: 'JPG 图片缩放最佳实践', content: '始终从最高分辨率的源文件开始缩放。缩小时使用 80-92% 的质量设置，在文件大小和视觉清晰度之间取得最佳平衡。避免多次缩放同一张 JPG 文件，因为每次保存都会引入额外的压缩伪影。如果需要频繁缩放，保留原始高分辨率文件，始终从原图开始缩放。' },
+      ]}
     />
   )
 }

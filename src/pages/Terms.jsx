@@ -1,15 +1,19 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
 import PageLayout from './PageLayout'
+import useSEO from '../hooks/useSEO'
 
 export default function Terms() {
   const { lang } = useLanguage()
   const isZh = lang === 'zh'
 
-  useEffect(() => {
-    document.title = isZh ? '服务条款 | TapCrop' : 'Terms of Service | TapCrop'
-  }, [isZh])
+  useSEO({
+    title: isZh ? '服务条款 | TapCrop' : 'Terms of Service | TapCrop',
+    description: isZh
+      ? 'TapCrop 服务条款。'
+      : 'TapCrop Terms of Service.',
+    path: '/terms',
+  })
 
   if (isZh) {
     return (

@@ -66,6 +66,16 @@ export default function WatermarkPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online watermark tool that adds custom text watermarks to hundreds of images at once. Control font size, color, opacity, and position. All watermarking runs in your browser — your images are never uploaded to any server, keeping your originals completely private."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线水印工具，支持一次为数百张图片添加自定义文字水印。控制字体大小、颜色、透明度和位置。所有水印处理在浏览器中完成，图片不会上传到任何服务器，原图完全保密。"
+      sectionsEn={[
+        { title: 'Why Add Watermarks to Images', content: 'Watermarks protect your intellectual property by making it harder for others to use your images without permission. They are essential for photographers sharing proofs, designers presenting concepts, real estate agents protecting listing photos, and content creators posting original work. A well-placed watermark deters unauthorized use while keeping the image viewable.' },
+        { title: 'Watermark Best Practices', content: 'A good watermark is visible enough to prevent theft but subtle enough not to ruin the image. Use 30-50% opacity for most cases. Place watermarks in corners for minimal visual impact, or in the center for maximum protection. Avoid pure white or pure black — a slight transparency with a shadow (which TapCrop adds automatically) ensures readability on any background. Keep text short: your name, brand, or a copyright symbol.' },
+      ]}
+      sectionsZh={[
+        { title: '为什么要给图片加水印', content: '水印通过增加他人未经许可使用图片的难度来保护你的知识产权。对于分享小样的摄影师、展示概念的设计师、保护房源照片的房产经纪人和发布原创作品的内容创作者来说至关重要。' },
+        { title: '水印最佳实践', content: '好的水印要足够可见以防止盗用，又足够低调不破坏画面。大多数情况下使用 30-50% 透明度。将水印放在角落可最小化视觉影响，放在中心则获得最大保护。避免纯白或纯黑——TapCrop 自动添加的轻微透明度和阴影确保在任何背景上都清晰可读。' },
+      ]}
     />
   )
 }

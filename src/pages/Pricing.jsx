@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { track } from '@vercel/analytics/react'
 import PageLayout from './PageLayout'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAuth } from '../contexts/AuthContext'
 import { usePro } from '../contexts/ProContext'
+import useSEO from '../hooks/useSEO'
 import './Pricing.css'
 
 const CREEM_PRO_PRODUCT_ID = import.meta.env.VITE_CREEM_PRO_PRODUCT_ID || 'prod_443SQW7gVPLY8Gjx6vhk7x'
@@ -17,18 +18,18 @@ export default function Pricing() {
   const [searchParams] = useSearchParams()
   const [checkoutLoading, setCheckoutLoading] = useState(false)
 
-  useEffect(() => {
-    document.title = lang === 'zh'
-      ? '定价方案 | TapCrop 免费版与 Pro 对比'
-      : 'Pricing | TapCrop Free vs Pro Plans'
+  const pricingTitle = lang === 'zh'
+    ? '定价方案 | TapCrop 免费版与 Pro 对比'
+    : 'Pricing | TapCrop Free vs Pro Plans'
+  const pricingDesc = lang === 'zh'
+    ? 'TapCrop 提供免费版与 Pro 版。免费版每天可处理 100 张图片，升级 Pro 可解锁无限处理、更大文件和更多高级功能。'
+    : 'TapCrop offers a free plan and Pro subscription. Start free with 100 images per day, then upgrade for unlimited processing, larger files, and advanced controls.'
 
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute('content', lang === 'zh'
-        ? 'TapCrop 提供免费版与 Pro 版。免费版每天可处理 100 张图片，升级 Pro 可解锁无限处理、更大文件和更多高级功能。'
-        : 'TapCrop offers a free plan and Pro subscription. Start free with 100 images per day, then upgrade for unlimited processing, larger files, and advanced controls.')
-    }
-  }, [lang])
+  useSEO({
+    title: pricingTitle,
+    description: pricingDesc,
+    path: '/pricing',
+  })
 
   const plans = [
     {

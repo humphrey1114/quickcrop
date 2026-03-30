@@ -68,6 +68,18 @@ export default function CropPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online image cropper that lets you batch crop hundreds of photos to the same dimensions in one click. It uses smart focal point detection to automatically find the subject of each image. All processing happens 100% in your browser — no images are ever uploaded to a server."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线批量图片裁剪工具，支持一键将数百张照片裁剪为统一尺寸。智能焦点检测自动识别每张图片的主体。所有处理 100% 在浏览器端完成，图片不会上传到任何服务器。"
+      sectionsEn={[
+        { title: 'What Is Batch Image Cropping?', content: 'Batch image cropping means resizing and cutting multiple photos to the same dimensions at once, instead of editing them one by one. This is essential for e-commerce sellers who need consistent product images, social media managers preparing content calendars, photographers delivering client galleries, and anyone working with large sets of images. TapCrop handles this entirely in your browser, so there are no file size limits, no upload queues, and no privacy concerns.' },
+        { title: 'Smart Focal Point Detection', content: 'When you crop an image to a different aspect ratio, you lose part of the original photo. TapCrop uses smartcrop.js to analyze each image and automatically detect the most important region — usually faces, high-contrast areas, or the visual center of gravity. This means your subjects stay centered and visible even after aggressive cropping. You can also manually override the focal point by clicking anywhere on the image.' },
+        { title: 'Social Media & E-commerce Presets', content: 'TapCrop includes over 50 built-in size presets covering every major platform: Instagram posts (1080x1080, 1080x1350), Stories and Reels (1080x1920), YouTube thumbnails (1280x720), Facebook covers (820x312), Twitter headers (1500x500), LinkedIn banners (1584x396), Pinterest pins (1000x1500), Etsy listings (2000x2000), and more. ID photo sizes for passports, driver licenses, and standard paper sizes at 300 DPI are also included.' },
+      ]}
+      sectionsZh={[
+        { title: '什么是批量图片裁剪？', content: '批量图片裁剪是指一次性将多张照片裁剪为相同尺寸，而不是逐张编辑。这对于需要统一商品图的电商卖家、准备内容日历的社交媒体运营、交付客户图库的摄影师，以及处理大量图片的所有人来说都至关重要。TapCrop 完全在浏览器中运行，没有文件大小限制、没有上传队列、也没有隐私顾虑。' },
+        { title: '智能焦点检测', content: '当你将图片裁剪为不同的宽高比时，会丢失原始照片的一部分。TapCrop 使用 smartcrop.js 分析每张图片，自动检测最重要的区域——通常是人脸、高对比度区域或视觉重心。这意味着即使经过大幅裁剪，你的主体仍然居中可见。你也可以通过点击图片的任意位置手动覆盖焦点。' },
+        { title: '社交媒体和电商预设', content: 'TapCrop 内置了 50 多种尺寸预设，覆盖所有主流平台：Instagram 帖子（1080x1080、1080x1350）、Stories 和 Reels（1080x1920）、YouTube 缩略图（1280x720）、Facebook 封面（820x312）、Twitter 头图（1500x500）、LinkedIn 横幅（1584x396）、Pinterest Pin（1000x1500）、Etsy 商品图（2000x2000）等。还包括护照、驾照等证件照尺寸和 300 DPI 标准纸张尺寸。' },
+      ]}
     />
   )
 }

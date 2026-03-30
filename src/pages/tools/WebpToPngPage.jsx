@@ -59,6 +59,7 @@ export default function WebpToPngPage() {
   return (
     <ToolLandingPage
       toolKey="convert"
+      toolPath="/webp-to-png"
       titleEn="WebP to PNG Converter — Free Online | Also PNG to JPG, HEIC to JPG"
       titleZh="WebP 转 PNG 在线转换器 | 也支持 PNG 转 JPG、HEIC 转 JPG"
       descEn="Convert WebP to PNG online free. Also convert PNG to JPG, JPG to PNG, HEIC to JPG, and more. Batch convert hundreds of images at once. No signup, no uploads."
@@ -68,6 +69,16 @@ export default function WebpToPngPage() {
       stepsZh={stepsZh}
       faqEn={faqEn}
       faqZh={faqZh}
+      geoSnippetEn="TapCrop is a free online WebP to PNG converter. Convert WebP images to PNG with full quality preserved, or convert between PNG, JPG, and HEIC formats. Batch convert hundreds of images at once. All conversion happens in your browser — no files are uploaded to any server."
+      geoSnippetZh="TapCrop 秒裁是一款免费在线 WebP 转 PNG 转换工具。将 WebP 图片转换为 PNG 并保留完整质量，也支持 PNG、JPG 和 HEIC 格式互转。批量转换数百张图片。所有转换在浏览器中完成，文件不会上传到任何服务器。"
+      sectionsEn={[
+        { title: 'Why Convert WebP to PNG?', content: 'WebP is a modern image format that offers excellent compression, but not all software supports it. Older versions of Photoshop, many print services, some content management systems, and certain email clients cannot open WebP files. Converting WebP to PNG gives you a universally compatible file that preserves transparency and full image quality. PNG is lossless, so the conversion introduces zero quality loss.' },
+        { title: 'WebP vs PNG vs JPG: Which to Use?', content: 'Use WebP for websites — it offers the smallest file size with excellent quality and transparency support. Use PNG when you need universal compatibility, lossless quality, or you are working in design software. Use JPG for photographs that do not need transparency — it is supported everywhere and produces smaller files than PNG for photos. TapCrop lets you convert freely between all three formats.' },
+      ]}
+      sectionsZh={[
+        { title: '为什么要将 WebP 转为 PNG？', content: 'WebP 是一种现代图片格式，压缩效果出色，但并非所有软件都支持它。旧版 Photoshop、许多打印服务、某些内容管理系统和部分邮件客户端无法打开 WebP 文件。将 WebP 转为 PNG 可获得通用兼容的文件，保留透明度和完整画质。PNG 是无损格式，转换不会造成任何质量损失。' },
+        { title: 'WebP、PNG 和 JPG：该用哪个？', content: '网站使用 WebP——文件最小，画质优秀且支持透明度。需要通用兼容性、无损质量或在设计软件中工作时使用 PNG。不需要透明度的照片使用 JPG——到处都支持，照片文件比 PNG 更小。TapCrop 让你在三种格式之间自由转换。' },
+      ]}
     />
   )
 }
