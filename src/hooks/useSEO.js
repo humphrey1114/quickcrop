@@ -131,3 +131,20 @@ export function buildHowToSchema(name, description, steps) {
     })),
   }
 }
+
+/**
+ * Build a BreadcrumbList schema.
+ * @param {Array<{name: string, path: string}>} items — breadcrumb trail
+ */
+export function buildBreadcrumbSchema(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `https://www.tapcrop.com${item.path}`,
+    })),
+  }
+}

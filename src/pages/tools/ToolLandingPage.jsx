@@ -2,7 +2,7 @@ import TopNav from '../../components/TopNav'
 import { Link } from 'react-router-dom'
 import { useMemo } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
-import useSEO, { buildFAQSchema, buildHowToSchema } from '../../hooks/useSEO'
+import useSEO, { buildFAQSchema, buildHowToSchema, buildBreadcrumbSchema } from '../../hooks/useSEO'
 import '../PageLayout.css'
 import './ToolLandingPage.css'
 
@@ -35,6 +35,10 @@ export default function ToolLandingPage({ toolKey, toolPath, icon, titleEn, titl
     if (steps && steps.length > 0) {
       schemas.push(buildHowToSchema(title, desc, steps))
     }
+    schemas.push(buildBreadcrumbSchema([
+      { name: 'TapCrop', path: '/' },
+      { name: title, path: pagePath },
+    ]))
     return schemas
   }, [title, desc, pagePath, faq, steps])
 
@@ -147,6 +151,34 @@ export default function ToolLandingPage({ toolKey, toolPath, icon, titleEn, titl
           </div>
         </div>
       )}
+
+      {/* Related Tools & Guides */}
+      <div className="tl-section tl-related">
+        <h2 className="tl-section-title">{lang === 'zh' ? '更多工具' : 'More Tools'}</h2>
+        <div className="tl-related-grid">
+          {[
+            { path: '/crop', en: 'Crop Images', zh: '裁剪图片' },
+            { path: '/resize', en: 'Resize Images', zh: '缩放图片' },
+            { path: '/compress', en: 'Compress Images', zh: '压缩图片' },
+            { path: '/watermark', en: 'Add Watermark', zh: '添加水印' },
+            { path: '/convert', en: 'Convert Format', zh: '格式转换' },
+            { path: '/heic-to-jpg', en: 'HEIC to JPG', zh: 'HEIC 转 JPG' },
+            { path: '/webp-to-png', en: 'WebP to PNG', zh: 'WebP 转 PNG' },
+            { path: '/resize-jpg', en: 'Resize JPG', zh: '缩放 JPG' },
+            { path: '/resize-png', en: 'Resize PNG', zh: '缩放 PNG' },
+            { path: '/compress-jpg', en: 'Compress JPG', zh: '压缩 JPG' },
+          ].filter(t => t.path !== pagePath).slice(0, 6).map(t => (
+            <Link key={t.path} to={t.path} className="tl-related-link">{lang === 'zh' ? t.zh : t.en}</Link>
+          ))}
+        </div>
+        <h3 className="tl-related-sub">{lang === 'zh' ? '实用指南' : 'Helpful Guides'}</h3>
+        <div className="tl-related-grid">
+          <Link to="/guides/instagram" className="tl-related-link">{lang === 'zh' ? 'Instagram 图片尺寸指南' : 'Instagram Image Size Guide'}</Link>
+          <Link to="/guides/youtube" className="tl-related-link">{lang === 'zh' ? 'YouTube 缩略图指南' : 'YouTube Thumbnail Guide'}</Link>
+          <Link to="/guides/twitter" className="tl-related-link">{lang === 'zh' ? 'Twitter 图片尺寸指南' : 'Twitter Image Size Guide'}</Link>
+          <Link to="/guides/batch-crop" className="tl-related-link">{lang === 'zh' ? '批量裁剪完全指南' : 'Batch Cropping Guide'}</Link>
+        </div>
+      </div>
 
       {/* Bottom CTA */}
       <div className="tl-bottom-cta">

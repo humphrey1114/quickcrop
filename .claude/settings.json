@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const o=JSON.parse(d);const f=o.tool_input?.file_path||'';if(/\\.(jsx?|mjs)$/.test(f)){process.stdout.write(f)}else{process.exit(0)}})\" | { read -r f; [ -n \"$f\" ] && npx eslint --no-error-on-unmatched-pattern \"$f\" 2>/dev/null || true; }",
+            "timeout": 15,
+            "statusMessage": "Linting edited file..."
+          }
+        ]
+      }
+    ]
+  }
+}

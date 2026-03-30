@@ -300,6 +300,23 @@ export default {
   'faq.q12': 'Does TapCrop work offline?',
   'faq.a12': 'Yes, once the page is loaded, TapCrop works without an internet connection since all processing happens in your browser. An internet connection is only needed for initial loading, account sync, and donations.',
 
+  'faq.q13': 'How do I crop images to a specific aspect ratio?',
+  'faq.a13': 'In the settings panel, enable "Lock Ratio" and enter your desired ratio (e.g. 16:9, 4:5, 1:1). The width and height will automatically adjust to maintain that ratio. You can also select from 50+ built-in presets for Instagram, YouTube, Facebook, and more.',
+  'faq.q14': 'Can I resize images for Instagram, YouTube, or Facebook?',
+  'faq.a14': 'Yes. TapCrop includes ready-made presets for every major social media platform: Instagram posts (1080x1080, 1080x1350), Stories (1080x1920), YouTube thumbnails (1280x720), Facebook covers (820x312), Twitter headers (1500x500), LinkedIn banners, Pinterest pins, and more.',
+  'faq.q15': 'How do I convert HEIC photos from my iPhone to JPG?',
+  'faq.a15': 'Simply drag your HEIC files into TapCrop. They are automatically converted to JPG during upload. You can then crop, resize, or compress them and download as JPG, PNG, or WebP.',
+  'faq.q16': 'Is TapCrop safe? Will my images be shared or stored?',
+  'faq.a16': 'TapCrop is completely safe. Your images are processed 100% locally in your browser using JavaScript — they are never uploaded to any server. We cannot see, access, or store your images. There is no tracking of image content.',
+  'faq.q17': 'How do I compress images without losing quality?',
+  'faq.a17': 'Use the compression slider in TapCrop. At 80% quality, most images look identical to the original while being 40-60% smaller. For web use, 70-80% is the sweet spot. You can preview the file size before downloading to find the right balance.',
+  'faq.q18': 'Can I crop images to passport or ID photo size?',
+  'faq.a18': 'Yes. TapCrop includes presets for common ID photo sizes: US passport (2x2 inches), Chinese ID photo (25x35mm), driver license, visa photo, and standard paper sizes — all calculated at 300 DPI for print quality.',
+  'faq.q19': 'How do I batch resize hundreds of product images for my online store?',
+  'faq.a19': 'Upload all your product images at once (drag & drop or file picker), set your desired dimensions (e.g. 2000x2000 for Amazon, 1080x1080 for Etsy), and click Process. All images are resized to the same size with smart focal point detection to keep your products centered. Download as a ZIP file.',
+  'faq.q20': 'What is the maximum image size TapCrop can handle?',
+  'faq.a20': 'Since TapCrop runs in your browser, there is no server-imposed file size limit. The practical limit depends on your device memory. Most modern devices can handle images up to 50MB or 8000x8000 pixels without issues. For very large files, processing may take a few extra seconds.',
+
   // Changelog page
   'changelog.title': 'Changelog',
   'changelog.intro': 'Tracking every improvement to TapCrop for a better experience.',

@@ -356,12 +356,19 @@ export default function HomePage() {
       {/* Footer - full width */}
       <footer className="home-footer">
         <div className="home-footer-links">
-          <Link to="/tutorial">Tutorial</Link>
+          <Link to="/crop">{lang === 'zh' ? '裁剪' : 'Crop'}</Link>
+          <Link to="/resize">{lang === 'zh' ? '缩放' : 'Resize'}</Link>
+          <Link to="/compress">{lang === 'zh' ? '压缩' : 'Compress'}</Link>
+          <Link to="/convert">{lang === 'zh' ? '转换' : 'Convert'}</Link>
+          <Link to="/watermark">{lang === 'zh' ? '水印' : 'Watermark'}</Link>
+          <Link to="/heic-to-jpg">HEIC to JPG</Link>
+          <Link to="/guides/instagram">Instagram Guide</Link>
+          <Link to="/guides/youtube">YouTube Guide</Link>
+          <Link to="/tutorial">{lang === 'zh' ? '教程' : 'Tutorial'}</Link>
           <Link to="/faq">FAQ</Link>
-          <Link to="/about">About</Link>
-          <Link to="/feedback">Feedback</Link>
+          <Link to="/about">{lang === 'zh' ? '关于' : 'About'}</Link>
+          <Link to="/pricing">{lang === 'zh' ? '定价' : 'Pricing'}</Link>
           <Link to="/privacy">Privacy</Link>
-          <Link to="/pricing">Pricing</Link>
           <Link to="/terms">Terms</Link>
         </div>
         <p className="home-footer-copy">&copy; {new Date().getFullYear()} TapCrop</p>

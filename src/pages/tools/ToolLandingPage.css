@@ -246,6 +246,43 @@
   margin: 0;
 }
 
+/* Related Tools & Guides */
+.tl-related {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tl-related-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tl-related-link {
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tl-related-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tl-related-sub {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 20px 0 10px;
+}
+
 /* Bottom CTA */
 .tl-bottom-cta {
   text-align: center;

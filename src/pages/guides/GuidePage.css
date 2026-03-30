@@ -58,6 +58,41 @@
   border-bottom: none;
 }
 
+/* Related section */
+.guide-related {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--divider);
+}
+
+.guide-related h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+
+.guide-related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guide-related-links a {
+  padding: 5px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.guide-related-links a:hover {
+  border-color: var(--accent, var(--primary));
+  color: var(--accent, var(--primary));
+}
+
 .guide-cta {
   margin-top: 40px;
   padding: 32px;

@@ -19,6 +19,14 @@ export default function FAQ() {
     { q: t('faq.q10'), a: t('faq.a10') },
     { q: t('faq.q11'), a: t('faq.a11') },
     { q: t('faq.q12'), a: t('faq.a12') },
+    { q: t('faq.q13'), a: t('faq.a13') },
+    { q: t('faq.q14'), a: t('faq.a14') },
+    { q: t('faq.q15'), a: t('faq.a15') },
+    { q: t('faq.q16'), a: t('faq.a16') },
+    { q: t('faq.q17'), a: t('faq.a17') },
+    { q: t('faq.q18'), a: t('faq.a18') },
+    { q: t('faq.q19'), a: t('faq.a19') },
+    { q: t('faq.q20'), a: t('faq.a20') },
   ]
 
   const faqSchema = useMemo(() => buildFAQSchema(FAQS), [lang]) // eslint-disable-line react-hooks/exhaustive-deps

@@ -1,0 +1,65 @@
+# TapCrop — Free Online Batch Image Processing Tool
+
+> TapCrop is a free, privacy-first online tool for batch image processing. It runs 100% in the browser — no images are ever uploaded to a server. No signup required.
+
+## What TapCrop Does
+
+TapCrop lets you crop, resize, compress, watermark, and convert images in bulk. Upload hundreds of photos, apply settings, and download them all in one click.
+
+## Core Features
+
+- **Batch Crop**: Crop hundreds of images to the same dimensions with custom focal points. 50+ presets for Instagram, YouTube, Facebook, Twitter, Etsy, ID photos, and more.
+- **Batch Resize**: Resize images to exact pixel dimensions with high-quality resampling and locked aspect ratios.
+- **Image Compression**: Reduce file size by up to 90% without visible quality loss. Adjustable quality slider.
+- **Watermark**: Add custom text watermarks with configurable font size, color, opacity, and position.
+- **Format Conversion**: Convert between JPG, PNG, WebP, and HEIC formats.
+- **HEIC to JPG**: Automatically convert iPhone HEIC photos to universally compatible JPG.
+
+## Key Facts
+
+- 100% browser-based processing — images never leave your device
+- No signup or account required
+- Free plan: 100 images per day, all core features, no watermarks
+- Pro plan available for unlimited usage
+- Bilingual: English and Chinese (中文)
+- Works on desktop and mobile browsers
+- Works offline after initial page load
+- Supports JPG, PNG, WebP, BMP, TIFF, GIF, HEIC/HEIF formats
+
+## URLs
+
+- Homepage: https://www.tapcrop.com
+- App: https://www.tapcrop.com/app
+- Crop Tool: https://www.tapcrop.com/crop
+- Resize Tool: https://www.tapcrop.com/resize
+- Compress Tool: https://www.tapcrop.com/compress
+- Watermark Tool: https://www.tapcrop.com/watermark
+- Convert Tool: https://www.tapcrop.com/convert
+- HEIC to JPG: https://www.tapcrop.com/heic-to-jpg
+- WebP to PNG: https://www.tapcrop.com/webp-to-png
+- Resize JPG: https://www.tapcrop.com/resize-jpg
+- Resize PNG: https://www.tapcrop.com/resize-png
+- Compress JPG: https://www.tapcrop.com/compress-jpg
+
+## Guides
+
+- Instagram Image Size Guide: https://www.tapcrop.com/guides/instagram
+- YouTube Thumbnail Guide: https://www.tapcrop.com/guides/youtube
+- Twitter Image Size Guide: https://www.tapcrop.com/guides/twitter
+- Batch Cropping Guide: https://www.tapcrop.com/guides/batch-crop
+
+## How It Works
+
+1. Upload images (drag & drop or file picker). Supports JPG, PNG, WebP, HEIC.
+2. Choose settings: pick a preset or enter custom dimensions. Set focal points.
+3. Click Process. Download individually or as a ZIP file.
+
+## Pricing
+
+- Free: 100 images/day, all core tools, no watermarks
+- Pro: Unlimited images, advanced features (brightness/contrast/saturation adjustment, custom watermark positions)
+
+## Contact
+
+- Website: https://www.tapcrop.com
+- Email: humphrey1114@gmail.com
