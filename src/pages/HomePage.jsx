@@ -371,6 +371,11 @@ export default function HomePage() {
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
         </div>
+        <div className="home-footer-ph">
+          <a href="https://www.producthunt.com/products/tapcrop-free-batch-image-editor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-tapcrop-free-batch-image-editor" target="_blank" rel="noopener noreferrer">
+            <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1112133&theme=dark&t=1774941775728" alt="TapCrop on Product Hunt" width="250" height="54" />
+          </a>
+        </div>
         <p className="home-footer-copy">&copy; {new Date().getFullYear()} TapCrop</p>
       </footer>
     </div>
