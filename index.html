@@ -12,6 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="baidu-site-verification" content="codeva-PqIHniauad" />
 
+    <!-- DNS prefetch for Firebase — cheap (no TCP/TLS), helps /app users start auth sooner.
+         Not using preconnect because anonymous visitors on marketing pages never hit these. -->
+    <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
+    <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
+    <link rel="dns-prefetch" href="https://www.googleapis.com" />
+
     <!-- SEO - Primary -->
     <meta name="description" content="Free online image resizer & batch photo editor. Resize, crop, compress, watermark and convert images in bulk. No signup, 100% browser processing." />
     <meta name="keywords" content="image resizer,resize image,photo resizer,image size reducer,reduce image size,resize image online,image resize,photo resize,resize photo,crop image online,image compressor,bulk resize photos,free image resizer,picture resizer,resize jpg,jpg resize,resize png,resize pixel,photo size reducer,batch image editor,resize image free,change image size,scale image,image resizer online" />

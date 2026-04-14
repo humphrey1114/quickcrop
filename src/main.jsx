@@ -1,13 +1,43 @@
-import { StrictMode, Suspense, lazy } from 'react'
+import { StrictMode, Suspense, lazy, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { AuthProvider } from './contexts/AuthContext'
 import { ProProvider } from './contexts/ProContext'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
+
+// Vercel telemetry (Analytics + SpeedInsights) is lazy + idle-mounted so it stays out of
+// the main chunk AND doesn't contend with first paint on slow connections.
+// web-vitals uses buffered PerformanceObservers, so LCP/FCP/CLS are still captured after late mount.
+const Analytics = lazy(() =>
+  import('@vercel/analytics/react').then((m) => ({ default: m.Analytics }))
+)
+const SpeedInsights = lazy(() =>
+  import('@vercel/speed-insights/react').then((m) => ({ default: m.SpeedInsights }))
+)
+
+function DeferredTelemetry() {
+  const [ready, setReady] = useState(false)
+  useEffect(() => {
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
+    const handle = idle(() => setReady(true), { timeout: 3000 })
+    return () => {
+      if (window.cancelIdleCallback && typeof handle === 'number') {
+        window.cancelIdleCallback(handle)
+      } else {
+        clearTimeout(handle)
+      }
+    }
+  }, [])
+  if (!ready) return null
+  return (
+    <Suspense fallback={null}>
+      <Analytics />
+      <SpeedInsights />
+    </Suspense>
+  )
+}
 
 const App = lazy(() => import('./App.jsx'))
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
@@ -101,8 +131,7 @@ root.render(
                 </Routes>
               </Suspense>
             </BrowserRouter>
-            <Analytics />
-            <SpeedInsights />
+            <DeferredTelemetry />
           </LanguageProvider>
         </ProProvider>
       </AuthProvider>

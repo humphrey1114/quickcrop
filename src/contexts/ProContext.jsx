@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { useAuth } from './AuthContext'
-import { db } from '../firebase'
-import { doc, onSnapshot, setDoc } from 'firebase/firestore'
+import { ensureDb } from '../firebase'
 
 const ProContext = createContext(null)
 
@@ -77,33 +76,55 @@ export function ProProvider({ children }) {
   const [proLoading, setProLoading] = useState(true)
   const [dailyUsage, setDailyUsageState] = useState(getDailyUsage)
 
-  // Listen to user's subscription status in Firestore
+  // Listen to user's subscription status in Firestore.
+  // Firestore module is lazy-loaded here — it only gets pulled once a user is actually
+  // signed in, so anonymous marketing-page traffic never pays the firebase/firestore cost.
   useEffect(() => {
     if (!user) {
       setIsPro(false)
       setProLoading(false)
       return
     }
+    setProLoading(true)
 
-    const userDoc = doc(db, 'users', user.uid, 'subscription', 'status')
-    const unsub = onSnapshot(userDoc, (snap) => {
-      if (snap.exists()) {
-        const data = snap.data()
-        const expiresAt = toDateValue(data.expiresAt)
-        const notExpired = !expiresAt || expiresAt > new Date()
-        const accessBlocked = ['expired', 'paused'].includes(data.status)
-        setIsPro(data.plan === 'pro' && notExpired && !accessBlocked)
-      } else {
-        setIsPro(false)
+    let cancelled = false
+    let unsub = null
+    ;(async () => {
+      try {
+        const [db, { doc, onSnapshot }] = await Promise.all([
+          ensureDb(),
+          import('firebase/firestore'),
+        ])
+        if (cancelled) return
+        const userDoc = doc(db, 'users', user.uid, 'subscription', 'status')
+        unsub = onSnapshot(userDoc, (snap) => {
+          if (snap.exists()) {
+            const data = snap.data()
+            const expiresAt = toDateValue(data.expiresAt)
+            const notExpired = !expiresAt || expiresAt > new Date()
+            const accessBlocked = ['expired', 'paused'].includes(data.status)
+            setIsPro(data.plan === 'pro' && notExpired && !accessBlocked)
+          } else {
+            setIsPro(false)
+          }
+          setProLoading(false)
+        }, () => {
+          // On error, default to free
+          setIsPro(false)
+          setProLoading(false)
+        })
+      } catch {
+        if (!cancelled) {
+          setIsPro(false)
+          setProLoading(false)
+        }
       }
-      setProLoading(false)
-    }, () => {
-      // On error, default to free
-      setIsPro(false)
-      setProLoading(false)
-    })
+    })()
 
-    return unsub
+    return () => {
+      cancelled = true
+      if (unsub) unsub()
+    }
   }, [user])
 
   // Get current limits based on plan

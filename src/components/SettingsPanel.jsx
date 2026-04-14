@@ -3,8 +3,7 @@ import WatermarkSettings from './WatermarkSettings'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useAuth } from '../contexts/AuthContext'
 import { usePro } from '../contexts/ProContext'
-import { db } from '../firebase'
-import { collection, doc, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore'
+import { ensureDb } from '../firebase'
 import './SettingsPanel.css'
 
 // mm to px at 300dpi
@@ -20,16 +19,29 @@ function useTemplates() {
     } catch { return [] }
   })
 
-  // Sync with Firestore when logged in
+  // Sync with Firestore when logged in.
+  // Firestore is dynamically imported so anonymous users never load it.
   useEffect(() => {
     if (!user) return
-    const col = collection(db, 'users', user.uid, 'templates')
-    const unsub = onSnapshot(col, (snap) => {
-      const data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-      setTemplates(data)
-      localStorage.setItem('tapcrop-templates', JSON.stringify(data))
-    })
-    return unsub
+    let cancelled = false
+    let unsub = null
+    ;(async () => {
+      const [db, { collection, onSnapshot }] = await Promise.all([
+        ensureDb(),
+        import('firebase/firestore'),
+      ])
+      if (cancelled) return
+      const col = collection(db, 'users', user.uid, 'templates')
+      unsub = onSnapshot(col, (snap) => {
+        const data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        setTemplates(data)
+        localStorage.setItem('tapcrop-templates', JSON.stringify(data))
+      })
+    })()
+    return () => {
+      cancelled = true
+      if (unsub) unsub()
+    }
   }, [user])
 
   const save = async (name, settings) => {
@@ -38,6 +50,10 @@ function useTemplates() {
     const tpl = { id, name, config }
 
     if (user) {
+      const [db, { doc, setDoc }] = await Promise.all([
+        ensureDb(),
+        import('firebase/firestore'),
+      ])
       await setDoc(doc(db, 'users', user.uid, 'templates', id), { name, config })
     } else {
       const next = [...templates, tpl]
@@ -48,6 +64,10 @@ function useTemplates() {
 
   const remove = async (id) => {
     if (user) {
+      const [db, { doc, deleteDoc }] = await Promise.all([
+        ensureDb(),
+        import('firebase/firestore'),
+      ])
       await deleteDoc(doc(db, 'users', user.uid, 'templates', String(id)))
     } else {
       const next = templates.filter(t => t.id !== id)
@@ -59,6 +79,10 @@ function useTemplates() {
   const update = async (id, name, settings) => {
     const { renamePrefix, renameStart, ...config } = settings
     if (user) {
+      const [db, { doc, setDoc }] = await Promise.all([
+        ensureDb(),
+        import('firebase/firestore'),
+      ])
       await setDoc(doc(db, 'users', user.uid, 'templates', String(id)), { name, config })
     } else {
       const next = templates.map(t => t.id === id ? { ...t, name, config } : t)
