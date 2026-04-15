@@ -96,17 +96,22 @@ export default function DropZone({ onFilesAdded, compact = false, currentCount =
 
   const handleDrop = useCallback((e) => {
     e.preventDefault()
+    // stopPropagation prevents the drop from bubbling up to <main onDrop>, which
+    // would otherwise call handleRawFiles on the same files and double-add them.
+    e.stopPropagation()
     setDragging(false)
     handleFiles(e.dataTransfer.files)
   }, [handleFiles])
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault()
+    e.stopPropagation()
     setDragging(true)
   }, [])
 
   const handleDragLeave = useCallback((e) => {
     e.preventDefault()
+    e.stopPropagation()
     setDragging(false)
   }, [])
 
